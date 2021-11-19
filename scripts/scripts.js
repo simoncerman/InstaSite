@@ -37,10 +37,14 @@ function NextFirst(){
             type: "POST", 
             url: "http://vocko/19ia04_cerman/scripts/SiteAccess.php",
             data : {type : type, webType : webType, webName : webName},
-            success: (res) => {
-                console.log(res);
-            }
+            success: (res)=>{
+                if(res!=""){
+                    alert(res);
+                }
+            },
         });
-        //Zápis dat do databáze -> vytvoření dtb
     }
+}
+function CreateCreatorAccount(){
+    
 }
