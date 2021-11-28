@@ -13,7 +13,7 @@ function selectOne(e){
         e.classList.add("selected");
     }
 }
-function NextFirst(){
+function basicInfoCreate(){
     let specificTypes = document.getElementsByClassName("selector");
     let webType;
     for (let i = 0; i < specificTypes.length; i++) {
@@ -39,12 +39,12 @@ function NextFirst(){
             data : {type : type, webType : webType, webName : webName},
             success: (res)=>{
                 if(res!=""){
-                    alert(res);
+                    window.location.href = "http://vocko/19ia04_cerman/"
                 }
             },
         });
     }
 }
-function CreateCreatorAccount(){
+function basicAccountCreate(){
     
 }

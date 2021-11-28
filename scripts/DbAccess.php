@@ -26,20 +26,25 @@ class DbAccess
         $this->pdoConn->query($sql);
     }
     /**
-     * @param $tableName -> String
+     * Check if a table exists in the current database.
+     *
+     * @param string $table Table to search for.
+     * @return bool TRUE if table exists, FALSE if no table found.
      */
-    function TableExistCheck($tableName)
+    function tableExists($table)
     {
-        if ($result = $this->pdoConn->query("SHOW TABLES LIKE '" . $tableName . "'")) {
-            if ($result->num_rows == 1) {
-                return true;
-            }
-        } else {
-            return false;
+        try {
+            $result = $this->pdoConn->query("SELECT 1 FROM {$table} LIMIT 1");
+        } catch (Exception $e) {
+            return FALSE;
         }
+        return $result !== FALSE;
     }
     /**
-     * @param $tableName -> String
+     * Count how many records are in table
+     * 
+     * @param string $tableName Table name
+     * @return int count of records in table
      */
     function TableRecordsCount($tableName)
     {

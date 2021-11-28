@@ -28,7 +28,7 @@ include dirname(getcwd(), 1) . '/pageParts/head.php';
             </div>
         </div>
         <div class="next-holder">
-            <button class="next" onclick="NextFirst()">Next</button>
+            <button class="next" onclick="basicInfoCreate()">Next</button>
         </div>
     </div>
 
