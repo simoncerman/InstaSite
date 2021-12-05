@@ -16,7 +16,7 @@
         </div>
         <div class="input-section">
             <p>select type of project</p>
-            <div class="select-one">
+            <div class="select-one" id="SiteType">
                 <div onclick="selectOne(this)" class="selector">Local shop</div>
                 <div onclick="selectOne(this)" class="selector">Chat room</div>
                 <div onclick="selectOne(this)" class="selector">Basic presentation</div>

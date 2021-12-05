@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<?php
-include dirname(getcwd(), 1) . '/pageParts/head.php';
-?>
+    <?php
+    include dirname(getcwd(), 1) . '/pageParts/head.php';
+    ?>
 </head>
+
 <body>
     <div class="small-wrap">
         <div class="title-section">
@@ -21,7 +23,7 @@ include dirname(getcwd(), 1) . '/pageParts/head.php';
         </div>
         <div class="input-section">
             <p>select type of account</p>
-            <div class="select-one">
+            <div class="select-one" id="AcType">
                 <div onclick="selectOne(this)" class="selector">Creator</div>
                 <div onclick="selectOne(this)" class="selector">Administrator</div>
                 <div onclick="selectOne(this)" class="selector">User</div>
@@ -33,4 +35,5 @@ include dirname(getcwd(), 1) . '/pageParts/head.php';
         </div>
     </div>
 </body>
+
 </html>
