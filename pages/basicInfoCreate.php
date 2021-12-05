@@ -17,14 +17,9 @@ include dirname(getcwd(), 1) . '/pageParts/head.php';
             <p>select type of project</p>
             <div class="select-one">
                 <div onclick="selectOne(this)" class="selector">Local shop</div>
-                <div onclick="selectOne(this)" class="selector">Prodej leštičů čel</div>
-                <div onclick="selectOne(this)" class="selector">Local shop</div>
-                <div onclick="selectOne(this)" class="selector">Local shop</div>
-                <div onclick="selectOne(this)" class="selector">Local shop</div>
-                <div onclick="selectOne(this)" class="selector">Local shop</div>
-                <div onclick="selectOne(this)" class="selector">Local shop</div>
-                <div onclick="selectOne(this)" class="selector">Local shop</div>
-                
+                <div onclick="selectOne(this)" class="selector">Chat room</div>
+                <div onclick="selectOne(this)" class="selector">Basic presentation</div>
+                <div onclick="selectOne(this)" class="selector">Video presentation page</div>
             </div>
         </div>
         <div class="next-holder">

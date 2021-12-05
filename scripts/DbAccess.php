@@ -15,26 +15,77 @@ class DbAccess
         $pdo = new PDO('mysql:host=' . $servername . ';dbname=' . $dbname, $username, $password);
         return $pdo;
     }
-    function CreateDefault()
+    /**
+     * Create default table globalInfo
+     */
+    function CreateDefaultTable()
     {
         $sql = '
         CREATE TABLE  globalinfo(
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             WebName VARCHAR(50) NOT NULL,
             WebType VARCHAR(30)
+            WebCompleted BIT(1) NOT NULL,
             )';
         $this->pdoConn->query($sql);
     }
     /**
+     * Create account table
+     */
+    function CreateAccountTable()
+    {
+        $sql = '
+        CREATE TABLE accountinfo(
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            AccountName VARCHAR(50) NOT NULL,
+            AccountType VARCHAR(30) NOT NULL,
+            AccountPassword VARCHAR(30) NOT NULL,
+            AccountEmail VARCHAR(40)
+        )';
+        $this->pdoConn->query($sql);
+    }
+    /**
+     * Create parts table
+     * This table will contain parts with json data
+     * data will be loading into page from json files
+     */
+    function CreatePartsTable()
+    {
+        $sql = '
+        CREATE TABLE parttable(
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            PartNames VARCHAR(50) NOT NULL,
+            PartOnSite BIT(1) NOT NULL,
+            PartSite VARCHAR(50),
+            PartData JSON
+        )
+        ';
+        $this->pdoConn->query($sql);
+    }
+    /**
+     * Count how many account with class are in table
+     * 
+     * @param string $tableName name of table
+     * @param string $AccountType type of account what we are counting
+     * @return int Count of accounts with specific type
+     */
+    function AccountWithType($tableName, $AccountType)
+    {
+        $sql = "SELECT COUNT(*) FROM {$tableName} WHERE AccountType='{$AccountType}'";
+        $stmp = $this->pdoConn->query($sql);
+        $count = $stmp->fetchColumn();
+        return $count;
+    }
+    /**
      * Check if a table exists in the current database.
      *
-     * @param string $table Table to search for.
+     * @param string $tableName Table to search for.
      * @return bool TRUE if table exists, FALSE if no table found.
      */
-    function tableExists($table)
+    function TableExistCheck($tableName)
     {
         try {
-            $result = $this->pdoConn->query("SELECT 1 FROM {$table} LIMIT 1");
+            $result = $this->pdoConn->query("SELECT 1 FROM {$tableName} LIMIT 1");
         } catch (Exception $e) {
             return FALSE;
         }
@@ -54,9 +105,11 @@ class DbAccess
         return $count;
     }
     /**
-     *  @param $tableName -> String
-     *  @param $parameterNameArray -> Array
-     *  @param $parameterValuesArray -> Array
+     * Insert data into table
+     * 
+     *  @param string $tableName string of table inserting into
+     *  @param array $parameterNameArray insert parameter names
+     *  @param array $parameterValuesArray insert parameter values
      */
     function InsertData($tableName, $parameterNameArray, $parameterValuesArray)
     {

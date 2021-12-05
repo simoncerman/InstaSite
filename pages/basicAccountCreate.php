@@ -12,12 +12,12 @@ include dirname(getcwd(), 1) . '/pageParts/head.php';
             <h2>Create your account</h2>
         </div>
         <div class="input-section">
-            <p>username</p>
-            <input class="typeinput" type="text">
-            <p>password</p>
-            <input class="typeinput" type="text">
+            <p>username*</p>
+            <input id="AccountUsername" class="typeinput" type="text">
+            <p>password*</p>
+            <input id="AccountPassword" class="typeinput" type="text">
             <p>email</p>
-            <input class="typeinput" type="text">
+            <input id="AccountEmail" class="typeinput" type="text">
         </div>
         <div class="input-section">
             <p>select type of account</p>
