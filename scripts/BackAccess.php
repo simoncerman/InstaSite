@@ -43,5 +43,21 @@ class BackAccess
             return false;
         }
     }
+    /**
+     * Will check if parameter WebCompleted is 1 or 0 
+     * Working with globalinfo table throw DbAccess.php
+     * 
+     * @return bool TRUE if WebCompleted == 1; False if WebCompleted == 0;
+     */
+    function CheckWebCompleted()
+    {
+        $tableName = "globalinfo";
+        $data = $this->Back_Dbaccess->getDataFromTable($tableName);
+        if ($data[0]["WebCompleted"] == 0) {
+            return FALSE;
+        } else if ($data[0]["WebCompleted"] == 1) {
+            return TRUE;
+        }
+    }
 }
 $BackAccess = new BackAccess();

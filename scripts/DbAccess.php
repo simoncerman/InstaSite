@@ -146,5 +146,15 @@ class DbAccess
             echo ("Wrong parameters insertion");
         }
     }
+    /**
+     * Will return all data from table as json
+     */
+    function getDataFromTable($tableName)
+    {
+        $sql = $this->pdoConn->prepare("SELECT * FROM {$tableName}");
+        $sql->execute();
+        $data = $sql->fetchAll();
+        return $data;
+    }
 }
 $DbAccess = new DbAccess();
