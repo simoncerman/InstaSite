@@ -1,8 +1,9 @@
 <head>
-<?php
-include dirname(getcwd(), 1) . '/pageParts/head.php';
-?>
+    <?php
+    include dirname(getcwd(), 1) . '/pageParts/head.php';
+    ?>
 </head>
+
 <body>
     <div class="small-wrap">
         <div class="title-section">
@@ -28,4 +29,5 @@ include dirname(getcwd(), 1) . '/pageParts/head.php';
     </div>
 
 </body>
+
 </html>

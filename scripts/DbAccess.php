@@ -21,12 +21,12 @@ class DbAccess
     function CreateDefaultTable()
     {
         $sql = '
-        CREATE TABLE  globalinfo(
+        CREATE TABLE globalinfo(
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             WebName VARCHAR(50) NOT NULL,
-            WebType VARCHAR(30)
-            WebCompleted BIT(1) NOT NULL,
-            )';
+            WebType VARCHAR(30),
+            WebCompleted BIT(1) NOT NULL
+        )';
         $this->pdoConn->query($sql);
     }
     /**
@@ -84,12 +84,13 @@ class DbAccess
      */
     function TableExistCheck($tableName)
     {
-        try {
-            $result = $this->pdoConn->query("SELECT 1 FROM {$tableName} LIMIT 1");
-        } catch (Exception $e) {
+        // assuming you have already setup $pdo
+        $sh = $this->pdoConn->prepare("DESCRIBE {$tableName}");
+        if ($sh->execute()) {
+            return TRUE;
+        } else {
             return FALSE;
         }
-        return $result !== FALSE;
     }
     /**
      * Count how many records are in table
@@ -126,9 +127,17 @@ class DbAccess
             $sql = $sql . ") VALUES (";
             for ($y = 0; $y < count($parameterValuesArray); $y++) {
                 if ($y == count($parameterValuesArray) - 1) {
-                    $sql = $sql . '"' . $parameterValuesArray[$y] . '"';
+                    if (is_numeric($parameterValuesArray[$y])) {
+                        $sql = $sql . '' . $parameterValuesArray[$y] . '';
+                    } else {
+                        $sql = $sql . '"' . $parameterValuesArray[$y] . '"';
+                    }
                 } else {
-                    $sql = $sql . '"' . $parameterValuesArray[$y] . '"' . ",";
+                    if (is_numeric($parameterValuesArray[$y])) {
+                        $sql = $sql . '' . $parameterValuesArray[$y] . '' . ",";
+                    } else {
+                        $sql = $sql . '"' . $parameterValuesArray[$y] . '"' . ",";
+                    }
                 }
             }
             $sql = $sql . ")";

@@ -24,7 +24,7 @@ function selectOne(e){
  * @author Šimns
  * @param {String} selectorID   Id if need to specify
  * @return {String}             Selected Inner
- * //TODO: Rework and add selectorID => This will allow more selectors in site
+ * TODO: Rework and add selectorID => This will allow more selectors in site
  */
 function getSelected(selectorID){
     let specificTypes = document.getElementsByClassName("selector");
@@ -59,10 +59,12 @@ function basicInfoCreate(){
             url: "http://vocko/19ia04_cerman/scripts/SiteAccess.php",
             data : {type : type, webType : webType, webName : webName},
             success: (res)=>{
+                console.log(res);
                 if(res!=""){
                     window.location.href = "http://vocko/19ia04_cerman/"
                 }
             },
+            
         });
     }
 }
