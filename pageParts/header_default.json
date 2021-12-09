@@ -1,56 +1,56 @@
 {
-    "partName": "partName",
+    "partName": "Default-Header",
     "partData": {
-        "typeByUse": "main",
-        "objects": {
-            "header": {
+        "category": "Main",
+        "objects": [
+            {
                 "tag": "header",
                 "class": "header-1",
-                "content": {
-                    "image": {
+                "content": [
+                    {
                         "tag": "img",
                         "class": "logo",
-                        "scr": "logo",
+                        "scr": "logo.png",
                         "alt": "logo"
                     },
-                    "menu": {
+                    {
                         "tag": "div",
                         "class": "headerMenu",
-                        "content": {
-                            "home": {
+                        "content": [
+                            {
                                 "tag": "a",
                                 "class": "menuLink",
                                 "href": "/home",
                                 "text": "Home"
                             },
-                            "about": {
+                            {
                                 "tag": "a",
                                 "class": "menuLink",
                                 "href": "/about",
                                 "text": "About"
                             },
-                            "contact": {
+                            {
                                 "tag": "a",
                                 "class": "menuLink",
                                 "href": "/contact",
                                 "text": "Contact"
                             }
-                        }
+                        ]
                     },
-                    "login": {
+                    {
                         "tag": "div",
                         "class": "headerEnd",
-                        "content": {
-                            "login": {
+                        "content": [
+                            {
                                 "tag": "a",
                                 "class": "headerEnd",
                                 "href": "/admin",
                                 "text": "Login"
                             }
-                        }
+                        ]
                     }
-                }
+                ]
             }
-        }
+        ]
     }
 }

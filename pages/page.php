@@ -3,10 +3,7 @@ require(dirname(getcwd(), 1) . "\scripts\BackAccess.php");
 require(dirname(getcwd(), 1) . "\scripts\JsonAccess.php");
 $root = "http://$_SERVER[HTTP_HOST]";
 
-$json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\header_default.json");
-$parsed = json_decode($json,true);
-echo($parsed["partData"]["objects"]["header"]["content"]["image"]["scr"]);
-//$JsonAccess->HTML_Encode($json);
+$JsonAccess->TestingDefault();
 
 /*$BackAccess->CheckTableCreated(); 
 
