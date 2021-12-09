@@ -1,0 +1,56 @@
+{
+    "partName": "partName",
+    "partData": {
+        "typeByUse": "main",
+        "objects": {
+            "header": {
+                "tag": "header",
+                "class": "header-1",
+                "content": {
+                    "image": {
+                        "tag": "img",
+                        "class": "logo",
+                        "scr": "logo",
+                        "alt": "logo"
+                    },
+                    "menu": {
+                        "tag": "div",
+                        "class": "headerMenu",
+                        "content": {
+                            "home": {
+                                "tag": "a",
+                                "class": "menuLink",
+                                "href": "/home",
+                                "text": "Home"
+                            },
+                            "about": {
+                                "tag": "a",
+                                "class": "menuLink",
+                                "href": "/about",
+                                "text": "About"
+                            },
+                            "contact": {
+                                "tag": "a",
+                                "class": "menuLink",
+                                "href": "/contact",
+                                "text": "Contact"
+                            }
+                        }
+                    },
+                    "login": {
+                        "tag": "div",
+                        "class": "headerEnd",
+                        "content": {
+                            "login": {
+                                "tag": "a",
+                                "class": "headerEnd",
+                                "href": "/admin",
+                                "text": "Login"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

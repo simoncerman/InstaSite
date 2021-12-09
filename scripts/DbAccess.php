@@ -55,6 +55,7 @@ class DbAccess
         CREATE TABLE parttable(
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             PartNames VARCHAR(50) NOT NULL,
+            PartCategory VARCHAR(50),
             PartOnSite BIT(1) NOT NULL,
             PartSite VARCHAR(50),
             PartData JSON

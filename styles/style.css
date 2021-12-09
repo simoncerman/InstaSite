@@ -43,6 +43,43 @@
 .selected {
   background-color: #93c2bc !important;
 }
+.part {
+  border-radius: 0.5em;
+  margin: 0.5em;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  height: 5em;
+  background-color: #93c2bc;
+  justify-content: space-between;
+}
+shit {
+  color: red;
+}
+.btn-small {
+  cursor: pointer;
+  width: fit-content;
+  height: 2em;
+  background-color: rgb(255, 255, 255);
+  border: rgb(158, 157, 157) 1px solid;
+  margin: 0.25em;
+  border-radius: 25px;
+  padding: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+.btn-wide {
+  cursor: pointer;
+  width: 100%;
+  height: 2em;
+  background-color: rgb(255, 255, 255);
+  border: rgb(158, 157, 157) 1px solid;
+  margin: 0.25em;
+  border-radius: 25px;
+  padding: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
 @media screen and (min-width: 481px) {
   .next-holder {
     width: 100%;

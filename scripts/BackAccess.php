@@ -9,6 +9,23 @@ class BackAccess
         $this->Back_Dbaccess = $DbAccess;
     }
     /**
+     * Check if all tables are created; if not it will create them
+     * Add new table in case of new table
+     */
+    function CheckTableCreated()
+    {
+
+        if ($this->Back_Dbaccess->TableExistCheck("globalinfo") == false) {
+            $this->Back_Dbaccess->CreateDefaultTable();
+        }
+        if ($this->Back_Dbaccess->TableExistCheck("accountinfo") == false) {
+            $this->Back_Dbaccess->CreateAccountTable();
+        }
+        if ($this->Back_Dbaccess->TableExistCheck("parttable") == false) {
+            $this->Back_Dbaccess->CreatePartsTable();
+        }
+    }
+    /**
      * Check if in table are any data
      * 
      * @param string $tableName Table name
