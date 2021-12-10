@@ -4,6 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+.header-1 {
+  width: 100%;
+}
 .small-wrap {
   margin: 1.5em;
 }

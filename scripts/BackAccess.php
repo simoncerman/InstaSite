@@ -76,5 +76,15 @@ class BackAccess
             return TRUE;
         }
     }
+    /**
+     * Will return full html for site
+     * * Working =
+     *  Site part will be saved in database in parts
+     *  Where will be site where it is used 
+     *  TODO Rework into model where site will have more parts!
+     */
+    function LoadPartData($site)
+    {
+    }
 }
 $BackAccess = new BackAccess();
