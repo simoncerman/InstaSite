@@ -1,6 +1,6 @@
 <head>
     <?php
-    include dirname(getcwd(), 1) . '/pageParts/head.php';
+    include dirname(getcwd(), 1) . '/pageParts/global/head.php';
     ?>
 </head>
 

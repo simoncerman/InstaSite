@@ -16,7 +16,7 @@ class DbAccess
         return $pdo;
     }
     /**
-     * Create default table globalInfo
+     * Create globalInfo table
      */
     function CreateDefaultTable()
     {
@@ -30,7 +30,7 @@ class DbAccess
         $this->pdoConn->query($sql);
     }
     /**
-     * Create account table
+     * Create accountinfo table
      */
     function CreateAccountTable()
     {
@@ -45,20 +45,47 @@ class DbAccess
         $this->pdoConn->query($sql);
     }
     /**
-     * Create parts table
-     * This table will contain parts with json data
-     * data will be loading into page from json files
+     * Create parttable
      */
     function CreatePartsTable()
     {
         $sql = '
         CREATE TABLE parttable(
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            PartNames VARCHAR(50) NOT NULL,
-            PartCategory VARCHAR(50),
-            PartOnSite BIT(1) NOT NULL,
-            PartSite VARCHAR(50),
-            PartData JSON
+            PartNames VARCHAR(45) NOT NULL,
+            PartCategory VARCHAR(45),
+            PartData JSON,
+            PartEnabled BIT(1) NOT NULL
+        )
+        ';
+        $this->pdoConn->query($sql);
+    }
+    /**
+     * Create partonsite table
+     */
+    function CreatePartOnSite()
+    {
+        $sql = '
+        CREATE TABLE partonsite(
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            SiteID INT(6),
+            PartID INT(6),
+            PartEnabled BIT(1) NOT NULL
+        )
+        ';
+        $this->pdoConn->query($sql);
+    }
+    /**
+     * Create sites table
+     */
+    function CreateSites()
+    {
+        $sql = '
+        CREATE TABLE sites(
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            SiteName VARCHAR(45),
+            SiteCategory VARCHAR(45),
+            SiteEnabled BIT(1) NOT NULL
         )
         ';
         $this->pdoConn->query($sql);

@@ -1,3 +1,7 @@
+:root {
+  --main-clr: #c2fff8;
+  --new-color: #c9ffcd;
+}
 * {
   font-family: "Open Sans", sans-serif;
   margin: 0;
@@ -27,7 +31,7 @@
   cursor: pointer;
   width: fit-content;
   height: 2em;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--main-clr);
   border: rgb(158, 157, 157) 1px solid;
   margin: 0.25em;
   border-radius: 25px;
@@ -83,6 +87,34 @@ shit {
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
+.btn-new {
+  border: none;
+  background-color: var(--new-color);
+  cursor: pointer;
+  height: 3em;
+  margin: 0.25em;
+  padding: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+.grid-choose {
+  margin-bottom: 1em;
+  width: 100%;
+  height: 6em;
+  padding: 0.5em;
+  background-color: var(--main-clr);
+  display: flex;
+  justify-content: space-between;
+}
+.grid-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fa-cog {
+  font-size: 1.5rem !important;
+}
+
 @media screen and (min-width: 481px) {
   .next-holder {
     width: 100%;

@@ -1,19 +1,23 @@
 <head>
     <?php
     include dirname(getcwd(), 1) . '/pageParts/global/head.php';
+    require dirname(getcwd(), 1) . '/scripts/BackAccess.php';
     ?>
 </head>
 
 <body>
     <div class="small-wrap">
         <div class="title-section">
-            <p>Just parts to choose...</p>
-            <h2>{Site name}</h2>
+            <p>main edit</p>
+            <h2>Your pages..</h2>
         </div>
+        <p>active</p>
         <div class="grid-holder">
+            <?php echo (""); ?>
+
             <div class="grid-choose">
                 <div class="grid-right">
-                    <h2>Header</h2>
+                    <h1>Homepage</h1>
                     <i class="fas fa-cog"></i>
                 </div>
                 <div class="grid-left">
@@ -25,7 +29,7 @@
             </div>
             <div class="grid-choose">
                 <div class="grid-right">
-                    <h2>Footer</h2>
+                    <h1>About</h1>
                     <i class="fas fa-cog"></i>
                 </div>
                 <div class="grid-left">
@@ -40,7 +44,7 @@
         <div class="grid-holder">
             <div class="grid-choose">
                 <div class="grid-right">
-                    <h2>Form</h2>
+                    <h2>Contact</h2>
                     <i class="fas fa-cog"></i>
                 </div>
                 <div class="grid-left">
@@ -52,7 +56,7 @@
             </div>
             <div class="grid-choose">
                 <div class="grid-right">
-                    <h2>Rick roll element</h2>
+                    <h2>Rick roll</h2>
                     <i class="fas fa-cog"></i>
                 </div>
                 <div class="grid-left">
@@ -68,5 +72,3 @@
         </button>
     </div>
 </body>
-
-</html>

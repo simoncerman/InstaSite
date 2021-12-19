@@ -21,9 +21,46 @@ class BackAccess
         if ($this->Back_Dbaccess->TableExistCheck("accountinfo") == false) {
             $this->Back_Dbaccess->CreateAccountTable();
         }
+
         if ($this->Back_Dbaccess->TableExistCheck("parttable") == false) {
             $this->Back_Dbaccess->CreatePartsTable();
         }
+        if ($this->Back_Dbaccess->TableExistCheck("partonsite") == false) {
+            $this->Back_Dbaccess->CreatePartOnSite();
+        }
+        if ($this->Back_Dbaccess->TableExistCheck("sites") == false) {
+            $this->Back_Dbaccess->CreateSites();
+        }
+    }
+    /**
+     * Check if parts are loaded in db
+     * Loading from /pageParts/components into parttable
+     */
+    function CheckPartsLoaded()
+    {
+        if ($this->CheckDataInTable("parttable") == false) {
+            $this->PushPartData();
+        }
+    }
+    function PushPartData()
+    {
+        $partsUrlFolder = dirname(getcwd(), 1) . "\pageParts\components";
+        $links = scandir($partsUrlFolder);
+        $solidLinks = [];
+        for ($i = 2; $i < count($links); $i++) {
+            array_push($solidLinks, $links[$i]);
+        }
+        /**
+         * 
+         */
+        foreach ($solidLinks as $link) {
+            echo ($link);
+        }
+
+        $partName = ""; //TODO!
+        $partCategory = ""; //TODO!
+        $partData = ""; //TODO!
+        $partEnabled = ""; //TODO!
     }
     /**
      * Check if in table are any data
@@ -76,15 +113,15 @@ class BackAccess
             return TRUE;
         }
     }
+
     /**
-     * Will return full html for site
-     * * Working =
-     *  Site part will be saved in database in parts
-     *  Where will be site where it is used 
-     *  TODO Rework into model where site will have more parts!
+     *  
+     * TODO Rework into model where site will have more parts!
+     * @return string 
      */
     function LoadPartData($site)
     {
+
     }
 }
 $BackAccess = new BackAccess();

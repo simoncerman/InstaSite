@@ -4,12 +4,14 @@ require(dirname(getcwd(), 1) . "\scripts\JsonAccess.php");
 $root = "http://$_SERVER[HTTP_HOST]";
 
 $BackAccess->CheckTableCreated();
+$BackAccess->CheckPartsLoaded();
 
 $basicInfoCreated = $BackAccess->CheckDataInTable("globalinfo");
 $basicAccountCreated = $BackAccess->CheckMainAccount("accountinfo");
+
 //$site_completed = $BackAccess->CheckWebCompleted("");
 
-$site_completed = true; //! FOR TESTING ONLY!!!
+$site_completed = false; //! FOR TESTING ONLY!!!
 
 //Check if basic data on DB are created
 if ($basicInfoCreated == false) {

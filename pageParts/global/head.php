@@ -14,4 +14,5 @@
     <script src="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/scripts/scripts.js"); ?>"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/13a5fbc3a3.js" crossorigin="anonymous"></script>
 </head>

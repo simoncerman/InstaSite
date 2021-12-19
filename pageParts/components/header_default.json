@@ -1,7 +1,7 @@
 {
-    "partName": "Default-Header",
+    "partName": "Header",
+    "category": "Main",
     "partData": {
-        "category": "Main",
         "objects": [
             {
                 "tag": "header",
