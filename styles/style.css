@@ -8,6 +8,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+.red {
+  background-color: red !important;
+}
 .header-1 {
   width: 100%;
 }
@@ -106,15 +109,38 @@ shit {
   display: flex;
   justify-content: space-between;
 }
+.grid-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .grid-left {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
 }
 .fa-cog {
   font-size: 1.5rem !important;
 }
-
+.go-back-button {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 4em;
+}
+.dialog-window {
+  border-radius: 1em;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 1em;
+  background-color: #c2fff8;
+  transition: all 0.5s;
+  bottom: -50vh;
+}
+.dialog-move {
+  bottom: 10vh !important;
+}
 @media screen and (min-width: 481px) {
   .next-holder {
     width: 100%;

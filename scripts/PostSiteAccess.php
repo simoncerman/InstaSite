@@ -41,3 +41,23 @@ if ($_POST["type"] == "AccountInsert") {
               );
        }
 }
+if ($_POST["type"] == "UpdatingOnOffSite") {
+       $siteName     = $_POST["siteName"];
+       $condition = 'SiteName=';
+       $condition .= '"';
+       $condition .= $siteName;
+       $condition .= '"';
+       $setTo        = $_POST["setTo"];
+       $DbAccess->updateData("sites", "SiteEnabled", $setTo, $condition);
+}
+if ($_POST["type"] == "NewSiteInsertion") {
+       $pageName = $_POST["pageName"];
+       $DbAccess->InsertData("sites", ["SiteName", "SiteCategory", "SiteEnabled"], [$pageName, "Basic", "1"]);
+}
+if ($_POST["type"] == "DeleteDataFromTable") {
+       $tableName = $_POST["tableName"];
+       $value = $_POST["value"];
+       $param = $_POST["param"];
+       echo ($value);
+       $DbAccess->deleteRowInTable($tableName, $param, $value);
+}

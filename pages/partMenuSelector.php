@@ -5,6 +5,7 @@
 </head>
 
 <body>
+    <a href="http://vocko/19ia04_cerman/pages/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
     <div class="small-wrap">
         <div class="title-section">
             <p>Just parts to choose...</p>

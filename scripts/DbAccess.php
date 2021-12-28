@@ -184,5 +184,29 @@ class DbAccess
         $data = $sql->fetchAll();
         return $data;
     }
+    /**
+     * Will update one value in column of specific table
+     * 
+     * @param string $tableName Table name changing data in
+     * @param string $column Colum where you want to change value
+     * @param mixed $value data to set to column
+     * @param string $condition if you want to specify updating
+     */
+    function updateData($tableName, $column, $value, $condition)
+    {
+        if ($condition == null)
+            $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value};");
+        if ($condition != null)
+            $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
+        $sql->execute();
+        $this->pdoConn->query($sql);
+    }
+    function deleteRowInTable($tableName, $parameter, $value)
+    {
+        $strVal = '"' . $value . '"';
+        $sql = $this->pdoConn->prepare("DELETE FROM {$tableName} WHERE {$parameter}={$strVal}");
+        $sql->execute();
+        $this->pdoConn->query($sql);
+    }
 }
 $DbAccess = new DbAccess();

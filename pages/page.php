@@ -19,7 +19,7 @@ if ($basicInfoCreated == false) {
 } else if ($basicAccountCreated == false) {
     header("Location: " . $root . "/19ia04_cerman/pages/basicAccountCreate.php");
 } else if ($site_completed == false) {
-    header("Location: " . $root . "/19ia04_cerman/pages/partMenuSelector.php");
+    header("Location: " . $root . "/19ia04_cerman/pages/pageEdit.php");
 } else {
     header("Location: " . $root . "/19ia04_cerman/pages/home.php");
 }

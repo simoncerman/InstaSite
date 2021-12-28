@@ -109,3 +109,77 @@ function basicAccountCreate() {
     });
   }
 }
+function pageOnOff(switcher) {
+  let gridChoose = switcher.parentElement.parentElement.parentElement;
+  let siteName = gridChoose.childNodes[0].childNodes[0].innerHTML;
+  let setTo;
+
+  //move to disabled
+  if(gridChoose.parentElement.id == "active"){
+    document.getElementById("active").removeChild(gridChoose);
+    document.getElementById("disabled").appendChild(gridChoose);
+    setTo = 0;
+  } 
+  //move to active
+  else if(gridChoose.parentElement.id == "disabled"){
+    document.getElementById("disabled").removeChild(gridChoose);
+    document.getElementById("active").appendChild(gridChoose);
+    setTo = 1;
+  }
+  let type = "UpdatingOnOffSite";
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    data: {
+      type : type,
+      siteName : siteName,
+      setTo : setTo,
+    },
+    success: (res) => {
+      console.log(res);
+    },
+  });
+}
+function pageRemove(object) {
+  let gridChoose = object.parentElement.parentElement.parentElement;
+  let siteName = gridChoose.childNodes[0].childNodes[0].childNodes[0].innerHTML;
+  let type = "DeleteDataFromTable";
+  let param = "SiteName";
+  let tableName = "sites";
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    data: {
+      type : type,
+      tableName : tableName,
+      value : siteName,
+      param : param
+    },
+    success: (res) => {
+      console.log(res);
+      document.location.reload()
+
+    },
+  });
+}
+function openDialogWindow(id) {
+  //this will invoke specific dialog window
+  let dialogWindow = document.getElementById(id)
+  dialogWindow.classList.add("dialog-move");
+}
+function newSiteInsert() {
+  let pageName = document.getElementById("pageNameInput").value;
+  let type = "NewSiteInsertion";
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    data: {
+      type : type,
+      pageName : pageName,
+    },
+    success: (res) => {
+      console.log(res);
+      document.location.reload()
+    },
+  });
+}
