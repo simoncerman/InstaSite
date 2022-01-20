@@ -169,17 +169,40 @@ function openDialogWindow(id) {
 }
 function newSiteInsert() {
   let pageName = document.getElementById("pageNameInput").value;
-  let type = "NewSiteInsertion";
-  $.ajax({
-    type: "POST",
-    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
-    data: {
-      type : type,
-      pageName : pageName,
-    },
-    success: (res) => {
-      console.log(res);
-      document.location.reload()
-    },
-  });
+  //empty not allowed
+  if(pageName != "" && pageName!= " "){
+    let type = "NewSiteInsertion";
+    $.ajax({
+      type: "POST",
+      url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+      data: {
+        type : type,
+        pageName : pageName,
+      },
+      success: (res) => {
+        console.log(res);
+        document.location.reload()
+      },
+    });
+  }
+}
+function newPart(){
+  let partName = document.getElementById("partNameInput").value;
+  let siteName = document.getElementById("siteNameH2").innerHTML;
+  if (partName != "" && partName != " "){
+    let type = "NewPartInsertion";
+    $.ajax({
+      type: "POST",
+      url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+      data : {
+        type : type,
+        partName : partName,
+        siteName : siteName,
+      },
+      success: (res) =>{
+        console.log(res);
+        document.location.reload()
+      }
+    });
+  }
 }

@@ -42,12 +42,12 @@ if ($_POST["type"] == "AccountInsert") {
        }
 }
 if ($_POST["type"] == "UpdatingOnOffSite") {
-       $siteName     = $_POST["siteName"];
-       $condition = 'SiteName=';
+       $siteName   = $_POST["siteName"];
+       $condition  = 'SiteName=';
        $condition .= '"';
        $condition .= $siteName;
        $condition .= '"';
-       $setTo        = $_POST["setTo"];
+       $setTo      = $_POST["setTo"];
        $DbAccess->updateData("sites", "SiteEnabled", $setTo, $condition);
 }
 if ($_POST["type"] == "NewSiteInsertion") {
@@ -55,9 +55,17 @@ if ($_POST["type"] == "NewSiteInsertion") {
        $DbAccess->InsertData("sites", ["SiteName", "SiteCategory", "SiteEnabled"], [$pageName, "Basic", "1"]);
 }
 if ($_POST["type"] == "DeleteDataFromTable") {
-       $tableName = $_POST["tableName"];
-       $value = $_POST["value"];
-       $param = $_POST["param"];
+       $tableName =  $_POST["tableName"];
+       $value =      $_POST["value"];
+       $param =      $_POST["param"];
        echo ($value);
        $DbAccess->deleteRowInTable($tableName, $param, $value);
+}
+if ($_POST["type"] == "NewPartInsertion") {
+       $partName = $_POST["partName"];
+       $siteName = $_POST["siteName"];
+       $DbAccess->InsertData("parttable", ["PartName", "PartCategory", "PartData", "PartEnabled"], [$partName, "basic", " ", 1]);
+       $partID = $DbAccess->getValueOfParam("parttable", "PartName", $partName, "id");
+       $siteID = $DbAccess->getValueOfParam("sites", "SiteName", $siteName, "id");
+       $DbAccess->InsertData("partonsite", ["SiteID", "PartID", "PartEnabled"], [$siteID, $partID, 1]);
 }

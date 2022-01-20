@@ -17,7 +17,7 @@
         <button class="btn-new" onclick="openDialogWindow('addPage')">Create new</button>
     </div>
     <div class="dialog-window" id="addPage">
-        <p>Name</p>
+        <p>Site name</p>
         <input type="text" name="pageName" id="pageNameInput">
         <button class="next" onclick="newSiteInsert()">Přidat</button>
     </div>

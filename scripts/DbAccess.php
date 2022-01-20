@@ -52,9 +52,9 @@ class DbAccess
         $sql = '
         CREATE TABLE parttable(
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            PartNames VARCHAR(45) NOT NULL,
+            PartName VARCHAR(45) NOT NULL,
             PartCategory VARCHAR(45),
-            PartData JSON,
+            PartData TEXT,
             PartEnabled BIT(1) NOT NULL
         )
         ';
@@ -176,10 +176,28 @@ class DbAccess
     }
     /**
      * Will return all data from table as json
+     * @param string $tableName is name of table working in
+     * @return array data fetched
      */
     function getDataFromTable($tableName)
     {
         $sql = $this->pdoConn->prepare("SELECT * FROM {$tableName}");
+        $sql->execute();
+        $data = $sql->fetchAll();
+        return $data;
+    }
+    /**
+     * Will return part data by site
+     * @param string $siteName is name of site where you are seleting parts
+     * @return sting
+     */
+    function GetPartData($siteName)
+    {
+        $sql = $this->pdoConn->prepare("SELECT * FROM partonsite
+        INNER JOIN sites ON sites.id=partonsite.SiteID
+        INNER JOIN parttable ON parttable.id=partonsite.PartID
+        WHERE sites.SiteName = " . '"' . "{$siteName}" . '"' . "
+        ");
         $sql->execute();
         $data = $sql->fetchAll();
         return $data;
@@ -201,12 +219,34 @@ class DbAccess
         $sql->execute();
         $this->pdoConn->query($sql);
     }
+    /**
+     * Will remove one row in table by specific input
+     * 
+     * @param string $tablename Name of table where you want to remove content
+     * @param string $parameter is column where you are searching value and deleting that row
+     * @param string $value is value which you are finding in column to delete row
+     */
     function deleteRowInTable($tableName, $parameter, $value)
     {
         $strVal = '"' . $value . '"';
         $sql = $this->pdoConn->prepare("DELETE FROM {$tableName} WHERE {$parameter}={$strVal}");
         $sql->execute();
         $this->pdoConn->query($sql);
+    }
+    /**
+     * Function which will return value of param
+     * @param string $tableName Name of table working with
+     * @param string $paramName Name of param using as key for select
+     * @param string $paramValue Value of param as key
+     * @param string $returnParam Which column you need to return¨
+     * @return mixed Value returned
+     */
+    function getValueOfParam($tableName, $paramName, $paramValue, $returnParam)
+    {
+        $sql = $this->pdoConn->prepare("SELECT {$returnParam} FROM {$tableName} WHERE {$paramName}=" . '"' . "{$paramValue}" . '"' . ";");
+        $sql->execute();
+        $data = $sql->fetch();
+        return $data[0];
     }
 }
 $DbAccess = new DbAccess();

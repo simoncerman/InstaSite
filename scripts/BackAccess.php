@@ -121,7 +121,6 @@ class BackAccess
      */
     function LoadPartData($site)
     {
-
     }
 }
 $BackAccess = new BackAccess();

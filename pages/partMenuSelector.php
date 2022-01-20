@@ -1,6 +1,7 @@
 <head>
     <?php
     include dirname(getcwd(), 1) . '/pageParts/global/head.php';
+    require dirname(getcwd(), 1) . '/scripts/SiteAccess.php';
     ?>
 </head>
 
@@ -9,64 +10,27 @@
     <div class="small-wrap">
         <div class="title-section">
             <p>Just parts to choose...</p>
-            <h2>{Site name}</h2>
+            <h2 id="siteNameH2"><?php echo ($_GET["site"]); ?></h2>
         </div>
+        <?php
+        //This part will echo all part data to site
+        ?>
+        <p>enabled</p>
         <div class="grid-holder">
-            <div class="grid-choose">
-                <div class="grid-right">
-                    <h2>Header</h2>
-                    <i class="fas fa-cog"></i>
-                </div>
-                <div class="grid-left">
-                    <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="grid-choose">
-                <div class="grid-right">
-                    <h2>Footer</h2>
-                    <i class="fas fa-cog"></i>
-                </div>
-                <div class="grid-left">
-                    <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
+            <?php echo ($siteAccess->LoadActiveParts($_GET["site"]));  ?>
         </div>
-        <p>non-active</p>
+        <p>disabled</p>
         <div class="grid-holder">
-            <div class="grid-choose">
-                <div class="grid-right">
-                    <h2>Form</h2>
-                    <i class="fas fa-cog"></i>
-                </div>
-                <div class="grid-left">
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="grid-choose">
-                <div class="grid-right">
-                    <h2>Rick roll element</h2>
-                    <i class="fas fa-cog"></i>
-                </div>
-                <div class="grid-left">
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
+            <?php echo ($siteAccess->LoadDisabledParts($_GET["site"]));  ?>
         </div>
-        <button class="btn-new ">
+        <button onclick="openDialogWindow('newPart')" class="btn-new">
             Create new
         </button>
+        <div class="dialog-window" id="newPart">
+            <p>Part name</p>
+            <input type="text" name="partName" id="partNameInput">
+            <button class="next" onclick="newPart()">Přidat</button>
+        </div>
     </div>
 </body>
 
