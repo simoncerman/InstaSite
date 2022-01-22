@@ -16,73 +16,74 @@ class SiteAccess
      */
     function AdminSites()
     {
-        $HTMLString = "";
         $data =  $this->Site_Dbaccess->getDataFromTable("sites");
         $enabled = [];
-        $notEnabled = [];
+        $disabled = [];
         for ($i = 0; $i < count($data); $i++) {
             if ($data[$i]["SiteEnabled"] == 1) {
                 array_push($enabled, $data[$i]);
-            } else if ($data[$i]["SiteEnabled"] == 0) {
-                array_push($notEnabled, $data[$i]);
+            } else {
+                array_push($disabled, $data[$i]);
             }
         }
-        //main grid for active
-        $HTMLString .= '<p>active</p>';
-        $HTMLString .= '<div class="grid-holder" id="active">';
-        for ($y = 0; $y < count($enabled); $y++) {
-            $HTMLString .= '<div class="grid-choose">';
-
-            $lcHost = $_SERVER['HTTP_HOST'];
-            $fullLink = 'http://' . $lcHost . '/19ia04_cerman/pages/partMenuSelector.php?site=';
-            $fullLink .= $enabled[$y]["SiteName"];
-            $HTMLString .= '<div class="grid-left">';
-            $HTMLString .= "<h1>{$enabled[$y]["SiteName"]}</h1>";
-            $HTMLString .= '<a href="' . $fullLink . '"><i class="fas fa-cog"></i></a>';
-            $HTMLString .= '</div>';
-
-            $HTMLString .= '<div class="grid-right">';
-            $HTMLString .= '<button class="btn-new red" onclick="pageRemove(this)">Remove</button>';
-            $HTMLString .= '<label class="switch">';
-            $HTMLString .= '<input onclick="pageOnOff(this)" type="checkbox" checked>';
-            $HTMLString .= '<span class="slider round"></span>';
-            $HTMLString .= '</label>';
-            $HTMLString .= '</div>';
-
-            $HTMLString .= "</div>";
-        }
-        $HTMLString .= "</div>";
-        $HTMLString .= '<p>disabled</p>';
-
-        $HTMLString .= '<div class="grid-holder" id="disabled">';
-        for ($y = 0; $y < count($notEnabled); $y++) {
-            $HTMLString .= '<div class="grid-choose">';
-
-            $lcHost = $_SERVER['HTTP_HOST'];
-            $fullLink = 'http://' . $lcHost . '/19ia04_cerman/pages/partMenuSelector.php?site=';
-            $fullLink .= $notEnabled[$y]["SiteName"];
-            $HTMLString .= '<div class="grid-left">';
-            $HTMLString .= "<h1>{$notEnabled[$y]["SiteName"]}</h1>";
-            $HTMLString .= '<a href="' . $fullLink . '"><i class="fas fa-cog"></i></a>';
-            $HTMLString .= '</div>';
-
-            $HTMLString .= '<div class="grid-right">';
-            $HTMLString .= '<button class="btn-new red" onclick="pageRemove(this)">Remove</button>';
-            $HTMLString .= '<label class="switch">';
-            $HTMLString .= '<input onclick="pageOnOff(this)" type="checkbox">';
-            $HTMLString .= '<span class="slider round"></span>';
-            $HTMLString .= '</label>';
-            $HTMLString .= '</div>';
-
-            $HTMLString .= "</div>";
-        }
-        $HTMLString .= "</div>";
-        return $HTMLString;
+        $siteLink = "http://vocko/19ia04_cerman/pages/partMenuSelector.php?siteName=";
+?>
+        <p>active</p>
+        <div class="grid-holder">
+            <?php
+            for ($i = 0; $i < count($enabled); $i++) {
+                $this->SitesBlueprint(
+                    $enabled[$i]["SiteName"],
+                    $siteLink . $enabled[$i]["SiteName"],
+                    true
+                );
+            }
+            ?>
+        </div>
+        <p>disabled</p>
+        <div class="grid-holder">
+            <?php
+            for ($i = 0; $i < count($disabled); $i++) {
+                $this->SitesBlueprint(
+                    $disabled[$i]["SiteName"],
+                    $siteLink . $disabled[$i]["SiteName"],
+                    false
+                );
+            }
+            ?>
+        </div>
+    <?php
     }
+    /**
+     * This will return site part by inserting
+     * @param string $siteName name of site
+     * @param string $siteLink link to site edit
+     * @param bool $checkbox TRUE if checked || false if not
+     */
+    function SitesBlueprint($siteName, $siteLink, $checkbox)
+    {
+    ?>
+        <div class="grid-choose">
+            <div class="grid-left">
+                <h1 class="name"><?= $siteName ?></h1>
+                <a href="<?= $siteLink ?>">
+                    <i class="fas fa-cog" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="grid-right">
+                <button class="btn-new red" onclick="pageRemove(this)">Remove</button>
+                <label class="switch"><input onclick="pageOnOff(this)" type="checkbox" <?= ($checkbox) ? "checked" : "" ?>>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    <?php
+    }
+
     /**
      * This function will load data from parts which
      * @param string $siteName Name of site with parts
-     * @return array 
+     * @return array of part data
      */
     function ExportPartsData($siteName)
     {
@@ -91,6 +92,7 @@ class SiteAccess
     }
     /**
      * This will load active parts to table
+     * @param string $siteName Name of site with parts
      */
     function LoadActiveParts($siteName)
     {
@@ -98,14 +100,17 @@ class SiteAccess
         $parts = [];
         for ($i = 0; $i < count($data); $i++) {
             $partName = $data[$i]["PartName"];
-            if($data[$i]["PartEnabled"] == 1){
-                array_push($parts, $this->partsBlueprint($partName, true));
+            if ($data[$i]["PartEnabled"] == 1) {
+                $lcHost = $_SERVER['HTTP_HOST'];
+                $fullLink = "http://" . $lcHost . "/19ia04_cerman/pages/partEdit.php?partName=" . $partName;
+                array_push($parts, $this->partsBlueprint($partName, true, $fullLink));
             }
         }
         echo ($this->blockCompiler($parts));
     }
     /**
      * This will load disabled parts to table
+     * @param string $siteName Name of site with parts
      */
     function LoadDisabledParts($siteName)
     {
@@ -113,24 +118,31 @@ class SiteAccess
         $parts = [];
         for ($i = 0; $i < count($data); $i++) {
             $partName = $data[$i]["PartName"];
-            if($data[$i]["PartEnabled"] == 0){
-                array_push($parts, $this->partsBlueprint($partName, false));
+            if ($data[$i]["PartEnabled"] == 0) {
+                $lcHost = $_SERVER['HTTP_HOST'];
+                $fullLink = "http://" . $lcHost . "/19ia04_cerman/pages/partEdit.php?partName=" . $partName;
+                array_push($parts, $this->partsBlueprint($partName, false, $fullLink));
             }
         }
         echo ($this->blockCompiler($parts));
     }
-    function partsBlueprint($partName, $checkbox)
+    /**
+     * Blueprint for showing parts on site
+     * @param string $partName is name of part to load
+     * @param bool $checkbox TRUE if is checked | FALSE if not checked
+     */
+    function partsBlueprint($partName, $checkbox, $partLink)
     {
-
-?>
+    ?>
         <div class="grid-choose">
-            <div class="grid-left">
-                <h2><?php echo $partName; ?></h2>
-                <i class="fas fa-cog"></i>
+            <div class="grids-left">
+                <h2 class="name"><?php echo $partName; ?></h2>
+                <a href="<?= $partLink ?>"><i class="fas fa-cog"></i></a>
             </div>
             <div class="grid-right">
+                <button class="btn-new red" onclick="partRemove(this)">Remove</button>
                 <label class="switch">
-                    <input type="checkbox" <?= ($checkbox) ? "checked" : "" ?>>
+                    <input onclick="partOnOff(this)" type="checkbox" <?= ($checkbox) ? "checked" : "" ?>>
                     <span class="slider round"></span>
                 </label>
             </div>
@@ -145,11 +157,10 @@ class SiteAccess
     function blockCompiler($blocks)
     {
         $string = "";
-        for ($i=0; $i < count($blocks); $i++) { 
-            $string.= $blocks[$i];
+        for ($i = 0; $i < count($blocks); $i++) {
+            $string .= $blocks[$i];
         }
         return $string;
     }
-
 }
 $siteAccess = new SiteAccess();

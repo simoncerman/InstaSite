@@ -20,7 +20,7 @@ function selectOne(e) {
   }
 }
 /**
- * Function which returns selector
+ * Function which returns selected
  * @author Šimns
  * @param {String} selectType   Selector type specify
  * @param {String} selectorID   Id if need to specify
@@ -44,7 +44,8 @@ function getSelected(selectType, selectorID) {
   }
 }
 /**
- * Is something like checkout list for site /pages/basicInfoCreate.php
+ * Specific function for /pages/basicInfoCreate.php
+ * Check data input and insert basic data into page
  * @author Šimns
  */
 function basicInfoCreate() {
@@ -72,7 +73,8 @@ function basicInfoCreate() {
   }
 }
 /**
- * Is something like checkout list for site /pages/basicAccountCreate.php
+ * Specific function for /pages/basicAccountCreate.php
+ * It will pass data for user registration
  * @author Šimns
  */
 function basicAccountCreate() {
@@ -109,100 +111,156 @@ function basicAccountCreate() {
     });
   }
 }
+/**
+ * This function will set of switcher on page, update in DB and reload
+ * @param {*} switcher
+ */
 function pageOnOff(switcher) {
   let gridChoose = switcher.parentElement.parentElement.parentElement;
-  let siteName = gridChoose.childNodes[0].childNodes[0].innerHTML;
-  let setTo;
-
-  //move to disabled
-  if(gridChoose.parentElement.id == "active"){
-    document.getElementById("active").removeChild(gridChoose);
-    document.getElementById("disabled").appendChild(gridChoose);
-    setTo = 0;
-  } 
-  //move to active
-  else if(gridChoose.parentElement.id == "disabled"){
-    document.getElementById("disabled").removeChild(gridChoose);
-    document.getElementById("active").appendChild(gridChoose);
-    setTo = 1;
-  }
+  let siteName = gridChoose.childNodes[1].childNodes[1].innerHTML;
+  let setTo = switcher.checked ? 1 : 0;
   let type = "UpdatingOnOffSite";
   $.ajax({
     type: "POST",
     url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
     data: {
-      type : type,
-      siteName : siteName,
-      setTo : setTo,
+      type: type,
+      siteName: siteName,
+      setTo: setTo,
     },
     success: (res) => {
       console.log(res);
     },
   });
 }
+/**
+ * Remove specific page
+ * @param {*} object
+ */
 function pageRemove(object) {
   let gridChoose = object.parentElement.parentElement.parentElement;
-  let siteName = gridChoose.childNodes[0].childNodes[0].childNodes[0].innerHTML;
-  let type = "DeleteDataFromTable";
-  let param = "SiteName";
-  let tableName = "sites";
+  let siteName = gridChoose.getElementsByClassName("name")[0].innerHTML;
+  let type = "RemovePage";
   $.ajax({
     type: "POST",
     url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
     data: {
-      type : type,
-      tableName : tableName,
-      value : siteName,
-      param : param
+      type: type,
+      siteName: siteName,
     },
     success: (res) => {
       console.log(res);
-      document.location.reload()
-
+      document.location.reload();
     },
   });
 }
+/**
+ * This will just open dialog window on id object
+ * @param {string} id
+ */
 function openDialogWindow(id) {
   //this will invoke specific dialog window
-  let dialogWindow = document.getElementById(id)
+  let dialogWindow = document.getElementById(id);
   dialogWindow.classList.add("dialog-move");
 }
+/**
+ * This will just open dialog window on id object
+ * @param {string} id
+ */
+function closeDialogWindow(id) {
+  //this will invoke specific dialog window
+  let dialogWindow = document.getElementById(id);
+  dialogWindow.classList.remove("dialog-move");
+}
+/**
+ * Specific function for inserting new page
+ */
 function newSiteInsert() {
   let pageName = document.getElementById("pageNameInput").value;
   //empty not allowed
-  if(pageName != "" && pageName!= " "){
+  if (pageName != "" && pageName != " ") {
     let type = "NewSiteInsertion";
     $.ajax({
       type: "POST",
       url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
       data: {
-        type : type,
-        pageName : pageName,
+        type: type,
+        pageName: pageName,
       },
       success: (res) => {
         console.log(res);
-        document.location.reload()
+        document.location.reload();
       },
     });
   }
 }
-function newPart(){
+/**
+ * Specific function for inserting new part
+ */
+function newPart() {
   let partName = document.getElementById("partNameInput").value;
   let siteName = document.getElementById("siteNameH2").innerHTML;
-  if (partName != "" && partName != " "){
+  if (partName != "" && partName != " ") {
     let type = "NewPartInsertion";
     $.ajax({
       type: "POST",
       url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
-      data : {
-        type : type,
-        partName : partName,
-        siteName : siteName,
+      data: {
+        type: type,
+        partName: partName,
+        siteName: siteName,
       },
-      success: (res) =>{
+      success: (res) => {
         console.log(res);
-        document.location.reload()
-      }
+        document.location.reload();
+      },
     });
   }
+}
+/**
+ * Specific function for removing parts
+ */
+function partRemove(object) {
+  let partName =
+    object.parentElement.parentElement.getElementsByClassName("name")[0]
+      .innerHTML;
+  let siteName = document.getElementById("siteNameH2").innerHTML;
+  let type = "RemovePartFromTable";
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    data: {
+      type: type,
+      partName: partName,
+      siteName: siteName,
+    },
+    success: (res) => {
+      console.log(res);
+      document.location.reload();
+    },
+  });
+}
+/**
+ * Specific function for disabling parts
+ */
+function partOnOff(switcher) {
+  let partName =
+    switcher.parentElement.parentElement.parentElement.getElementsByClassName(
+      "name"
+    )[0].innerHTML;
+  let setTo = switcher.checked ? 1 : 0;
+  let type = "UpdatingOnOffPart";
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    data: {
+      type: type,
+      partName: partName,
+      setTo: setTo,
+    },
+    success: (res) => {
+      console.log(res);
+      document.location.reload();
+    },
+  });
 }

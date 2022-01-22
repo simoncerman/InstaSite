@@ -134,6 +134,18 @@ class DbAccess
         return $count;
     }
     /**
+     * Count how many records in table with param
+     * @param string $tableName Table name
+     * @return int count of records in table
+     */
+    function TableRecordsCountWhere($tableName, $parameter, $value)
+    {
+        $sql = "SELECT count(*) FROM {$tableName} WHERE {$parameter}=\"{$value}\"";
+        $stmp = $this->pdoConn->query($sql);
+        $count = $stmp->fetchColumn();
+        return $count;
+    }
+    /**
      * Insert data into table
      * 
      *  @param string $tableName string of table inserting into
@@ -175,7 +187,7 @@ class DbAccess
         }
     }
     /**
-     * Will return all data from table as json
+     * Will return all data from table
      * @param string $tableName is name of table working in
      * @return array data fetched
      */
@@ -186,6 +198,21 @@ class DbAccess
         $data = $sql->fetchAll();
         return $data;
     }
+    /**
+     * Will return specific data from table
+     * @param string $tableName is name of table working in
+     * @param string $parameter is checking parameter
+     * @param string $value is parameter value 
+     * @return array data fetched
+     */
+    function getDataFromTableWhere($tableName, $parameter, $value)
+    {
+        $sql = $this->pdoConn->prepare("SELECT * FROM {$tableName} WHERE {$parameter}=\"{$value}\"");
+        $sql->execute();
+        $data = $sql->fetchAll();
+        return $data;
+    }
+
     /**
      * Will return part data by site
      * @param string $siteName is name of site where you are seleting parts
@@ -215,7 +242,8 @@ class DbAccess
         if ($condition == null)
             $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value};");
         if ($condition != null)
-            $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
+            echo ("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
+        $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
         $sql->execute();
         $this->pdoConn->query($sql);
     }
@@ -230,6 +258,20 @@ class DbAccess
     {
         $strVal = '"' . $value . '"';
         $sql = $this->pdoConn->prepare("DELETE FROM {$tableName} WHERE {$parameter}={$strVal}");
+        $sql->execute();
+        $this->pdoConn->query($sql);
+    }
+    /**
+     * Will remove one row in table by specific input, more specific then deleteRowInTable
+     * @param string $tablename Name of table where you want to remove content
+     * @param string $parameterFirst is column where you are searching value and deleting that row
+     * @param string $valueFirts is value which you are finding in column to delete row
+     * @param string $parameterSecound
+     * @param string $valueSecound
+     */
+    function deleteRowSpecific($tableName, $parameterFirst, $valueFirts, $parameterSecound, $valueSecound)
+    {
+        $sql = $this->pdoConn->prepare("DELETE FROM {$tableName} WHERE {$parameterFirst}=\"{$valueFirts}\" AND {$parameterSecound}=\"{$valueSecound}\"");
         $sql->execute();
         $this->pdoConn->query($sql);
     }

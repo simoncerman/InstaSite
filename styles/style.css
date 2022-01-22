@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 .red {
-  background-color: #CD5C5C !important;
+  background-color: #cd5c5c !important;
 }
 .header-1 {
   width: 100%;
@@ -140,6 +140,27 @@ shit {
 }
 .dialog-move {
   bottom: 10vh !important;
+}
+.full-outer {
+  display: flex;
+}
+.sidebar {
+  padding: 0.75em;
+  width: 10%;
+  background-color: darkslategray;
+  height: 100vh;
+  color: white;
+}
+.sidebar-element {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+.sidebar-element > a {
+  color: white;
+  text-decoration: none;
+}
+.sidebar-data {
+  margin-top: 1em;
 }
 @media screen and (min-width: 481px) {
   .next-holder {
