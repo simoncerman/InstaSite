@@ -1,0 +1,36 @@
+/**Global styles*/
+.fl-left {
+  float: left;
+}
+.fl-right {
+  float: right;
+}
+.center-content {
+  text-align: center;
+}
+.flex {
+  display: flex;
+}
+.flex-space-between {
+  justify-content: space-between;
+}
+.f-width {
+  width: 100%;
+}
+.background-black {
+  background-color: black;
+}
+.background-gray {
+  background-color: gray;
+}
+
+/**Slecific styles*/
+.logo {
+  width: 4rem;
+}
+.logo-small {
+  width: 2rem;
+}
+.logo-big {
+  width: 8rem;
+}

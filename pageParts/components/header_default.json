@@ -5,12 +5,18 @@
         "objects": [
             {
                 "tag": "header",
-                "class": "header-1",
+                "class": [
+                    "flex",
+                    "f-width",
+                    "flex-space-between",
+                    "background-gray"
+                ],
                 "content": [
                     {
                         "tag": "img",
                         "class": "logo",
-                        "scr": "logo.png",
+                        "img-location": "local",
+                        "src": "logo.png",
                         "alt": "logo"
                     },
                     {

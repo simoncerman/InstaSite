@@ -22,10 +22,28 @@ class JsonAccess
         $str = "";
         $str .= "<{$data['tag']}";
         if (empty($data["class"] == false)) {
-            $str .= " class=" . '"' . "{$data["class"]}" . '"';
+            if (is_string($data["class"])) {
+                $str .= " class=" . '"' . "{$data["class"]}" . '"';
+            }
+            if (is_array($data["class"])) {
+                $str .= " class=\"";
+                for ($i = 0; $i < count($data["class"]); $i++) {
+                    $str .= " " . $data["class"][$i];
+                }
+                $str .= " \"";
+            }
         }
-        if (empty($data["scr"] == false)) {
-            $str .= " scr=" . '"' . "{$data["scr"]}" . '"';
+        if (empty($data["src"] == false)) {
+            if (empty($data["img-location"]) == false) {
+                if ($data["img-location"] == "local") {
+                    $fullLink = "http://vocko/19ia04_cerman/uploads/";
+                    $str .= "src=\"" . $fullLink . $data["src"] . "\"";
+                } else {
+                    $str .= " src=" . '"' . "{$data["src"]}" . '"';
+                }
+            } else {
+                $str .= " src=" . '"' . "{$data["src"]}" . '"';
+            }
         }
         if (empty($data["alt"] == false)) {
             $str .= " alt=" . '"' . "{$data["alt"]}" . '"';
@@ -50,11 +68,115 @@ class JsonAccess
         }
         return $str;
     }
+    function LoadEditor()
+    {
+        $json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", true);
+        $parsed = json_decode($json, true);
+        $trueData = $parsed["partData"]["objects"][0];
+        $path = "partData,objects,0";
+        $this->RecursivePartLoad($trueData, $path);
+    }
+    function RecursivePartLoad($object, $path)
+    {
+        if ($object["componentName"] == "" || $object["componentName"] == null) {
+            $object["componentName"] = $this->GetComponentNameByTag($object["tag"]);
+        }
+?>
+        <div class="table-block">
+            <div class="table-block-info">
+                <p><?= ">" . $object["tag"] . "<" ?></p>
+                <p><?= $object["componentName"] ?></p>
+                <div class="table-block-info-controls">
+                    <i onclick='AddElement("<?= $path ?>")' class="fas fa-plus"></i>
+                    <i onclick='RemoveElement("<?= $path ?>")' class="fas fa-minus"></i>
+                    <i onclick='EditElement("<?= $path ?>")' class="fas fa-cog"></i>
+                </div>
+            </div>
+            <div class="table-block-inside">
+                <?php
+                if (empty($object["content"] == false)) {
+                    for ($i = 0; $i < count($object["content"]); $i++) {
+                        $this->RecursivePartLoad($object["content"][$i], $path . ",content," . $i);
+                    }
+                }
+                ?>
+            </div>
+        </div>
+<?php
+    }
+    /**
+     * Simple function with dictionary of tag to component name values
+     * 
+     * @param string $tag is just tak name
+     * @return string Name of component
+     */
+    function GetComponentNameByTag($tag)
+    {
+        $tagToComponentName = array(
+            "div"   => "Block",
+            "a"     => "Link",
+            "img"   => "Image",
+            "header" => "Header",
+        );
+        return $tagToComponentName[$tag];
+    }
+
+    function EditorRecurs($data)
+    {
+        //*TAG PARAMETERS
+        $str = "";
+        $str .= "<{$data['tag']}";
+        if (empty($data["class"] == false)) {
+            if (is_string($data["class"])) {
+                $str .= " class=" . '"' . "{$data["class"]}" . '"';
+            }
+            if (is_array($data["class"])) {
+                $str .= " class=\"";
+                for ($i = 0; $i < count($data["class"]); $i++) {
+                    $str .= " " . $data["class"][$i];
+                }
+                $str .= " \"";
+            }
+        }
+        if (empty($data["src"] == false)) {
+            if (empty($data["img-location"]) == false) {
+                if ($data["img-location"] == "local") {
+                    $fullLink = "http://vocko/19ia04_cerman/uploads/";
+                    $str .= "src=\"" . $fullLink . $data["src"] . "\"";
+                } else {
+                    $str .= " src=" . '"' . "{$data["src"]}" . '"';
+                }
+            } else {
+                $str .= " src=" . '"' . "{$data["src"]}" . '"';
+            }
+        }
+        if (empty($data["alt"] == false)) {
+            $str .= " alt=" . '"' . "{$data["alt"]}" . '"';
+        }
+        if (empty($data["href"] == false)) {
+            $str .= " href=" . '"' . "{$data["href"]}" . '"';
+        }
+
+        //*INSIDE OF TAG
+        $str .= ">";
+        if (empty($data["content"])) {
+            if (empty($data["text"] == false)) {
+                $str .= $data["text"];
+            }
+            $str .= "</{$data['tag']}>";
+        } else {
+            //*INSIDE OF TAG
+            for ($i = 0; $i < count($data["content"]); $i++) {
+                $str .= $this->EditorRecurs($data["content"][$i]);
+            }
+            $str .= "</{$data['tag']}>";
+        }
+        return $str;
+    }
     function TestingDefault()
     {
 
-        $json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\header_default.json", true);
-
+        $json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", true);
         $this->HTML_Encode($json);
     }
 }

@@ -200,6 +200,7 @@ function newSiteInsert() {
 function newPart() {
   let partName = document.getElementById("partNameInput").value;
   let siteName = document.getElementById("siteNameH2").innerHTML;
+
   if (partName != "" && partName != " ") {
     let type = "NewPartInsertion";
     $.ajax({
@@ -263,4 +264,30 @@ function partOnOff(switcher) {
       document.location.reload();
     },
   });
+}
+function SavePartData() {
+  let partNameNew = document.getElementById("partNameChangable").value;
+  let type = "UpdatingPartNameData";
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    data: {
+      type: type,
+      partNameNew: partNameNew,
+    },
+    success: (res) => {
+      console.log(res);
+    },
+  });
+}
+function AddElement(path) {
+  let full_href = window.location.href;
+  window.location.href = `${full_href}&mode=add`;
+}
+function EditElement(path) {
+  let full_href = window.location.href;
+  window.location.href = `${full_href}&mode=edit`;
+}
+function RemoveElement(path) {
+
 }

@@ -4,13 +4,12 @@
     require dirname(getcwd(), 1) . '/scripts/SiteAccess.php';
     ?>
 </head>
-
 <body>
     <div class="full-outer">
-        <?= include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
+        <?php include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
         <div class="small-wrap">
             <div class="title-section">
-                <p>main edit</p>
+                <p>main edi t</p>
                 <h2>Your pages..</h2>
             </div>
             <?php

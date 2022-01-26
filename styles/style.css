@@ -15,7 +15,12 @@
   width: 100%;
 }
 .small-wrap {
-  margin: 1.5em;
+  position: relative;
+  width: 100%;
+}
+.small-wrap > h2 {
+  margin-top: 1em;
+  margin-bottom: 5em;
 }
 .title-section,
 .input-section {
@@ -123,7 +128,7 @@ shit {
   font-size: 1.5rem !important;
 }
 .go-back-button {
-  position: relative;
+  position: absolute;
   left: 1rem;
   top: 1rem;
   font-size: 4em;
@@ -148,7 +153,6 @@ shit {
   padding: 0.75em;
   width: 10%;
   background-color: darkslategray;
-  height: 100vh;
   color: white;
 }
 .sidebar-element {
@@ -162,6 +166,40 @@ shit {
 .sidebar-data {
   margin-top: 1em;
 }
+.preview-title {
+  text-align: left;
+}
+.editor-title {
+  text-align: left;
+}
+.part-preview {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.table-block {
+  margin-top: 1em;
+  width: 100%;
+  height: auto;
+  border: solid rgb(240, 120, 120) 2px;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+.table-block:hover {
+  background-color: rgba(255, 30, 0, 0.26);
+  border-color: rgb(0, 0, 0);
+}
+.table-block-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+.components {
+  width: 45%;
+}
 @media screen and (min-width: 481px) {
   .next-holder {
     width: 100%;
@@ -170,7 +208,7 @@ shit {
 }
 @media screen and (min-width: 1024px) {
   .small-wrap {
-    width: 50%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;

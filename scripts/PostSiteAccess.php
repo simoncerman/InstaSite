@@ -1,5 +1,6 @@
 <?php
 require(__DIR__ . '\DbAccess.php');
+return (__DIR__ . '\JsonAccess.php');
 if ($_POST["type"] == "NameTypeFirstInsert") {
        $webType = $_POST["webType"];
        $webName = $_POST["webName"];
@@ -54,26 +55,26 @@ if ($_POST["type"] == "NewSiteInsertion") {
        $pageName = $_POST["pageName"];
        $DbAccess->InsertData("sites", ["SiteName", "SiteCategory", "SiteEnabled"], [$pageName, "Basic", "1"]);
 }
-if ($_POST["type"] == "RemovePage"){
+if ($_POST["type"] == "RemovePage") {
        //removing parts if it is only site where they are
        $siteName = $_POST["siteName"];
        $siteID = $DbAccess->getValueOfParam("sites", "SiteName", $siteName, "id");
-       $data = $DbAccess->getDataFromTableWhere("partonsite","SiteID",$siteID);
-       for ($i=0; $i < count($data); $i++) { 
+       $data = $DbAccess->getDataFromTableWhere("partonsite", "SiteID", $siteID);
+       for ($i = 0; $i < count($data); $i++) {
               $partID = $data[$i]["PartID"];
               //check if any other site is using this part
-              if($DbAccess->TableRecordsCountWhere("partonsite","PartID",$partID)==1){
-                     $DbAccess->deleteRowInTable("parttable","id",$partID);
+              if ($DbAccess->TableRecordsCountWhere("partonsite", "PartID", $partID) == 1) {
+                     $DbAccess->deleteRowInTable("parttable", "id", $partID);
               }
        }
        print_r($data);
        //removing data from connecting table
-       $DbAccess->deleteRowInTable("partonsite","SiteID",$siteID);
+       $DbAccess->deleteRowInTable("partonsite", "SiteID", $siteID);
 
        //removing site
        $tableName = "sites";
        $siteName =  $_POST["siteName"];
-       $DbAccess->deleteRowInTable($tableName, "SiteName", $siteName );
+       $DbAccess->deleteRowInTable($tableName, "SiteName", $siteName);
 }
 if ($_POST["type"] == "RemovePartFromTable") {
        $siteName = $_POST["siteName"];
@@ -86,7 +87,7 @@ if ($_POST["type"] == "RemovePartFromTable") {
 if ($_POST["type"] == "NewPartInsertion") {
        $partName = $_POST["partName"];
        $siteName = $_POST["siteName"];
-       if(count($DbAccess->getDataFromTableWhere("parttable","PartName",$partName))==0){
+       if (count($DbAccess->getDataFromTableWhere("parttable", "PartName", $partName)) == 0) {
               $DbAccess->InsertData("parttable", ["PartName", "PartCategory", "PartData", "PartEnabled"], [$partName, "basic", " ", 1]);
        }
        $partID = $DbAccess->getValueOfParam("parttable", "PartName", $partName, "id");
@@ -94,7 +95,7 @@ if ($_POST["type"] == "NewPartInsertion") {
        $DbAccess->InsertData("partonsite", ["SiteID", "PartID", "PartEnabled"], [$siteID, $partID, 1]);
 }
 if ($_POST["type"] == "UpdatingOnOffPart") {
-       $partName     = $_POST["partName"];+
+       $partName     = $_POST["partName"];
        $condition    = "PartName=\"{$partName}\"";
        $setTo        = $_POST["setTo"];
        $DbAccess->updateData("parttable", "PartEnabled", $setTo, $condition);
