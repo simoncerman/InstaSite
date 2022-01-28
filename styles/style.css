@@ -136,7 +136,7 @@ shit {
 .dialog-window {
   color: var(--white);
   border-radius: 1em;
-  position: absolute;
+  position: fixed;
   left: 50%;
   transform: translate(-50%, 0);
   padding: 1em;
@@ -146,6 +146,7 @@ shit {
 }
 .dialog-move {
   bottom: 10vh !important;
+  position: absolute;
 }
 .full-outer {
   display: flex;
@@ -197,6 +198,11 @@ shit {
   width: 100%;
   justify-content: space-between;
   border-bottom: 1px solid black;
+}
+.table-block-info-controls {
+}
+.table-block-info-controls .fas {
+  color: var(--black);
 }
 .components {
   width: 45%;

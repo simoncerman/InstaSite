@@ -283,10 +283,44 @@ function SavePartData() {
 }
 function AddElement(path) {
   let full_href = window.location.href;
-  window.location.href = `${full_href}&mode=add`;
+  if (GetSpecificParam("mode") == undefined) {
+    window.location.href = `${full_href}&mode=add`;
+  }
+  window.location.href = window.location.href.split("&")[0] + "&mode=add";
 }
 function EditElement(path) {
   let full_href = window.location.href;
-  window.location.href = `${full_href}&mode=edit`;
+  if (GetSpecificParam("mode") == undefined) {
+    window.location.href = `${full_href}&mode=edit`;
+  }
+  window.location.href = window.location.href.split("&")[0] + "&mode=edit";
 }
 function RemoveElement(path) {}
+
+/**
+ * @returns all params in url
+ */
+function GetURLParamsAsJSON() {
+  let full_href = window.location.href.split("?")[1].split("&");
+  let objects = [];
+  for (let index = 0; index < full_href.length; index++) {
+    let param = full_href[index];
+    param = param.split("=");
+    const object = { param_name: param[0], param_value: param[1] };
+    objects.push(object);
+  }
+  return objects;
+}
+/**
+ * @param {string} paramName
+ * @returns value of param in url
+ */
+function GetSpecificParam(paramName) {
+  let data = GetURLParamsAsJSON();
+  for (let index = 0; index < data.length; index++) {
+    const element = data[index];
+    if (element.param_name == paramName) {
+      return element.param_value;
+    }
+  }
+}

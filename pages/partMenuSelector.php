@@ -25,9 +25,11 @@
                 <p>disabled</p>
                 <?php echo ($siteAccess->LoadDisabledParts($_GET["siteName"]));  ?>
             </div>
-            <button onclick="openDialogWindow('newPart')" class="btn-new">
-                Create new
-            </button>
+            <div class="btn-fw-holder">
+                <button onclick="openDialogWindow('newPart')" class="btn-new">
+                    Create new
+                </button>
+            </div>
             <div class="dialog-window" id="newPart">
                 <p>Part name</p>
                 <input type="text" name="partName" id="partNameInput">
