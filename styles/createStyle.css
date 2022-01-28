@@ -1,0 +1,92 @@
+:root {
+  --accent: #0ef6cc;
+  --white: #f4fefd;
+  --black: #1b2223;
+  --accent2: #3a4f50;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--black);
+  border-radius: 15px;
+  margin: 2% 25%;
+}
+
+.title-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.title-section p,
+.title-section h1 {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.input-section {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.input-section p {
+  color: white;
+  padding-top: 20px;
+  margin: 0;
+  font-weight: bold;
+}
+.input-section input {
+  margin-top: 10px;
+  padding: 7px 10px;
+  height: 25px;
+  border-radius: 5px;
+  border-style: none;
+  width: 300px;
+}
+.input-section .select-one {
+  display: flex;
+  margin-top: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.input-section .select-one .selector {
+  background: var(--accent2);
+  padding: 10px;
+  padding-left: 15px;
+  margin-left: -5px;
+}
+.input-section .select-one .selector.selected {
+  background: white;
+  border-radius: 5px;
+  z-index: 100;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.205);
+}
+
+.next-holder {
+  width: 100%;
+  text-align: center;
+  margin: 30px 0px;
+}
+.next-holder button {
+  background: var(--accent);
+  border-style: none;
+  padding: 10px;
+  width: 40%;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  transition-duration: 0.2s;
+}
+.next-holder button:hover {
+  transform: scale(1.05);
+}

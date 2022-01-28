@@ -1,6 +1,6 @@
 <?php
 require(__DIR__ . '\DbAccess.php');
-return (__DIR__ . '\JsonAccess.php');
+require(__DIR__ . '\JsonAccess.php');
 if ($_POST["type"] == "NameTypeFirstInsert") {
        $webType = $_POST["webType"];
        $webName = $_POST["webName"];

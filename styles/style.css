@@ -1,9 +1,14 @@
 :root {
   --main-clr: #c2fff8;
   --new-color: #c9ffcd;
+  --accent: #0ef6cc;
+  --white: #f4fefd;
+  --black: #1b2223;
+  --accent2: #3a4f50;
 }
+
 * {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,41 +16,25 @@
 .red {
   background-color: #cd5c5c !important;
 }
+.black {
+  background-color: var(--black) !important;
+}
+.white {
+  background-color: var(--white) !important;
+}
+.title-section {
+}
 .header-1 {
   width: 100%;
 }
 .small-wrap {
   position: relative;
   width: 100%;
+  margin: 15px;
 }
 .small-wrap > h2 {
   margin-top: 1em;
   margin-bottom: 5em;
-}
-.title-section,
-.input-section {
-  margin-bottom: 3em;
-}
-.typeinput {
-  width: 100%;
-  font-size: 1.5em;
-  margin-bottom: 1em;
-}
-.select-one {
-  display: flex;
-  flex-wrap: wrap;
-}
-.selector {
-  cursor: pointer;
-  width: fit-content;
-  height: 2em;
-  background-color: var(--main-clr);
-  border: rgb(158, 157, 157) 1px solid;
-  margin: 0.25em;
-  border-radius: 25px;
-  padding: 0.25em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
 }
 .next {
   cursor: pointer;
@@ -54,9 +43,6 @@
   border-radius: 25px;
   width: 5rem;
   height: 2rem;
-}
-.selected {
-  background-color: #93c2bc !important;
 }
 .part {
   border-radius: 0.5em;
@@ -97,22 +83,37 @@ shit {
 }
 .btn-new {
   border: none;
-  background-color: var(--new-color);
+  background-color: var(--accent);
+  border-radius: 10px;
   cursor: pointer;
   height: 2.5em;
   margin: 0.1em;
+  margin-left: 7px;
+  margin-right: 7px;
   padding: 0.25em;
   padding-left: 0.5em;
   padding-right: 0.5em;
+}
+.grid-holder p {
+  float: left;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.grid-holder {
+  padding: 1em;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .grid-choose {
   margin-bottom: 1em;
   width: 100%;
   height: 6em;
   padding: 0.5em;
-  background-color: var(--main-clr);
   display: flex;
+  background-color: var(--accent2);
+  color: var(--white);
   justify-content: space-between;
+  border-radius: 10px;
 }
 .grid-right {
   display: flex;
@@ -126,20 +127,20 @@ shit {
 }
 .fa-cog {
   font-size: 1.5rem !important;
+  color: var(--accent);
 }
 .go-back-button {
   position: absolute;
-  left: 1rem;
-  top: 1rem;
   font-size: 4em;
 }
 .dialog-window {
+  color: var(--white);
   border-radius: 1em;
-  position: fixed;
+  position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
   padding: 1em;
-  background-color: #c2fff8;
+  background-color: var(--accent2);
   transition: all 0.5s;
   bottom: -50vh;
 }
@@ -200,26 +201,8 @@ shit {
 .components {
   width: 45%;
 }
-@media screen and (min-width: 481px) {
-  .next-holder {
-    width: 100%;
-    text-align: center;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .small-wrap {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-  .select-one {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .selector {
-    width: fit-content;
-  }
+.btn-fw-holder {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

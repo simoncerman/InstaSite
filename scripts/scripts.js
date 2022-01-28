@@ -130,6 +130,7 @@ function pageOnOff(switcher) {
     },
     success: (res) => {
       console.log(res);
+      document.location.reload();
     },
   });
 }
@@ -288,6 +289,4 @@ function EditElement(path) {
   let full_href = window.location.href;
   window.location.href = `${full_href}&mode=edit`;
 }
-function RemoveElement(path) {
-
-}
+function RemoveElement(path) {}

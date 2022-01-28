@@ -7,7 +7,7 @@
 
 <body>
     <div class="full-outer">
-        <?= include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
+        <?php include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
         <div class="small-wrap">
             <a href="http://vocko/19ia04_cerman/pages/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
             <div class="title-section">
@@ -17,12 +17,12 @@
             <?php
             //This part will echo all part data to site
             ?>
-            <p>enabled</p>
             <div class="grid-holder">
+                <p>enabled</p>
                 <?php echo ($siteAccess->LoadActiveParts($_GET["siteName"]));  ?>
             </div>
-            <p>disabled</p>
             <div class="grid-holder">
+                <p>disabled</p>
                 <?php echo ($siteAccess->LoadDisabledParts($_GET["siteName"]));  ?>
             </div>
             <button onclick="openDialogWindow('newPart')" class="btn-new">

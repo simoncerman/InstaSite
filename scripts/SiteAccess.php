@@ -28,8 +28,9 @@ class SiteAccess
         }
         $siteLink = "http://vocko/19ia04_cerman/pages/partMenuSelector.php?siteName=";
 ?>
-        <p>active</p>
+
         <div class="grid-holder">
+            <p>active</p>
             <?php
             for ($i = 0; $i < count($enabled); $i++) {
                 $this->SitesBlueprint(
@@ -40,8 +41,9 @@ class SiteAccess
             }
             ?>
         </div>
-        <p>disabled</p>
+
         <div class="grid-holder">
+            <p>disabled</p>
             <?php
             for ($i = 0; $i < count($disabled); $i++) {
                 $this->SitesBlueprint(
@@ -65,7 +67,7 @@ class SiteAccess
     ?>
         <div class="grid-choose">
             <div class="grid-left">
-                <h1 class="name"><?= $siteName ?></h1>
+                <h2 class="name"><?= $siteName ?></h2>
                 <a href="<?= $siteLink ?>">
                     <i class="fas fa-cog" aria-hidden="true"></i>
                 </a>
@@ -135,7 +137,7 @@ class SiteAccess
     {
     ?>
         <div class="grid-choose">
-            <div class="grids-left">
+            <div class="grid-left">
                 <h2 class="name"><?php echo $partName; ?></h2>
                 <a href="<?= $partLink ?>"><i class="fas fa-cog"></i></a>
             </div>
