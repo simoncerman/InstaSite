@@ -286,14 +286,16 @@ function AddElement(path) {
   if (GetSpecificParam("mode") == undefined) {
     window.location.href = `${full_href}&mode=add`;
   }
-  window.location.href = window.location.href.split("&")[0] + "&mode=add";
+  window.location.href =
+    window.location.href.split("&")[0] + "&mode=add" + "&path=" + path;
 }
 function EditElement(path) {
   let full_href = window.location.href;
   if (GetSpecificParam("mode") == undefined) {
     window.location.href = `${full_href}&mode=edit`;
   }
-  window.location.href = window.location.href.split("&")[0] + "&mode=edit";
+  window.location.href =
+    window.location.href.split("&")[0] + "&mode=edit" + "&path=" + path;
 }
 function RemoveElement(path) {}
 

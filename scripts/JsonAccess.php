@@ -102,7 +102,7 @@ class JsonAccess
                 ?>
             </div>
         </div>
-<?php
+    <?php
     }
     /**
      * Simple function with dictionary of tag to component name values
@@ -173,11 +173,55 @@ class JsonAccess
         }
         return $str;
     }
+    /***
+     * Testing only
+     */
     function TestingDefault()
     {
 
         $json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", true);
         $this->HTML_Encode($json);
+    }
+    function EditElementUI($path)
+    {
+        $parsed = $this->LoadJSONdataByPath($path);
+    ?>
+        <div class="editable-holder">
+            <div class="editable-title">
+                <h2><?= $this->GetComponentNameByTag($parsed["tag"]) ?></h2>
+            </div>
+            <?php
+            foreach ($parsed as $key => $value) {
+                $this->EditLine($key, $value);
+            } ?>
+            <div class="editable-update-data">
+                <button class="btn-new">Update Data</button>
+
+            </div>
+        </div>
+    <?php
+    }
+    function EditLine($tag, $data)
+    {
+    ?>
+        <div class="editable">
+            <p><?= $tag ?></p>
+            <input type="text" name="" id="" value="<?= $data ?>">
+        </div>
+<?php
+    }
+    function AddElementUI($path)
+    {
+    }
+    function LoadJSONdataByPath($path)
+    {
+        $json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", true);
+        $parsed = json_decode($json, true);
+        $splited = explode(",", $path);
+        for ($i = 0; $i < count($splited); $i++) {
+            $parsed = $parsed[$splited[$i]];
+        }
+        return $parsed;
     }
 }
 

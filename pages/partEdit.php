@@ -27,9 +27,26 @@
                 <div class="editor-title">
                     <p>editor:</p>
                 </div>
-                <div class="components">
-                    <?= $JsonAccess->LoadEditor() ?>
+                <div class="editor-ui">
+                    <div class="components">
+                        <?= $JsonAccess->LoadEditor() ?>
+                    </div>
+                    <div class="editable-window">
+                        <?php
+                        if ($_GET["mode"] == null || $_GET["path"] == null) {
+                            echo ("tap on element to edit/add");
+                        } else {
+                            if ($_GET["mode"] == "edit") {
+                                echo ($JsonAccess->EditElementUI($_GET["path"]));
+                            }
+                            if ($_GET["mode"] == "add") {
+                                echo ($JsonAccess->AddElementUI($_GET["path"]));
+                            }
+                        }
+                        ?>
+                    </div>
                 </div>
+
             </div>
         </div>
 

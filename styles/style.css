@@ -205,10 +205,37 @@ shit {
   color: var(--black);
 }
 .components {
-  width: 45%;
+  width: 100%;
+}
+.editable-window {
+  width: 100%;
+}
+.editor-ui {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 .btn-fw-holder {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+.editable-holder {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--black);
+}
+.editable {
+  margin-top: 10px;
+}
+.editable p {
+  display: inline;
+  font-weight: bold;
+}
+.editable-update-data {
+  margin-top: 1em;
+  width: 100%;
+  text-align: center;
 }
