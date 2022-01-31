@@ -297,7 +297,22 @@ function EditElement(path) {
   window.location.href =
     window.location.href.split("&")[0] + "&mode=edit" + "&path=" + path;
 }
-function RemoveElement(path) {}
+function RemoveElement(path) {
+  let type = "ElementHandling";
+  let subtype = "Remove";
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    data: {
+      type: type,
+      subtype: subtype,
+      path: path,
+    },
+    success: (res) => {
+      console.log(res);
+    },
+  });
+}
 
 /**
  * @returns all params in url

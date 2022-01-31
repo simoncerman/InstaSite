@@ -70,7 +70,7 @@ class JsonAccess
     }
     function LoadEditor()
     {
-        $json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", true);
+        $json = $this->LoadJSON();
         $parsed = json_decode($json, true);
         $trueData = $parsed["partData"]["objects"][0];
         $path = "partData,objects,0";
@@ -120,7 +120,11 @@ class JsonAccess
         );
         return $tagToComponentName[$tag];
     }
-
+    /**
+     * From Array structur will return html string of element
+     * @param array $data JSON parsed to Array
+     * @return string true html string
+     */
     function EditorRecurs($data)
     {
         //*TAG PARAMETERS
@@ -213,9 +217,45 @@ class JsonAccess
     function AddElementUI($path)
     {
     }
-    function LoadJSONdataByPath($path)
+    function RemoveElement($path)
+    {
+
+        echo ($path);
+        $json    = $this->LoadJSON();
+        $parsed  = json_decode($json, true);
+        $splited = explode(",", $path);
+        $new     = $this->RemoveElementRecursion($splited, $parsed);
+        $parsed = json_encode($new);
+        $this->UpdateJSON($parsed);
+    }
+    /**
+     * @author Szimns don't ask me how it works -> I'm an engineer
+     */
+    function RemoveElementRecursion($path, $data)
+    {
+        if (count($path) == 1) {
+            unset($data[$path[0]]);
+            return $data;
+        }
+        if (count($path) > 1) {
+            $nexthop = $path[0];
+            array_shift($path);
+            $data[$nexthop] = $this->RemoveElementRecursion($path, $data[$nexthop]);
+            return $data;
+        }
+    }
+    function UpdateJSON($data)
+    {
+        file_put_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", $data);
+    }
+    function LoadJSON()
     {
         $json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", true);
+        return $json;
+    }
+    function LoadJSONdataByPath($path)
+    {
+        $json = $this->LoadJSON();
         $parsed = json_decode($json, true);
         $splited = explode(",", $path);
         for ($i = 0; $i < count($splited); $i++) {
