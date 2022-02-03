@@ -87,9 +87,9 @@ class JsonAccess
                 <p><?= ">" . $object["tag"] . "<" ?></p>
                 <p><?= $object["componentName"] ?></p>
                 <div class="table-block-info-controls">
-                    <i onclick='AddElement("<?= $path ?>")' class="fas fa-plus"></i>
-                    <i onclick='RemoveElement("<?= $path ?>")' class="fas fa-minus"></i>
-                    <i onclick='EditElement("<?= $path ?>")' class="fas fa-cog"></i>
+                    <i onclick='ModeSwitchAddComponent("<?= $path ?>")' class="fas fa-plus"></i>
+                    <i onclick='ModeSwitchRemoveComponent("<?= $path ?>")' class="fas fa-minus"></i>
+                    <i onclick='ModeSwitchEditElement("<?= $path ?>")' class="fas fa-cog"></i>
                 </div>
             </div>
             <div class="table-block-inside">
@@ -212,7 +212,7 @@ class JsonAccess
             <p><?= $tag ?></p>
             <input type="text" name="" id="" value="<?= $data ?>">
         </div>
-<?php
+    <?php
     }
     function GetAvailableComponents()
     {
@@ -254,58 +254,96 @@ class JsonAccess
                 "class" => "",
                 "text" => "paragraf-text"
             ),
-            );
+        );
         return $elemnts;
+    }
+    function getComponent($componentName)
+    {
+        $components =  $this->GetAvailableComponents();
+        $returnComponent = "";
+        for ($i = 0; $i < count($components); $i++) {
+            if ($components[$i]["componentName"] == $componentName) {
+                return $components[$i];
+            }
+        }
     }
     function AddElementUI($path)
     {
 
         $availableComponents = $this->GetAvailableComponents();
-        ?>
+    ?>
         <div class="available-components">
-            <?php for ($i=0; $i < count($availableComponents); $i++) { 
-                ?>
+            <?php for ($i = 0; $i < count($availableComponents); $i++) {
+            ?>
                 <div class="component">
                     <div class="inner-left">
-                        <h3><?=$availableComponents[$i]["componentName"] ?></h3>
-                        <p><?=$availableComponents[$i]["tag"] ?></p>
+                        <h3><?= $availableComponents[$i]["componentName"] ?></h3>
+                        <p><?= $availableComponents[$i]["tag"] ?></p>
                     </div>
-                    <button class="btn-new">Add component</button>
+                    <button onclick='AddComponent(this,"<?= $path ?>")' class="btn-new">Add component</button>
                 </div>
-                <?php
+            <?php
 
-            }?>
+            } ?>
 
         </div>
-        <?php
+<?php
 
     }
-    function RemoveElement($path)
+    function RemoveComponent($path)
     {
-
-        echo ($path);
         $json    = $this->LoadJSON();
         $parsed  = json_decode($json, true);
         $splited = explode(",", $path);
-        $new     = $this->RemoveElementRecursion($splited, $parsed);
+        $new     = $this->RemoveComponentRecursion($splited, $parsed);
         $parsed = json_encode($new);
         $this->UpdateJSON($parsed);
     }
     /**
      * @author Szimns don't ask me how it works -> I'm an engineer
      */
-    function RemoveElementRecursion($path, $data)
+    function RemoveComponentRecursion($path, $array)
     {
         if (count($path) == 1) {
-            unset($data[$path[0]]);
-            $data = array_values($data);
-            return $data;
+            unset($array[$path[0]]);
+            $array = array_values($array);
+            return $array;
         }
         if (count($path) > 1) {
             $nexthop = $path[0];
             array_shift($path);
-            $data[$nexthop] = $this->RemoveElementRecursion($path, $data[$nexthop]);
-            return $data;
+            $array[$nexthop] = $this->RemoveComponentRecursion($path, $array[$nexthop]);
+            return $array;
+        }
+    }
+    /**
+     * @param string $path path to specific location where you want to add component
+     * @param string $componentName is tag what you want to add
+     */
+    function AddComponent($path, $componentName)
+    {
+        $json    = $this->LoadJSON();
+        $parsed  = json_decode($json, true);
+        $splited = explode(",", $path);
+        $component = $this->getComponent($componentName);
+        print_r($parsed);
+        $new     = $this->AddComponentRecursion($splited, $parsed, $component);
+        print_r($new);
+        $parsed = json_encode($new);
+        $this->UpdateJSON($parsed);
+    }
+    function AddComponentRecursion($path, $array, $component)
+    {
+        if (count($path) == 1) {
+            array_push($array[$path[0]]["content"], $component);
+            $array = array_values($array);
+            return $array;
+        }
+        if (count($path) > 1) {
+            $nexthop = $path[0];
+            array_shift($path);
+            $array[$nexthop] = $this->AddComponentRecursion($path, $array[$nexthop], $component);
+            return $array;
         }
     }
     function UpdateJSON($data)

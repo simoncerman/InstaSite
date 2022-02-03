@@ -100,13 +100,14 @@ if ($_POST["type"] == "UpdatingOnOffPart") {
        $setTo        = $_POST["setTo"];
        $DbAccess->updateData("parttable", "PartEnabled", $setTo, $condition);
 }
-if ($_POST["type"] == "ElementHandling") {
+if ($_POST["type"] == "ComponentHandling") {
        if ($_POST["subtype"] == "Remove") {
 
-              $JsonAccess->RemoveElement($_POST["path"]);
+              $JsonAccess->RemoveComponent($_POST["path"]);
        }
        if ($_POST["subtype"] == "Edit") {
        }
        if ($_POST["subtype"] == "Add") {
+              $JsonAccess->AddComponent($_POST["path"], $_POST["componentName"]);
        }
 }

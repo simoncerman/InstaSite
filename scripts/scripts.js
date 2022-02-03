@@ -281,7 +281,28 @@ function SavePartData() {
     },
   });
 }
-function AddElement(path) {
+function AddComponent(button, path) {
+  let type = "ComponentHandling";
+  let subtype = "Add";
+  let componentName =
+    button.parentElement.getElementsByTagName("h3")[0].innerHTML;
+
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    data: {
+      type: type,
+      subtype: subtype,
+      path: path,
+      componentName: componentName,
+    },
+    success: (res) => {
+      console.log(res);
+      document.location.reload();
+    },
+  });
+}
+function ModeSwitchAddComponent(path) {
   let full_href = window.location.href;
   if (GetSpecificParam("mode") == undefined) {
     window.location.href = `${full_href}&mode=add`;
@@ -289,7 +310,7 @@ function AddElement(path) {
   window.location.href =
     window.location.href.split("&")[0] + "&mode=add" + "&path=" + path;
 }
-function EditElement(path) {
+function ModeSwitchEditComponent(path) {
   let full_href = window.location.href;
   if (GetSpecificParam("mode") == undefined) {
     window.location.href = `${full_href}&mode=edit`;
@@ -297,8 +318,8 @@ function EditElement(path) {
   window.location.href =
     window.location.href.split("&")[0] + "&mode=edit" + "&path=" + path;
 }
-function RemoveElement(path) {
-  let type = "ElementHandling";
+function ModeSwitchRemoveComponent(path) {
+  let type = "ComponentHandling";
   let subtype = "Remove";
   $.ajax({
     type: "POST",
