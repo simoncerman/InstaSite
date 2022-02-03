@@ -9,9 +9,11 @@
     <div class="full-outer">
         <?php include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
         <div class="small-wrap">
-            <div class="title-section">
-                <p>main edit</p>
-                <h1>Your pages..</h1>
+            <div class="header">
+                <div class="title">
+                    <h2>main edit</h2>
+                    <h1>Your pages..</h1>
+                </div>
             </div>
             <?php
             echo ($siteAccess->AdminSites());

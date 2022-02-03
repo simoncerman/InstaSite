@@ -10,10 +10,18 @@
         <?php include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
         <div class="small-wrap">
             <a href="http://vocko/19ia04_cerman/pages/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
-            <div class="title-section">
-                <p>Just parts to choose...</p>
-                <h2 id="siteNameH2"><?php echo ($_GET["siteName"]); ?></h2>
+            <div class="header">
+                <div class="back">
+                    <a href="http://vocko/19ia04_cerman/pages/pageEdit.php">
+                        <i class="fas fa-angle-left"></i>
+                    </a>
+                </div>
+                <div class="title">
+                    <h2>Just parts to choose...</h2>
+                    <h1 id="siteNameH2"><?php echo ($_GET["siteName"]); ?></h1>
+                </div>
             </div>
+
             <?php
             //This part will echo all part data to site
             ?>

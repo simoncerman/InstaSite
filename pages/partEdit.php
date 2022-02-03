@@ -11,9 +11,16 @@
         <?php include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
         <div class="small-wrap">
             <a href="http://vocko/19ia04_cerman/pages/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
-            <div class="title-section">
-                <p>part what you are editing is </p>
-                <h1><?= $_GET["partName"] ?></h1>
+            <div class="header">
+                <div class="back">
+                    <a href="http://vocko/19ia04_cerman/pages/pageEdit.php">
+                        <i class="fas fa-angle-left"></i>
+                    </a>
+                </div>
+                <div class="title">
+                    <h2>part what you are editing is </h2>
+                    <h1><?= $_GET["partName"] ?></h1>
+                </div>
             </div>
             <div class="preview">
                 <div class="preview-title">
