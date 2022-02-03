@@ -310,6 +310,7 @@ function RemoveElement(path) {
     },
     success: (res) => {
       console.log(res);
+      window.location.href = window.location.href.split("&")[0];
     },
   });
 }

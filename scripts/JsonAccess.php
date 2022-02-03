@@ -214,8 +214,71 @@ class JsonAccess
         </div>
 <?php
     }
+    function GetAvailableComponents()
+    {
+        $elemnts = array(
+            array(
+                "tag" => "div",
+                "componentName" => "Block",
+                "class" => "",
+                "content" => array()
+            ),
+            array(
+                "tag" => "img",
+                "componentName" => "Image",
+                "class" => "",
+                "src" => "",
+                "alt" => ""
+            ),
+            array(
+                "tag" => "h1",
+                "componentName" => "Heading-1",
+                "class" => "",
+                "text" => "HeadingText"
+            ),
+            array(
+                "tag" => "h2",
+                "componentName" => "Heading-2",
+                "class" => "",
+                "text" => "HeadingText"
+            ),
+            array(
+                "tag" => "h3",
+                "componentName" => "Heading-3",
+                "class" => "",
+                "text" => "HeadingText"
+            ),
+            array(
+                "tag" => "p",
+                "componentName" => "Paragraf",
+                "class" => "",
+                "text" => "paragraf-text"
+            ),
+            );
+        return $elemnts;
+    }
     function AddElementUI($path)
     {
+
+        $availableComponents = $this->GetAvailableComponents();
+        ?>
+        <div class="available-components">
+            <?php for ($i=0; $i < count($availableComponents); $i++) { 
+                ?>
+                <div class="component">
+                    <div class="inner-left">
+                        <h3><?=$availableComponents[$i]["componentName"] ?></h3>
+                        <p><?=$availableComponents[$i]["tag"] ?></p>
+                    </div>
+                    <button class="btn-new">Add component</button>
+                </div>
+                <?php
+
+            }?>
+
+        </div>
+        <?php
+
     }
     function RemoveElement($path)
     {
@@ -235,6 +298,7 @@ class JsonAccess
     {
         if (count($path) == 1) {
             unset($data[$path[0]]);
+            $data = array_values($data);
             return $data;
         }
         if (count($path) > 1) {
