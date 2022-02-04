@@ -9,6 +9,7 @@
     ?>
 </head>
 
+
 <body id="body">
     <div class="full-outer">
         <?php include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
