@@ -106,6 +106,7 @@ if ($_POST["type"] == "ComponentHandling") {
               $JsonAccess->RemoveComponent($_POST["path"]);
        }
        if ($_POST["subtype"] == "Edit") {
+              $JsonAccess->UpdateComponent($_POST["path"], $_POST["data"]);
        }
        if ($_POST["subtype"] == "Add") {
               $JsonAccess->AddComponent($_POST["path"], $_POST["componentName"]);

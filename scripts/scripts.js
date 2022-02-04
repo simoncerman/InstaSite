@@ -302,6 +302,34 @@ function AddComponent(button, path) {
     },
   });
 }
+function UpdateData(button, path) {
+  let allData =
+    button.parentElement.parentElement.getElementsByClassName("editable");
+  let jsonData = [];
+  for (let index = 0; index < allData.length; index++) {
+    parameter = allData[index].getElementsByTagName("p")[0].innerHTML;
+    value = allData[index].getElementsByTagName("input")[0].value;
+    row = { parameter: parameter, value: value };
+    jsonData.push(row);
+  }
+  let data = JSON.stringify(jsonData);
+  let type = "ComponentHandling";
+  let subtype = "Edit";
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    data: {
+      type: type,
+      subtype: subtype,
+      path: path,
+      data: data,
+    },
+    success: (res) => {
+      console.log(res);
+      document.location.reload();
+    },
+  });
+}
 function ModeSwitchAddComponent(path) {
   let full_href = window.location.href;
   if (GetSpecificParam("mode") == undefined) {

@@ -89,7 +89,7 @@ class JsonAccess
                 <div class="table-block-info-controls">
                     <i onclick='ModeSwitchAddComponent("<?= $path ?>")' class="fas fa-plus"></i>
                     <i onclick='ModeSwitchRemoveComponent("<?= $path ?>")' class="fas fa-minus"></i>
-                    <i onclick='ModeSwitchEditElement("<?= $path ?>")' class="fas fa-cog"></i>
+                    <i onclick='ModeSwitchEditComponent("<?= $path ?>")' class="fas fa-cog"></i>
                 </div>
             </div>
             <div class="table-block-inside">
@@ -199,7 +199,7 @@ class JsonAccess
                 $this->EditLine($key, $value);
             } ?>
             <div class="editable-update-data">
-                <button class="btn-new">Update Data</button>
+                <button class="btn-new" onclick='UpdateData(this,"<?= $path ?>")'>Update Data</button>
 
             </div>
         </div>
@@ -343,6 +343,37 @@ class JsonAccess
             $nexthop = $path[0];
             array_shift($path);
             $array[$nexthop] = $this->AddComponentRecursion($path, $array[$nexthop], $component);
+            return $array;
+        }
+    }
+    function UpdateComponent($path, $data)
+    {
+        $json    = $this->LoadJSON();
+        $parsed  = json_decode($json, true);
+        $splited = explode(",", $path);
+        $encodedData = json_decode($data);
+        for ($i = 0; $i < count($encodedData); $i++) {
+            $encodedData[$i] = (array) $encodedData[$i];
+        }
+        $new     = $this->UpdateComponentRecursion($splited, $parsed, $encodedData);
+        $parsed = json_encode($new);
+        $this->UpdateJSON($parsed);
+    }
+    function UpdateComponentRecursion($path, $array, $encodedData)
+    {
+        if (count($path) == 1) {
+            $retArray = $array;
+            for ($i = 0; $i < count($encodedData); $i++) {
+                if ($encodedData[$i]["value"] != "Array") {
+                    $retArray[$path[0]][$encodedData[$i]["parameter"]] = $encodedData[$i]["value"];
+                }
+            }
+            return $retArray;
+        }
+        if (count($path) > 1) {
+            $nexthop = $path[0];
+            array_shift($path);
+            $array[$nexthop] = $this->UpdateComponentRecursion($path, $array[$nexthop], $encodedData);
             return $array;
         }
     }
