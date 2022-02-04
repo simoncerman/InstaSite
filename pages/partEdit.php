@@ -4,6 +4,7 @@
     require dirname(getcwd(), 1) . '/scripts/SiteAccess.php';
     require dirname(getcwd(), 1) . '/scripts/JsonAccess.php';
     require dirname(getcwd(), 1) . '/scripts/PartPreview.php';
+    require dirname(getcwd(), 1) . '/scripts/ComponentsPreview.php';
 
 
     ?>
@@ -40,7 +41,7 @@
                 </div>
                 <div class="editor-ui">
                     <div class="components">
-                        <?= $JsonAccess->LoadEditor() ?>
+                        <?= $ComponentsPreviewHandler->LoadComponentsPreview() ?>
                     </div>
                     <div class="editable-window">
                         <?php
