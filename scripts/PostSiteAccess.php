@@ -1,6 +1,7 @@
 <?php
 require(__DIR__ . '\DbAccess.php');
 require(__DIR__ . '\JsonAccess.php');
+require(__DIR__ . '\ComponentsHandler.php');
 if ($_POST["type"] == "NameTypeFirstInsert") {
        $webType = $_POST["webType"];
        $webName = $_POST["webName"];
@@ -103,12 +104,12 @@ if ($_POST["type"] == "UpdatingOnOffPart") {
 if ($_POST["type"] == "ComponentHandling") {
        if ($_POST["subtype"] == "Remove") {
 
-              $JsonAccess->RemoveComponent($_POST["path"]);
+              $ComponentsHandler->RemoveComponent($_POST["path"]);
        }
        if ($_POST["subtype"] == "Edit") {
-              $JsonAccess->UpdateComponent($_POST["path"], $_POST["data"]);
+              $ComponentsHandler->UpdateComponent($_POST["path"], $_POST["data"]);
        }
        if ($_POST["subtype"] == "Add") {
-              $JsonAccess->AddComponent($_POST["path"], $_POST["componentName"]);
+              $ComponentsHandler->AddComponent($_POST["path"], $_POST["componentName"]);
        }
 }
