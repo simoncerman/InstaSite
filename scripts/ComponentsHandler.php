@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * This class will handle components -> Do stuff with them
+ */
 class ComponentsHandler extends JsonAccess
 {
     function RemoveComponent($path)
@@ -10,9 +14,6 @@ class ComponentsHandler extends JsonAccess
         $parsed = json_encode($new);
         $this->UpdateJSON($parsed);
     }
-    /**
-     * @author Szimns don't ask me how it works -> I'm an engineer
-     */
     function RemoveComponentRecursion($path, $array)
     {
         if (count($path) == 1) {

@@ -4,7 +4,7 @@ class JsonAccess
 {
     /**
      * Simple function with dictionary of tag to component name values
-     * 
+     * TODO: Automate proces from GetAvailableComponents()
      * @param string $tag is just tak name
      * @return string Name of component
      */
@@ -18,8 +18,6 @@ class JsonAccess
         );
         return $tagToComponentName[$tag];
     }
-
-
     /**
      * Return table of all avaliable components
      * @return array array of components
@@ -86,7 +84,7 @@ class JsonAccess
      * Function will load adding window for adding new components when add mode is enabled
      * @param string specific path to place in JSON (for going back)
      */
-    function AddElementUI($path)
+    function AddComponentUI($path)
     {
 
         $availableComponents = $this->GetAvailableComponents();
@@ -110,7 +108,7 @@ class JsonAccess
      * Function will load edit window for editing selected component on path
      * @param string specific path to place in JSON (for going back)
      */
-    function EditElementUI($path)
+    function EditComponentUI($path)
     {
         $parsed = $this->LoadJSONdataByPath($path);
     ?>
@@ -138,8 +136,6 @@ class JsonAccess
         </div>
 <?php
     }
-
-
     /**
      * Write json to static file
      */
@@ -169,5 +165,4 @@ class JsonAccess
         return $parsed;
     }
 }
-
 $JsonAccess = new JsonAccess();

@@ -5,12 +5,7 @@
         "objects": [
             {
                 "tag": "header",
-                "class": [
-                    "flex",
-                    "f-width",
-                    "flex-space-between",
-                    "background-gray"
-                ],
+                "class": "flex f-width flex-space-between background-gray",
                 "content": [
                     {
                         "tag": "img",

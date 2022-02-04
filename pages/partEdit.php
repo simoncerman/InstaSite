@@ -49,10 +49,10 @@
                             echo ("tap on element to edit/add");
                         } else {
                             if ($_GET["mode"] == "edit") {
-                                echo ($JsonAccess->EditElementUI($_GET["path"]));
+                                echo ($JsonAccess->EditComponentUI($_GET["path"]));
                             }
                             if ($_GET["mode"] == "add") {
-                                echo ($JsonAccess->AddElementUI($_GET["path"]));
+                                echo ($JsonAccess->AddComponentUI($_GET["path"]));
                             }
                         }
                         ?>
