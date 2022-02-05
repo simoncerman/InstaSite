@@ -89,7 +89,8 @@ if ($_POST["type"] == "NewPartInsertion") {
        $partName = $_POST["partName"];
        $siteName = $_POST["siteName"];
        if (count($DbAccess->getDataFromTableWhere("parttable", "PartName", $partName)) == 0) {
-              $DbAccess->InsertData("parttable", ["PartName", "PartCategory", "PartData", "PartEnabled"], [$partName, "basic", " ", 1]);
+              $DefaultPartData = $JsonAccess->getDefaultPartData($partName);
+              $DbAccess->InsertData("parttable", ["PartName", "PartCategory", "PartData", "PartEnabled"], [$partName, "basic", "", 1]);
        }
        $partID = $DbAccess->getValueOfParam("parttable", "PartName", $partName, "id");
        $siteID = $DbAccess->getValueOfParam("sites", "SiteName", $siteName, "id");

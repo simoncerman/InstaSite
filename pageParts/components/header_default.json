@@ -1,54 +1,16 @@
 {
-    "partName": "Header",
-    "category": "Main",
     "partData": {
         "objects": [
             {
-                "tag": "header",
-                "class": "flex f-width flex-space-between background-gray",
+                "tag": "",
+                "class": "",
+                "componentName": "Test",
                 "content": [
                     {
-                        "tag": "img",
-                        "class": "logo",
-                        "img-location": "local",
-                        "src": "logo.png",
-                        "alt": "logo"
-                    },
-                    {
                         "tag": "div",
-                        "class": "headerMenu",
-                        "content": [
-                            {
-                                "tag": "a",
-                                "class": "menuLink",
-                                "href": "/home",
-                                "text": "Home"
-                            },
-                            {
-                                "tag": "a",
-                                "class": "menuLink",
-                                "href": "/about",
-                                "text": "About"
-                            },
-                            {
-                                "tag": "a",
-                                "class": "menuLink",
-                                "href": "/contact",
-                                "text": "Contact"
-                            }
-                        ]
-                    },
-                    {
-                        "tag": "div",
-                        "class": "headerEnd",
-                        "content": [
-                            {
-                                "tag": "a",
-                                "class": "headerEnd",
-                                "href": "/admin",
-                                "text": "Login"
-                            }
-                        ]
+                        "componentName": "Block",
+                        "class": "",
+                        "content": []
                     }
                 ]
             }

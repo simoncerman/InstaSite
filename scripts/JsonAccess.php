@@ -164,5 +164,26 @@ class JsonAccess
         }
         return $parsed;
     }
+    /**
+     * Load default empty structure of data as default part structure with outer component
+     * @param string $partName name of part which will be added as component name to head of component
+     */
+    function getDefaultPartData($partName)
+    {
+        $json = '{
+            "partData": {
+                "objects": [
+                    {
+                        "tag": "",
+                        "class": "",
+                        "componentName": "' . $partName . '",
+                        "content": [
+                        ]
+                    }
+                ]
+            }
+        }';
+        return $json;
+    }
 }
 $JsonAccess = new JsonAccess();
