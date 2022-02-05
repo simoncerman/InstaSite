@@ -139,7 +139,7 @@ function pageOnOff(switcher) {
  * @param {*} object
  */
 function pageRemove(object) {
-  let gridChoose = object.parentElement.parentElement.parentElement;
+  let gridChoose = object.parentElement.parentElement;
   let siteName = gridChoose.getElementsByClassName("name")[0].innerHTML;
   let type = "RemovePage";
   $.ajax({
