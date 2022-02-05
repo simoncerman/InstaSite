@@ -170,13 +170,13 @@ class DbAccess
                     if (is_numeric($parameterValuesArray[$y])) {
                         $sql = $sql . '' . $parameterValuesArray[$y] . '';
                     } else {
-                        $sql = $sql . '"' . $parameterValuesArray[$y] . '"';
+                        $sql = $sql . "'" . $parameterValuesArray[$y] . "'";
                     }
                 } else {
                     if (is_numeric($parameterValuesArray[$y])) {
                         $sql = $sql . '' . $parameterValuesArray[$y] . '' . ",";
                     } else {
-                        $sql = $sql . '"' . $parameterValuesArray[$y] . '"' . ",";
+                        $sql = $sql . "'" . $parameterValuesArray[$y] . "'" . ",";
                     }
                 }
             }

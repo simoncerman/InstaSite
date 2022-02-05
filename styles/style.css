@@ -216,6 +216,9 @@ shit {
   flex-direction: row;
   flex-wrap: nowrap;
 }
+.wrap {
+  width: 100% !important;
+}
 .btn-fw-holder {
   display: flex;
   justify-content: center;

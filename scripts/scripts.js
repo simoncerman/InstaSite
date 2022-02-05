@@ -214,7 +214,7 @@ function newPart() {
       },
       success: (res) => {
         console.log(res);
-        //document.location.reload();
+        document.location.reload();
       },
     });
   }
