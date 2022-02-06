@@ -32,7 +32,7 @@
                     <p>preview:</p>
                 </div>
                 <div class="part-preview">
-                    <?= $PreviewHandler->TestingDefault() ?>
+                    <?= $PreviewHandler->LoadPreview($_GET["partName"]) ?>
                 </div>
             </div>
             <div class="editor">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="editor-ui">
                     <div class="components">
-                        <?= $ComponentsPreviewHandler->LoadComponentsPreview() ?>
+                        <?= $ComponentsPreviewHandler->LoadComponentsPreview($_GET["partName"]) ?>
                     </div>
                     <div class="editable-window">
                         <?php
@@ -49,7 +49,7 @@
                             echo ("tap on element to edit/add");
                         } else {
                             if ($_GET["mode"] == "edit") {
-                                echo ($JsonAccess->EditComponentUI($_GET["path"]));
+                                echo ($JsonAccess->EditComponentUI($_GET["path"], $_GET["partName"]));
                             }
                             if ($_GET["mode"] == "add") {
                                 echo ($JsonAccess->AddComponentUI($_GET["path"]));

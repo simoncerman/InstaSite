@@ -9,9 +9,9 @@ class PartPreview extends JsonAccess
     /***
      * Handle default testing before connecting to DB
      */
-    function TestingDefault()
+    function LoadPreview($partName)
     {
-        $json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", true);
+        $json = $this->LoadJSON($partName);
         $this->HTML_Encode($json);
     }
     /**

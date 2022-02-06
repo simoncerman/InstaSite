@@ -1,9 +1,9 @@
 <?php
 class ComponentsPreview extends JsonAccess
 {
-    function LoadComponentsPreview()
+    function LoadComponentsPreview($partName)
     {
-        $json = $this->LoadJSON();
+        $json = $this->LoadJSON($partName);
         $parsed = json_decode($json, true);
         $trueData = $parsed["partData"]["objects"][0];
         $path = "partData,objects,0";

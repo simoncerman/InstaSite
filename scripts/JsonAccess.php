@@ -1,5 +1,4 @@
 <?php
-
 class JsonAccess
 {
     /**
@@ -106,11 +105,12 @@ class JsonAccess
     }
     /**
      * Function will load edit window for editing selected component on path
-     * @param string specific path to place in JSON (for going back)
+     * @param string @path specific path to place in JSON (for going back)
+     * @param string @partName name of part working with
      */
-    function EditComponentUI($path)
+    function EditComponentUI($path, $partName)
     {
-        $parsed = $this->LoadJSONdataByPath($path);
+        $parsed = $this->LoadJSONdataByPath($path, $partName);
     ?>
         <div class="editable-holder">
             <div class="editable-title">
@@ -144,19 +144,19 @@ class JsonAccess
         file_put_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", $data);
     }
     /**
-     * Load json from static file
+     * Load json from DB by partName
      */
-    function LoadJSON()
+    function LoadJSON($partName)
     {
-        $json = file_get_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", true);
+        $json = $this->DbAccess->getValueOfParam("parttable", "PartName", $partName, "PartData");
         return $json;
     }
     /**
      * 
      */
-    function LoadJSONdataByPath($path)
+    function LoadJSONdataByPath($path, $partName)
     {
-        $json = $this->LoadJSON();
+        $json = $this->LoadJSON($partName);
         $parsed = json_decode($json, true);
         $splited = explode(",", $path);
         for ($i = 0; $i < count($splited); $i++) {
