@@ -1,1 +1,19 @@
-{"partData":{"objects":[{"tag":"footer","class":"","componentName":"Test","content":[{"tag":"div","componentName":"Block","class":"","content":[]}]}]}}
+{
+    "partData": {
+        "objects": [
+            {
+                "tag": "",
+                "class": "",
+                "componentName": "Part25",
+                "content": [
+                    {
+                        "tag": "div",
+                        "componentName": "Block",
+                        "class": "",
+                        "content": []
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,6 +1,11 @@
 <?php
 class JsonAccess
 {
+    function __construct()
+    {
+        require_once(__DIR__ . "/DbAccess.php");
+        $this->DbAccess = new DbAccess();
+    }
     /**
      * Simple function with dictionary of tag to component name values
      * TODO: Automate proces from GetAvailableComponents()
@@ -137,11 +142,11 @@ class JsonAccess
 <?php
     }
     /**
-     * Write json to static file
+     * Write json to DB by partName
      */
-    function UpdateJSON($data)
+    function UpdateJSON($data, $partName)
     {
-        file_put_contents(dirname(getcwd(), 1) . "\pageParts\components\header_default.json", $data);
+        $this->DbAccess->updateData("parttable", "PartData", "'" . $data . "'", "PartName='" . $partName . "'");
     }
     /**
      * Load json from DB by partName

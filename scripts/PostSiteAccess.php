@@ -104,13 +104,12 @@ if ($_POST["type"] == "UpdatingOnOffPart") {
 }
 if ($_POST["type"] == "ComponentHandling") {
        if ($_POST["subtype"] == "Remove") {
-
-              $ComponentsHandler->RemoveComponent($_POST["path"]);
+              $ComponentsHandler->RemoveComponent($_POST["path"], $_POST["partName"]);
        }
        if ($_POST["subtype"] == "Edit") {
-              $ComponentsHandler->UpdateComponent($_POST["path"], $_POST["data"]);
+              $ComponentsHandler->UpdateComponent($_POST["path"], $_POST["data"], $_POST["partName"]);
        }
        if ($_POST["subtype"] == "Add") {
-              $ComponentsHandler->AddComponent($_POST["path"], $_POST["componentName"]);
+              $ComponentsHandler->AddComponent($_POST["path"], $_POST["componentName"], $_POST["partName"]);
        }
 }

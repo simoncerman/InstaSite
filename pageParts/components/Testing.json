@@ -1,0 +1,76 @@
+{
+    "partData": {
+        "objects": [
+            {
+                "tag": "",
+                "class": "",
+                "componentName": "Testing",
+                "content": [
+                    {
+                        "tag": "div",
+                        "componentName": "Block",
+                        "class": "",
+                        "content": [
+                            {
+                                "tag": "div",
+                                "componentName": "Block",
+                                "class": "",
+                                "content": [
+                                    {
+                                        "tag": "img",
+                                        "componentName": "Image",
+                                        "class": "",
+                                        "img-location": "local",
+                                        "src": "",
+                                        "alt": "",
+                                        "content": null
+                                    },
+                                    {
+                                        "tag": "img",
+                                        "componentName": "Image",
+                                        "class": "",
+                                        "img-location": "local",
+                                        "src": "",
+                                        "alt": ""
+                                    },
+                                    {
+                                        "tag": "img",
+                                        "componentName": "Image",
+                                        "class": "",
+                                        "img-location": "local",
+                                        "src": "",
+                                        "alt": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tag": "div",
+                        "componentName": "BlockA",
+                        "class": "",
+                        "content": "XD"
+                    },
+                    {
+                        "tag": "div",
+                        "componentName": "BlockB",
+                        "class": "",
+                        "content": []
+                    },
+                    {
+                        "tag": "div",
+                        "componentName": "BlockC",
+                        "class": "",
+                        "content": []
+                    },
+                    {
+                        "tag": "div",
+                        "componentName": "Block",
+                        "class": "",
+                        "content": []
+                    }
+                ]
+            }
+        ]
+    }
+}

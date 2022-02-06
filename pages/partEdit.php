@@ -24,7 +24,7 @@
                 </div>
                 <div class="title">
                     <h2>part what you are editing is </h2>
-                    <h1><?= $_GET["partName"] ?></h1>
+                    <h1 id="partName"><?= $_GET["partName"] ?></h1>
                 </div>
             </div>
             <div class="preview">

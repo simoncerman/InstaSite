@@ -5,14 +5,15 @@
  */
 class ComponentsHandler extends JsonAccess
 {
-    function RemoveComponent($path)
+    function RemoveComponent($path, $partName)
     {
-        $json    = $this->LoadJSON();
+        $json    = $this->LoadJSON($partName);
+        echo ($json);
         $parsed  = json_decode($json, true);
         $splited = explode(",", $path);
         $new     = $this->RemoveComponentRecursion($splited, $parsed);
         $parsed = json_encode($new);
-        $this->UpdateJSON($parsed);
+        $this->UpdateJSON($parsed, $partName);
     }
     function RemoveComponentRecursion($path, $array)
     {
@@ -32,17 +33,15 @@ class ComponentsHandler extends JsonAccess
      * @param string $path path to specific location where you want to add component
      * @param string $componentName is tag what you want to add
      */
-    function AddComponent($path, $componentName)
+    function AddComponent($path, $componentName, $partName)
     {
-        $json    = $this->LoadJSON();
+        $json    = $this->LoadJSON($partName);
         $parsed  = json_decode($json, true);
         $splited = explode(",", $path);
         $component = $this->getComponent($componentName);
-        print_r($parsed);
         $new     = $this->AddComponentRecursion($splited, $parsed, $component);
-        print_r($new);
         $parsed = json_encode($new);
-        $this->UpdateJSON($parsed);
+        $this->UpdateJSON($parsed, $partName);
     }
     function AddComponentRecursion($path, $array, $component)
     {
@@ -58,9 +57,9 @@ class ComponentsHandler extends JsonAccess
             return $array;
         }
     }
-    function UpdateComponent($path, $data)
+    function UpdateComponent($path, $data, $partName)
     {
-        $json    = $this->LoadJSON();
+        $json    = $this->LoadJSON($partName);
         $parsed  = json_decode($json, true);
         $splited = explode(",", $path);
         $encodedData = json_decode($data);
@@ -69,7 +68,7 @@ class ComponentsHandler extends JsonAccess
         }
         $new     = $this->UpdateComponentRecursion($splited, $parsed, $encodedData);
         $parsed = json_encode($new);
-        $this->UpdateJSON($parsed);
+        $this->UpdateJSON($parsed, $partName);
     }
     function UpdateComponentRecursion($path, $array, $encodedData)
     {

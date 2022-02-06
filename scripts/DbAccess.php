@@ -239,11 +239,12 @@ class DbAccess
      */
     function updateData($tableName, $column, $value, $condition)
     {
-        if ($condition == null)
+        if ($condition == null) {
             $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value};");
-        if ($condition != null)
-            echo ("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
-        $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
+        }
+        if ($condition != null) {
+            $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
+        }
         $sql->execute();
         $this->pdoConn->query($sql);
     }

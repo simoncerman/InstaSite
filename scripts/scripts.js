@@ -286,6 +286,7 @@ function AddComponent(button, path) {
   let subtype = "Add";
   let componentName =
     button.parentElement.getElementsByTagName("h3")[0].innerHTML;
+  let partName = document.getElementById("partName").innerHTML;
 
   $.ajax({
     type: "POST",
@@ -295,6 +296,7 @@ function AddComponent(button, path) {
       subtype: subtype,
       path: path,
       componentName: componentName,
+      partName: partName,
     },
     success: (res) => {
       console.log(res);
@@ -315,6 +317,7 @@ function UpdateData(button, path) {
   let data = JSON.stringify(jsonData);
   let type = "ComponentHandling";
   let subtype = "Edit";
+  let partName = document.getElementById("partName").innerHTML;
   $.ajax({
     type: "POST",
     url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
@@ -323,6 +326,7 @@ function UpdateData(button, path) {
       subtype: subtype,
       path: path,
       data: data,
+      partName: partName,
     },
     success: (res) => {
       console.log(res);
@@ -349,6 +353,7 @@ function ModeSwitchEditComponent(path) {
 function ModeSwitchRemoveComponent(path) {
   let type = "ComponentHandling";
   let subtype = "Remove";
+  let partName = document.getElementById("partName").innerHTML;
   $.ajax({
     type: "POST",
     url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
@@ -356,6 +361,7 @@ function ModeSwitchRemoveComponent(path) {
       type: type,
       subtype: subtype,
       path: path,
+      partName: partName,
     },
     success: (res) => {
       console.log(res);
