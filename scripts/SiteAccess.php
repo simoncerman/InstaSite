@@ -9,6 +9,8 @@ class SiteAccess
     {
         require(__DIR__ . '\DbAccess.php');
         $this->Site_Dbaccess = $DbAccess;
+        require(__DIR__.'\JsonAccess.php');
+        $this->JsonAccess = $JsonAccess;
     }
     /**
      * Get data about sites from DB and return them in readeble form for HTML
@@ -104,7 +106,7 @@ class SiteAccess
             $partName = $data[$i]["PartName"];
             if ($data[$i]["PartEnabled"] == 1) {
                 $lcHost = $_SERVER['HTTP_HOST'];
-                $fullLink = "http://" . $lcHost . "/19ia04_cerman/pages/partEdit.php?partName=" . $partName. "&siteName=".$_GET["siteName"];
+                $fullLink = "http://" . $lcHost . "/19ia04_cerman/pages/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
                 array_push($parts, $this->partsBlueprint($partName, true, $fullLink));
             }
         }
@@ -122,7 +124,7 @@ class SiteAccess
             $partName = $data[$i]["PartName"];
             if ($data[$i]["PartEnabled"] == 0) {
                 $lcHost = $_SERVER['HTTP_HOST'];
-                $fullLink = "http://" . $lcHost . "/19ia04_cerman/pages/partEdit.php?partName=" . $partName. "&siteName=".$_GET["siteName"];
+                $fullLink = "http://" . $lcHost . "/19ia04_cerman/pages/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
                 array_push($parts, $this->partsBlueprint($partName, false, $fullLink));
             }
         }

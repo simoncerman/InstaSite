@@ -1,11 +1,16 @@
 <?php
-
+require_once(__DIR__ . "/JsonAccess.php");
 /**
  * Partpreview is subclass of JsonAccess
  * Only handle Decoding preview of parts and rendering them
  */
 class PartPreview extends JsonAccess
 {
+    function __constructor()
+    {
+        require_once(__DIR__ . "/DbAccess.php");
+        $this->DbAccess = new DbAccess();
+    }
     /***
      * Handle default testing before connecting to DB
      */
@@ -79,6 +84,18 @@ class PartPreview extends JsonAccess
             $str .= "</{$data['tag']}>";
         }
         return $str;
+    }
+    /**
+     * Function which will render all data by site name
+     * @param string $siteName
+     */
+    function RenderSite($siteName)
+    {
+        echo ($siteName);
+        $partsOnSite = $this->DbAccess->GetPartData($siteName);
+        for ($i = 0; $i < count($partsOnSite); $i++) {
+            $this->LoadPreview($partsOnSite[$i]["PartName"]);
+        }
     }
 }
 $PreviewHandler = new PartPreview();

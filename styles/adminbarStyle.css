@@ -1,0 +1,46 @@
+:root {
+  --main-clr: #c2fff8;
+  --new-color: #c9ffcd;
+  --accent: #0ef6cc;
+  --white: #f4fefd;
+  --black: #1b2223;
+  --accent2: #3a4f50;
+}
+
+.admin-bar {
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.admin-bar-inner {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  margin: 0.5em;
+  background-color: var(--accent2);
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  padding-left: 1em;
+  padding-right: 1em;
+  justify-content: space-between;
+}
+.admin-links a {
+  position: relative;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.admin-links a::after {
+  transition: 0.5s;
+
+  position: absolute;
+  content: "";
+  border-bottom: 1px solid #d2d7da;
+  width: 5px;
+  transform: translateX(-50%);
+  bottom: -5px;
+  left: 50%;
+}
+.admin-links a:hover::after {
+  width: 100%;
+}

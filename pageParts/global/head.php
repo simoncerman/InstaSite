@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/compilerStyles.css"); ?>">
     <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/createStyle.css"); ?>">
     <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/sidebarStyle.css"); ?>">
+    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/adminbarStyle.css"); ?>">
+
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -9,7 +9,8 @@ $BackAccess->CheckPartsLoaded();
 $basicInfoCreated = $BackAccess->CheckDataInTable("globalinfo");
 $basicAccountCreated = $BackAccess->CheckMainAccount("accountinfo");
 
-//$site_completed = $BackAccess->CheckWebCompleted("");
+$site_completed = true;
+$loadSite = true;
 
 $administratorMode = false; //! FOR TESTING ONLY!!!
 
@@ -21,7 +22,7 @@ if ($basicInfoCreated == false) {
 } else if ($site_completed == false) {
     header("Location: " . $root . "/19ia04_cerman/pages/pageEdit.php");
 } else {
-    header("Location: " . $root . "/19ia04_cerman/pages/home.php");
+    header("Location: " . $root . "/19ia04_cerman/pages/site.php");
 }
 
 exit();
