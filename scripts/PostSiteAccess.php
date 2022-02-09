@@ -43,6 +43,9 @@ if ($_POST["type"] == "AccountInsert") {
               );
        }
 }
+/**
+ * TODO: Add subtype for SiteHandling 
+ */
 if ($_POST["type"] == "UpdatingOnOffSite") {
        $siteName   = $_POST["siteName"];
        $condition  = 'SiteName=';
@@ -77,6 +80,9 @@ if ($_POST["type"] == "RemovePage") {
        $siteName =  $_POST["siteName"];
        $DbAccess->deleteRowInTable($tableName, "SiteName", $siteName);
 }
+/**
+ * TODO: Add subtype for PartHandling
+ */
 if ($_POST["type"] == "RemovePartFromTable") {
        $siteName = $_POST["siteName"];
        $partName = $_POST["partName"];

@@ -11,7 +11,7 @@ $basicAccountCreated = $BackAccess->CheckMainAccount("accountinfo");
 
 //$site_completed = $BackAccess->CheckWebCompleted("");
 
-$site_completed = false; //! FOR TESTING ONLY!!!
+$administratorMode = false; //! FOR TESTING ONLY!!!
 
 //Check if basic data on DB are created
 if ($basicInfoCreated == false) {

@@ -18,7 +18,7 @@
             <a href="http://vocko/19ia04_cerman/pages/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
             <div class="header">
                 <div class="back">
-                    <a href="http://vocko/19ia04_cerman/pages/pageEdit.php">
+                    <a href="http://vocko/19ia04_cerman/pages/partMenuSelector.php?siteName=<?=$_GET["siteName"]?>">
                         <i class="fas fa-angle-left"></i>
                     </a>
                 </div>

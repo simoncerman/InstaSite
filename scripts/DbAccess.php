@@ -70,6 +70,7 @@ class DbAccess
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             SiteID INT(6),
             PartID INT(6),
+            PartPosition INT(6),
             PartEnabled BIT(1) NOT NULL
         )
         ';

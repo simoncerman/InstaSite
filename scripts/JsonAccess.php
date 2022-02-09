@@ -77,7 +77,6 @@ class JsonAccess
     function getComponent($componentName)
     {
         $components =  $this->GetAvailableComponents();
-        $returnComponent = "";
         for ($i = 0; $i < count($components); $i++) {
             if ($components[$i]["componentName"] == $componentName) {
                 return $components[$i];
