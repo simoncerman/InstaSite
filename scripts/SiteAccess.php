@@ -9,8 +9,6 @@ class SiteAccess
     {
         require(__DIR__ . '\DbAccess.php');
         $this->Site_Dbaccess = $DbAccess;
-        require(__DIR__.'\JsonAccess.php');
-        $this->JsonAccess = $JsonAccess;
     }
     /**
      * Get data about sites from DB and return them in readeble form for HTML

@@ -5,8 +5,6 @@
     require dirname(getcwd(), 1) . '/scripts/JsonAccess.php';
     require dirname(getcwd(), 1) . '/scripts/PartPreview.php';
     require dirname(getcwd(), 1) . '/scripts/ComponentsPreview.php';
-
-
     ?>
 </head>
 
@@ -18,7 +16,7 @@
             <a href="http://vocko/19ia04_cerman/pages/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
             <div class="header">
                 <div class="back">
-                    <a href="http://vocko/19ia04_cerman/pages/partMenuSelector.php?siteName=<?=$_GET["siteName"]?>">
+                    <a href="http://vocko/19ia04_cerman/pages/partMenuSelector.php?siteName=<?= $_GET["siteName"] ?>">
                         <i class="fas fa-angle-left"></i>
                     </a>
                 </div>

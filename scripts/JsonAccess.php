@@ -189,6 +189,5 @@ class JsonAccess
         }';
         return $json;
     }
-
 }
 $JsonAccess = new JsonAccess();
