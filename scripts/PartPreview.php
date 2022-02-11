@@ -32,6 +32,7 @@ class PartPreview extends JsonAccess
     }
     /**
      * Recursive function which will convert data into html
+     * Will need to reconvert it to new template like version
      */
     function HTML_Convert($data)
     {
@@ -53,8 +54,8 @@ class PartPreview extends JsonAccess
         if (empty($data["src"] == false)) {
             if (empty($data["img-location"]) == false) {
                 if ($data["img-location"] == "local") {
-                    $fullLink = "http://vocko/19ia04_cerman/uploads/";
-                    $str .= "src=\"" . $fullLink . $data["src"] . "\"";
+                    $fullLink = 'http://vocko/19ia04_cerman/uploads/';
+                    $str .= " src=\"" . $fullLink . $data["src"] . "\"";
                 } else {
                     $str .= " src=" . '"' . "{$data["src"]}" . '"';
                 }

@@ -73,6 +73,7 @@ class SiteAccess
                 </a>
             </div>
             <div class="grid-right">
+                <a href="<?= "http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/pages/site.php?siteName=" . $siteName ?>" class="btn-new b-text">View</a>
                 <button class="btn-new red" onclick="pageRemove(this)">Remove</button>
                 <label class="switch"><input onclick="pageOnOff(this)" type="checkbox" <?= ($checkbox) ? "checked" : "" ?>>
                     <span class="slider round"></span>

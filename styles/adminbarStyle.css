@@ -6,6 +6,12 @@
   --black: #1b2223;
   --accent2: #3a4f50;
 }
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .admin-bar {
   width: 100%;
@@ -26,6 +32,8 @@
   justify-content: space-between;
 }
 .admin-links a {
+  color: var(--white);
+  text-decoration: none;
   position: relative;
   margin-left: 8px;
   margin-right: 8px;
