@@ -38,7 +38,9 @@ class PartPreview extends JsonAccess
     {
         //*TAG PARAMETERS
         $str = "";
-        $str .= "<{$data['tag']}";
+        if (!empty($data['tag'])) {
+            $str .= "<{$data['tag']}";
+        }
         if (empty($data["class"] == false)) {
             if (is_string($data["class"])) {
                 $str .= " class=" . '"' . "{$data["class"]}" . '"';
@@ -71,18 +73,24 @@ class PartPreview extends JsonAccess
         }
 
         //*INSIDE OF TAG
-        $str .= ">";
+        if (!empty($data['tag'])) {
+            $str .= ">";
+        }
         if (empty($data["content"])) {
             if (empty($data["text"] == false)) {
                 $str .= $data["text"];
             }
-            $str .= "</{$data['tag']}>";
+            if (!empty($data['tag'])) {
+                $str .= "</{$data['tag']}>";
+            }
         } else {
             //*INSIDE OF TAG
             for ($i = 0; $i < count($data["content"]); $i++) {
                 $str .= $this->HTML_Convert($data["content"][$i]);
             }
-            $str .= "</{$data['tag']}>";
+            if (!empty($data['tag'])) {
+                $str .= "</{$data['tag']}>";
+            }
         }
         return $str;
     }

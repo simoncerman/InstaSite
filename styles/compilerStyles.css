@@ -1,20 +1,20 @@
 /**Global styles*/
-.fl-left {
+.float-left {
   float: left;
 }
-.fl-right {
+.float-right {
   float: right;
 }
-.center-content {
+.center {
   text-align: center;
 }
 .flex {
   display: flex;
 }
-.flex-space-between {
+.space-between {
   justify-content: space-between;
 }
-.f-width {
+.full-width {
   width: 100%;
 }
 .background-black {
@@ -22,6 +22,12 @@
 }
 .background-gray {
   background-color: gray;
+}
+.margin-small {
+  margin: 1rem;
+}
+.padding-small {
+  padding: 1rem;
 }
 
 /**Slecific styles*/
