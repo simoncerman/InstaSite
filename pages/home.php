@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    require dirname(getcwd(), 1) . '/scripts/BackAccess.php';
+    require dirname(getcwd(), 1) . '/Model/BackAccess.php';
     $site = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
     echo ($BackAccess->LoadPartData($site));
     ?>

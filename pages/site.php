@@ -19,7 +19,7 @@ require dirname(getcwd(), 1) . '/scripts/PartPreview.php';
 <?php
 $adminLogged = true;
 if ($adminLogged) {
-    include dirname(getcwd(), 1) . '/scripts/View/adminBar.php';
+    include dirname(getcwd(), 1) . '/View/adminBar.php';
 }
 //Move to home site if site is not selected
 if (empty($_GET["siteName"])) {

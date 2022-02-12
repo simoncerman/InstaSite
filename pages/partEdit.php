@@ -11,7 +11,7 @@
 
 <body id="body">
     <div class="full-outer">
-        <?php include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
+        <?php include dirname(getcwd(), 1) . '/View/adminsSitebar.php'; ?>
         <div class="small-wrap">
             <a href="http://vocko/19ia04_cerman/pages/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
             <div class="header">

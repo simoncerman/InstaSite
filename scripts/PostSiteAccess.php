@@ -1,5 +1,5 @@
 <?php
-require(__DIR__ . '\DbAccess.php');
+require_once dirname(getcwd(), 1) . '/Model/DbAccess.php';;
 require(__DIR__ . '\JsonAccess.php');
 require(__DIR__ . '\ComponentsHandler.php');
 if ($_POST["type"] == "NameTypeFirstInsert") {

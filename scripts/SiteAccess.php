@@ -7,7 +7,7 @@ class SiteAccess
 {
     public function __construct()
     {
-        require(__DIR__ . '\DbAccess.php');
+        require_once dirname(getcwd(), 1) . '/Model/DbAccess.php';;
         $this->Site_Dbaccess = $DbAccess;
     }
     /**

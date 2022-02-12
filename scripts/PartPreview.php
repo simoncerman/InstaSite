@@ -8,7 +8,7 @@ class PartPreview extends JsonAccess
 {
     function __constructor()
     {
-        require_once(__DIR__ . "/DbAccess.php");
+        require_once dirname(getcwd(), 1) . '/Model/DbAccess.php';;
         $this->DbAccess = new DbAccess();
     }
     /***

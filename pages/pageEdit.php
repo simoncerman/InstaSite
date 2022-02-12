@@ -7,7 +7,7 @@
 
 <body>
     <div class="full-outer">
-        <?php include dirname(getcwd(), 1) . '/pageParts/global/adminsSitebar.php'; ?>
+        <?php include dirname(getcwd(), 1) . '/View/adminsSitebar.php'; ?>
         <div class="small-wrap">
             <div class="header">
                 <div class="title">

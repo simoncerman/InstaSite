@@ -1,5 +1,5 @@
 <?php
-require(dirname(getcwd(), 1) . "\scripts\BackAccess.php");
+require(dirname(getcwd(), 1) . "\Model\BackAccess.php");
 require(dirname(getcwd(), 1) . "\scripts\JsonAccess.php");
 $root = "http://$_SERVER[HTTP_HOST]";
 

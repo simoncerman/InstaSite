@@ -5,7 +5,7 @@ class BackAccess
     private $Back_Dbaccess;
     public function __construct()
     {
-        require(__DIR__ . '\DbAccess.php');
+        require_once dirname(getcwd(), 1) . '/Model/DbAccess.php';;
         $this->Back_Dbaccess = $DbAccess;
     }
     /**
