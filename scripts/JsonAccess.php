@@ -24,11 +24,47 @@ class JsonAccess
     }
     /**
      * Return table of all avaliable components
+     * TODO: In future you will have basic components and special
      * @return array array of components
      */
     function GetAvailableComponents()
     {
         $elemnts = array(
+            array(
+                "tag" => "div",
+                "componentName" => "Img+Text",
+                "class" => "flex space-between margin-small",
+                "content" => array(
+                    array(
+                        "tag" => "div",
+                        "componentName" => "Block",
+                        "class" => "full-width",
+                        "content" => array(
+                            array(
+                                "tag" => "img",
+                                "componentName" => "Image",
+                                "class" => "float-right margin-small",
+                                "img-location" => "local",
+                                "src" => "random_person.jpg",
+                                "alt" => ""
+                            ),
+                        )
+                    ),
+                    array(
+                        "tag" => "div",
+                        "componentName" => "Block",
+                        "class" => "full-width margin-small",
+                        "content" => array(
+                            array(
+                                "tag" => "p",
+                                "componentName" => "Paragraf",
+                                "class" => "",
+                                "text" => "Im your mother! Im your dad! Im everything in your life.<br>  Im like play of chess <br> If you want i can be your sugar daddy for shure. Just you need to want to play chess every night!"
+                            ),
+                        )
+                    ),
+                )
+            ),
             array(
                 "tag" => "div",
                 "componentName" => "Block",

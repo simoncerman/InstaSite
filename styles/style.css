@@ -233,10 +233,17 @@ shit {
 }
 .editable {
   margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
 .editable p {
   display: inline;
   font-weight: bold;
+}
+.editable input {
+  width: 100%;
 }
 .editable-update-data {
   margin-top: 1em;

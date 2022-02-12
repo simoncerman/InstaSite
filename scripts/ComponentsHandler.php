@@ -43,6 +43,11 @@ class ComponentsHandler extends JsonAccess
         $parsed = json_encode($new);
         $this->UpdateJSON($parsed, $partName);
     }
+    /**
+     * @param array $path path to specific place in json
+     * @param array $array is specific data in json to be eddited and going throu
+     * @param array $component is array which will be added to content content by path
+     */
     function AddComponentRecursion($path, $array, $component)
     {
         if (count($path) == 1) {
