@@ -106,5 +106,13 @@ class PartPreview extends JsonAccess
             $this->LoadPreview($partsOnSite[$i]["PartName"]);
         }
     }
+    /**
+     * Returns homepage name
+     */
+    function getHomepageName()
+    {
+        $data = $this->DbAccess->getDataFromTable("sites");
+        return $data[0]["SiteName"];
+    }
 }
 $PreviewHandler = new PartPreview();

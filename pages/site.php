@@ -21,5 +21,9 @@ $adminLogged = true;
 if ($adminLogged) {
     include dirname(getcwd(), 1) . '/scripts/View/adminBar.php';
 }
-
+//Move to home site if site is not selected
+if (empty($_GET["siteName"])) {
+    $homePage = $PreviewHandler->getHomepageName();
+    header("Location: " . $root . "/19ia04_cerman/pages/site.php?siteName=" . $homePage);
+}
 $PreviewHandler->RenderSite($_GET["siteName"]);
