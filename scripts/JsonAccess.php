@@ -81,19 +81,7 @@ class JsonAccess
             ),
             array(
                 "tag" => "h1",
-                "componentName" => "Heading-1",
-                "class" => "",
-                "text" => "HeadingText"
-            ),
-            array(
-                "tag" => "h2",
-                "componentName" => "Heading-2",
-                "class" => "",
-                "text" => "HeadingText"
-            ),
-            array(
-                "tag" => "h3",
-                "componentName" => "Heading-3",
+                "componentName" => "Heading",
                 "class" => "",
                 "text" => "HeadingText"
             ),
@@ -103,6 +91,13 @@ class JsonAccess
                 "class" => "",
                 "text" => "paragraf-text"
             ),
+            array(
+                "tag" => "a",
+                "componentName" => "Link",
+                "class" => "",
+                "text" => "Link",
+                "href" => "Empty"
+            )
         );
         return $elemnts;
     }
