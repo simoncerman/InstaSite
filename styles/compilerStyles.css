@@ -8,12 +8,6 @@
 .center {
   text-align: center;
 }
-.flex {
-  display: flex;
-}
-.space-between {
-  justify-content: space-between;
-}
 .full-width {
   width: 100%;
 }
@@ -23,6 +17,20 @@
 .background-gray {
   background-color: gray;
 }
+
+/*
+* Flex Styles
+*/
+.flex {
+  display: flex;
+}
+.space-between {
+  justify-content: space-between;
+}
+
+/*
+* Margin-Padding
+*/
 .margin-small {
   margin: 1rem;
 }
@@ -30,13 +38,15 @@
   padding: 1rem;
 }
 
-/**Slecific styles*/
+/*
+* IMG styles
+*/
 .logo {
   width: 4rem;
 }
 .logo-small {
   width: 2rem;
 }
-.logo-big {
+.logo-wide {
   width: 8rem;
 }

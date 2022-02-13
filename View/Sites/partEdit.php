@@ -56,10 +56,8 @@
                         ?>
                     </div>
                 </div>
-
             </div>
+            <?php include dirname(getcwd(), 2) . '/View/SiteBlocks/classList.php'; ?>
         </div>
-
     </div>
-
 </body>

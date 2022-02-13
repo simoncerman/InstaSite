@@ -21,8 +21,6 @@
 .white {
   background-color: var(--white) !important;
 }
-.title-section {
-}
 .header-1 {
   width: 100%;
 }
@@ -200,8 +198,6 @@ shit {
   justify-content: space-between;
   border-bottom: 1px solid black;
 }
-.table-block-info-controls {
-}
 .table-block-info-controls .fas {
   color: var(--black);
 }
@@ -261,4 +257,15 @@ shit {
 }
 .b-text {
   color: var(--black);
+}
+.class-list {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--black);
+  display: flex;
+}
+.class-list-category {
+  margin: 1rem;
 }
