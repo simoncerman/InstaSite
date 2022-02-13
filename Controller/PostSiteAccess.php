@@ -1,7 +1,7 @@
 <?php
-require_once dirname(getcwd(), 1) . '/Model/DbAccess.php';;
-require(__DIR__ . '\JsonAccess.php');
-require(__DIR__ . '\ComponentsHandler.php');
+require_once dirname(getcwd(), 1) . '/Model/DbAccess.php';
+require_once dirname(getcwd(), 1) . '/Model/JsonAccess.php';
+require_once dirname(getcwd(), 1) . '/Model/ComponentsHandler.php';
 if ($_POST["type"] == "NameTypeFirstInsert") {
        $webType = $_POST["webType"];
        $webName = $_POST["webName"];

@@ -1,13 +1,13 @@
 <head>
     <?php
-    include dirname(getcwd(), 1) . '/pageParts/global/head.php';
-    require dirname(getcwd(), 1) . '/scripts/SiteAccess.php';
+    include dirname(getcwd(), 2) . '/View/SiteBlocks/head.php';
+    require dirname(getcwd(), 2) . '/Controller/SiteAccess.php';
     ?>
 </head>
 
 <body>
     <div class="full-outer">
-        <?php include dirname(getcwd(), 1) . '/View/adminsSitebar.php'; ?>
+        <?php include dirname(getcwd(), 2) . '/View/SiteBlocks/adminsSitebar.php'; ?>
         <div class="small-wrap">
             <div class="header">
                 <div class="title">

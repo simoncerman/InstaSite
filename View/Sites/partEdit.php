@@ -1,22 +1,22 @@
 <head>
     <?php
-    include dirname(getcwd(), 1) . '/pageParts/global/head.php';
-    require dirname(getcwd(), 1) . '/scripts/SiteAccess.php';
-    require dirname(getcwd(), 1) . '/scripts/JsonAccess.php';
-    require dirname(getcwd(), 1) . '/scripts/PartPreview.php';
-    require dirname(getcwd(), 1) . '/scripts/ComponentsPreview.php';
+    include dirname(getcwd(), 2) . '/View/SiteBlocks/head.php';
+    require dirname(getcwd(), 2) . '/Controller/SiteAccess.php';
+    require dirname(getcwd(), 2) . '/Model/JsonAccess.php';
+    require dirname(getcwd(), 2) . '/Model/PartPreview.php';
+    require dirname(getcwd(), 2) . '/Model/ComponentsPreview.php';
     ?>
 </head>
 
 
 <body id="body">
     <div class="full-outer">
-        <?php include dirname(getcwd(), 1) . '/View/adminsSitebar.php'; ?>
+        <?php include dirname(getcwd(), 2) . '/View/SiteBlocks/adminsSitebar.php'; ?>
         <div class="small-wrap">
-            <a href="http://vocko/19ia04_cerman/pages/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
+            <a href="http://vocko/19ia04_cerman/View/Sites/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
             <div class="header">
                 <div class="back">
-                    <a href="http://vocko/19ia04_cerman/pages/partMenuSelector.php?siteName=<?= $_GET["siteName"] ?>">
+                    <a href="http://vocko/19ia04_cerman/View/Sites/partMenuSelector.php?siteName=<?= $_GET["siteName"] ?>">
                         <i class="fas fa-angle-left"></i>
                     </a>
                 </div>

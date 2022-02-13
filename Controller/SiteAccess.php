@@ -7,7 +7,7 @@ class SiteAccess
 {
     public function __construct()
     {
-        require_once dirname(getcwd(), 1) . '/Model/DbAccess.php';;
+        require_once dirname(getcwd(), 2) . '/Model/DbAccess.php';;
         $this->Site_Dbaccess = $DbAccess;
     }
     /**
@@ -26,7 +26,7 @@ class SiteAccess
                 array_push($disabled, $data[$i]);
             }
         }
-        $siteLink = "http://vocko/19ia04_cerman/pages/partMenuSelector.php?siteName=";
+        $siteLink = "http://vocko/19ia04_cerman/View/Sites/partMenuSelector.php?siteName=";
 ?>
 
         <div class="grid-holder">
@@ -73,7 +73,7 @@ class SiteAccess
                 </a>
             </div>
             <div class="grid-right">
-                <a href="<?= "http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/pages/site.php?siteName=" . $siteName ?>" class="btn-new b-text">View</a>
+                <a href="<?= "http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/View/Sites/site.php?siteName=" . $siteName ?>" class="btn-new b-text">View</a>
                 <button class="btn-new red" onclick="pageRemove(this)">Remove</button>
                 <label class="switch"><input onclick="pageOnOff(this)" type="checkbox" <?= ($checkbox) ? "checked" : "" ?>>
                     <span class="slider round"></span>
@@ -105,7 +105,7 @@ class SiteAccess
             $partName = $data[$i]["PartName"];
             if ($data[$i]["PartEnabled"] == 1) {
                 $lcHost = $_SERVER['HTTP_HOST'];
-                $fullLink = "http://" . $lcHost . "/19ia04_cerman/pages/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
+                $fullLink = "http://" . $lcHost . "/19ia04_cerman/View/Sites/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
                 array_push($parts, $this->partsBlueprint($partName, true, $fullLink));
             }
         }
@@ -123,7 +123,7 @@ class SiteAccess
             $partName = $data[$i]["PartName"];
             if ($data[$i]["PartEnabled"] == 0) {
                 $lcHost = $_SERVER['HTTP_HOST'];
-                $fullLink = "http://" . $lcHost . "/19ia04_cerman/pages/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
+                $fullLink = "http://" . $lcHost . "/19ia04_cerman/View/Sites/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
                 array_push($parts, $this->partsBlueprint($partName, false, $fullLink));
             }
         }

@@ -3,7 +3,7 @@ class JsonAccess
 {
     function __construct()
     {
-        require_once dirname(getcwd(), 1) . '/Model/DbAccess.php';;
+        require_once dirname(getcwd(), 2) . '/Model/DbAccess.php';;
         $this->DbAccess = new DbAccess();
     }
     /**

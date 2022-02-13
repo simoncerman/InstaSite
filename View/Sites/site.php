@@ -3,7 +3,7 @@
 /**
  * Will display sites for user 
  */
-require dirname(getcwd(), 1) . '/scripts/PartPreview.php';
+require dirname(getcwd(), 2) . '/Model/PartPreview.php';
 ?>
 
 <head>
@@ -19,11 +19,11 @@ require dirname(getcwd(), 1) . '/scripts/PartPreview.php';
 <?php
 $adminLogged = true;
 if ($adminLogged) {
-    include dirname(getcwd(), 1) . '/View/adminBar.php';
+    include dirname(getcwd(), 2) . '/View/SiteBlocks/adminBar.php';
 }
 //Move to home site if site is not selected
 if (empty($_GET["siteName"])) {
     $homePage = $PreviewHandler->getHomepageName();
-    header("Location: " . $root . "/19ia04_cerman/pages/site.php?siteName=" . $homePage);
+    header("Location: " . $root . "/19ia04_cerman/View/Sites/site.php?siteName=" . $homePage);
 }
 $PreviewHandler->RenderSite($_GET["siteName"]);

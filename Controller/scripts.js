@@ -44,7 +44,7 @@ function getSelected(selectType, selectorID) {
   }
 }
 /**
- * Specific function for /pages/basicInfoCreate.php
+ * Specific function for /View/Sites/basicInfoCreate.php
  * Check data input and insert basic data into page
  * @author Šimns
  */
@@ -61,7 +61,7 @@ function basicInfoCreate() {
     let type = "NameTypeFirstInsert";
     $.ajax({
       type: "POST",
-      url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+      url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
       data: { type: type, webType: webType, webName: webName },
       success: (res) => {
         console.log(res);
@@ -95,7 +95,7 @@ function basicAccountCreate() {
     let type = "AccountInsert";
     $.ajax({
       type: "POST",
-      url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+      url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
       data: {
         type: type,
         AccountUsername: AccountUsername,
@@ -122,7 +122,7 @@ function pageOnOff(switcher) {
   let type = "UpdatingOnOffSite";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
     data: {
       type: type,
       siteName: siteName,
@@ -144,7 +144,7 @@ function pageRemove(object) {
   let type = "RemovePage";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
     data: {
       type: type,
       siteName: siteName,
@@ -183,7 +183,7 @@ function newSiteInsert() {
     let type = "NewSiteInsertion";
     $.ajax({
       type: "POST",
-      url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+      url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
       data: {
         type: type,
         pageName: pageName,
@@ -206,7 +206,7 @@ function newPart() {
     let type = "NewPartInsertion";
     $.ajax({
       type: "POST",
-      url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+      url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
       data: {
         type: type,
         partName: partName,
@@ -230,7 +230,7 @@ function partRemove(object) {
   let type = "RemovePartFromTable";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
     data: {
       type: type,
       partName: partName,
@@ -254,7 +254,7 @@ function partOnOff(switcher) {
   let type = "UpdatingOnOffPart";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
     data: {
       type: type,
       partName: partName,
@@ -271,7 +271,7 @@ function SavePartData() {
   let type = "UpdatingPartNameData";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
     data: {
       type: type,
       partNameNew: partNameNew,
@@ -290,7 +290,7 @@ function AddComponent(button, path) {
 
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
     data: {
       type: type,
       subtype: subtype,
@@ -320,7 +320,7 @@ function UpdateData(button, path) {
   let partName = document.getElementById("partName").innerHTML;
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
     data: {
       type: type,
       subtype: subtype,
@@ -356,7 +356,7 @@ function ModeSwitchRemoveComponent(path) {
   let partName = document.getElementById("partName").innerHTML;
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/scripts/PostSiteAccess.php",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
     data: {
       type: type,
       subtype: subtype,

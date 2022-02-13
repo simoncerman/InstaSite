@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-    <script src="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/scripts/scripts.js"); ?>"></script>
+    <script src="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/Controller/scripts.js"); ?>"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/13a5fbc3a3.js" crossorigin="anonymous"></script>
