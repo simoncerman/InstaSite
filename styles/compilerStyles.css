@@ -32,10 +32,13 @@
 * Margin-Padding
 */
 .margin-small {
-  margin: 1rem;
+  margin: 0.5rem;
 }
 .padding-small {
-  padding: 1rem;
+  padding: 0.5rem;
+}
+.margin-child-small * {
+  margin: 0.5rem;
 }
 
 /*
@@ -49,4 +52,29 @@
 }
 .logo-wide {
   width: 8rem;
+}
+
+/*
+* Other 
+*/
+.disable-textdecorations {
+  text-decoration: none;
+}
+.disable-child-textdecorations * {
+  text-decoration: none;
+}
+
+/*
+* Specific styles
+*/
+.button {
+  text-decoration: none;
+  text-align: center;
+  align-self: center;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 10px;
+  color: var(--white);
+  background-color: var(--accent2);
 }

@@ -67,6 +67,68 @@ class JsonAccess
             ),
             array(
                 "tag" => "div",
+                "componentName" => "Header",
+                "class" => "flex space-between",
+                "content" => array(
+                    array(
+                        "tag" => "div",
+                        "componentName" => "Block",
+                        "class" => "",
+                        "content" => array(
+                            array(
+                                "tag" => "div",
+                                "componentName" => "Block",
+                                "class" => "",
+                                "content" => array(
+                                    array(
+                                        "tag" => "h1",
+                                        "componentName" => "Heading",
+                                        "class" => "",
+                                        "text" => "Logo"
+                                    ),
+                                )
+                            )
+                        )
+                    ),
+                    array(
+                        "tag" => "div",
+                        "componentName" => "Block",
+                        "class" => "margin-child-small disable-child-textdecorations flex",
+                        "content" => array(
+                            array(
+                                "tag" => "a",
+                                "componentName" => "Link",
+                                "class" => "",
+                                "text" => "Link",
+                                "href" => "Empty"
+                            ),
+                            array(
+                                "tag" => "a",
+                                "componentName" => "Link",
+                                "class" => "",
+                                "text" => "Link",
+                                "href" => "Empty"
+                            ),
+                            array(
+                                "tag" => "a",
+                                "componentName" => "Link",
+                                "class" => "",
+                                "text" => "Link",
+                                "href" => "Empty"
+                            )
+                        )
+                    ),
+                    array(
+                        "tag" => "a",
+                        "componentName" => "Link",
+                        "class" => "button",
+                        "text" => "Contact",
+                        "href" => "Empty"
+                    )
+                )
+            ),
+            array(
+                "tag" => "div",
                 "componentName" => "Block",
                 "class" => "",
                 "content" => array()
