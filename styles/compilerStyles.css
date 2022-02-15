@@ -11,13 +11,12 @@
 .full-width {
   width: 100%;
 }
-.background-black {
-  background-color: black;
+.width-half {
+  width: 50%;
 }
-.background-gray {
-  background-color: gray;
+.width-seven-five {
+  width: 75%;
 }
-
 /*
 * Flex Styles
 */
@@ -26,6 +25,9 @@
 }
 .space-between {
   justify-content: space-between;
+}
+.justify-center {
+  justify-content: center;
 }
 
 /*
@@ -39,6 +41,12 @@
 }
 .margin-child-small * {
   margin: 0.5rem;
+}
+.margin-left-auto {
+  margin-left: auto;
+}
+.margin-right-auto {
+  margin-right: auto;
 }
 
 /*

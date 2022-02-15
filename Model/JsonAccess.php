@@ -33,12 +33,12 @@ class JsonAccess
             array(
                 "tag" => "div",
                 "componentName" => "Img+Text",
-                "class" => "flex space-between margin-small",
+                "class" => "flex justify-center margin-small width-seven-five margin-left-auto margin-right-auto",
                 "content" => array(
                     array(
                         "tag" => "div",
                         "componentName" => "Block",
-                        "class" => "full-width",
+                        "class" => "width-half",
                         "content" => array(
                             array(
                                 "tag" => "img",
@@ -53,7 +53,7 @@ class JsonAccess
                     array(
                         "tag" => "div",
                         "componentName" => "Block",
-                        "class" => "full-width margin-small",
+                        "class" => "width-half margin-small",
                         "content" => array(
                             array(
                                 "tag" => "p",
@@ -127,6 +127,29 @@ class JsonAccess
                     )
                 )
             ),
+            /*array(
+                "tag" => "div",
+                "componentName" => "Service",
+                "class" => "",
+                "content" => array(
+                    array(
+                        "special-html" => '<i class="fas fa-atom"></i>'
+                    ),
+                    array(
+                        "tag" => "h1",
+                        "componentName" => "Heading",
+                        "class" => "",
+                        "text" => "HeadingText"
+                    ),
+                    array(
+                        "tag" => "p",
+                        "componentName" => "Paragraf",
+                        "class" => "",
+                        "text" => "paragraf-text"
+                    ),
+
+                )
+            ),*/
             array(
                 "tag" => "div",
                 "componentName" => "Block",

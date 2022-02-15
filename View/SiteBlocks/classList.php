@@ -1,6 +1,14 @@
 <div class="class-list">
     <h2>Classes</h2>
     <div class="class-list-category">
+        <h4>Global styles</h4>
+        <p>.full-width => 100%</p>
+        <p>.width-seven-five=> 75%</p>
+        <p>.half-width => 50%</p>
+        <p>.center</p>
+    </div>
+
+    <div class="class-list-category">
         <h4>Flex styles</h4>
         <p>.flex => display: flex</p>
         <p>.space-between</p>
