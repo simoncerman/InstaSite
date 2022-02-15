@@ -27,32 +27,14 @@ class PartPreview extends JsonAccess
         //parse data into Arrays and Dictionaries
         $parsed = json_decode($json, true);
         $partData = $parsed["partData"];
-        $HTML = $this->HTML_Convert($partData["objects"][0]);
-        echo ($HTML);
+        $this->HTML_Convert($partData["objects"][0]);
     }
     /**
-     * Recursive function which will convert data into html
-     * Will need to reconvert it to new template like version
+     * Function created to handling scr (links to photos)
      */
-    function HTML_Convert($data)
+    function ScrHandler($data)
     {
-        //*TAG PARAMETERS
         $str = "";
-        if (!empty($data['tag'])) {
-            $str .= "<{$data['tag']}";
-        }
-        if (empty($data["class"] == false)) {
-            if (is_string($data["class"])) {
-                $str .= " class=" . '"' . "{$data["class"]}" . '"';
-            }
-            if (is_array($data["class"])) {
-                $str .= " class=\"";
-                for ($i = 0; $i < count($data["class"]); $i++) {
-                    $str .= " " . $data["class"][$i];
-                }
-                $str .= " \"";
-            }
-        }
         if (empty($data["src"] == false)) {
             if (empty($data["img-location"]) == false) {
                 if ($data["img-location"] == "local") {
@@ -65,34 +47,32 @@ class PartPreview extends JsonAccess
                 $str .= " src=" . '"' . "{$data["src"]}" . '"';
             }
         }
-        if (empty($data["alt"] == false)) {
-            $str .= " alt=" . '"' . "{$data["alt"]}" . '"';
-        }
-        if (empty($data["href"] == false)) {
-            $str .= " href=" . '"' . "{$data["href"]}" . '"';
-        }
-
-        //*INSIDE OF TAG
-        if (!empty($data['tag'])) {
-            $str .= ">";
-        }
-        if (empty($data["content"])) {
-            if (empty($data["text"] == false)) {
-                $str .= $data["text"];
-            }
-            if (!empty($data['tag'])) {
-                $str .= "</{$data['tag']}>";
-            }
-        } else {
-            //*INSIDE OF TAG
-            for ($i = 0; $i < count($data["content"]); $i++) {
-                $str .= $this->HTML_Convert($data["content"][$i]);
-            }
-            if (!empty($data['tag'])) {
-                $str .= "</{$data['tag']}>";
-            }
-        }
         return $str;
+    }
+    /**
+     * Recursive function which will convert data into html
+     * Will need to reconvert it to new template like version
+     */
+    function HTML_Convert($data)
+    {
+        $fullLink = 'http://vocko/19ia04_cerman/uploads/';
+?>
+        <<?= (!empty($data["tag"])) ? $data["tag"] : "" ?> 
+        <?= (!empty($data["class"])) ? "class=" . '"' . "{$data['class']}" . '"' : "" ?> 
+        <?= (!empty($data["scr"])) ? $this->ScrHandler($data) : "" ?> 
+        <?= (!empty($data["alt"])) ? "alt={$data['alt']}" : "" ?> 
+        <?= (!empty($data["href"])) ? "alt={$data['href']}" : "" ?>>
+
+            <?= (!empty($data["text"])) ? $data["text"] : "" ?>
+
+            <?php
+            for ($i = 0; $i < count($data["content"]); $i++) {
+                $this->HTML_Convert($data["content"][$i]);
+            }
+            ?>
+
+        </<?= (!empty($data["tag"])) ? $data["tag"] : "" ?>>
+<?php
     }
     /**
      * Function which will render all data by site name
