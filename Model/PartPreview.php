@@ -35,8 +35,8 @@ class PartPreview extends JsonAccess
     function ScrHandler($data)
     {
         $str = "";
-        if (empty($data["src"] == false)) {
-            if (empty($data["img-location"]) == false) {
+        if (!empty($data["src"])) {
+            if (!empty($data["img-location"])) {
                 if ($data["img-location"] == "local") {
                     $fullLink = 'http://vocko/19ia04_cerman/uploads/';
                     $str .= " src=\"" . $fullLink . $data["src"] . "\"";
@@ -55,13 +55,12 @@ class PartPreview extends JsonAccess
      */
     function HTML_Convert($data)
     {
-        $fullLink = 'http://vocko/19ia04_cerman/uploads/';
+        if (!empty($data["special-html"])) {
+            echo $this->clean($data["special-html"]);
+            return;
+        }
 ?>
-        <<?= (!empty($data["tag"])) ? $data["tag"] : "" ?> 
-        <?= (!empty($data["class"])) ? "class=" . '"' . "{$data['class']}" . '"' : "" ?> 
-        <?= (!empty($data["scr"])) ? $this->ScrHandler($data) : "" ?> 
-        <?= (!empty($data["alt"])) ? "alt={$data['alt']}" : "" ?> 
-        <?= (!empty($data["href"])) ? "alt={$data['href']}" : "" ?>>
+        <<?= (!empty($data["tag"])) ? $data["tag"] : "" ?> <?= (!empty($data["class"])) ? "class=" . '"' . "{$data['class']}" . '"' : "" ?> <?= (!empty($data["src"])) ? $this->ScrHandler($data) : "" ?> <?= (!empty($data["alt"])) ? "alt={$data['alt']}" : "" ?> <?= (!empty($data["href"])) ? "alt={$data['href']}" : "" ?>>
 
             <?= (!empty($data["text"])) ? $data["text"] : "" ?>
 
@@ -73,6 +72,11 @@ class PartPreview extends JsonAccess
 
         </<?= (!empty($data["tag"])) ? $data["tag"] : "" ?>>
 <?php
+    }
+    function clean($string)
+    {
+        $string = str_replace('`', "'", $string);
+        return $string;
     }
     /**
      * Function which will render all data by site name

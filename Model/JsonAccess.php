@@ -127,13 +127,14 @@ class JsonAccess
                     )
                 )
             ),
-            /*array(
+            array(
                 "tag" => "div",
                 "componentName" => "Service",
                 "class" => "",
                 "content" => array(
                     array(
-                        "special-html" => '<i class="fas fa-atom"></i>'
+                        "componentName" => "SpecialHTML",
+                        "special-html" => "<i class=`fas fa-atom`></i>",
                     ),
                     array(
                         "tag" => "h1",
@@ -149,7 +150,7 @@ class JsonAccess
                     ),
 
                 )
-            ),*/
+            ),
             array(
                 "tag" => "div",
                 "componentName" => "Block",
