@@ -7,6 +7,7 @@
 }
 .center {
   text-align: center;
+  justify-content: center;
 }
 .full-width {
   width: 100%;
@@ -28,6 +29,9 @@
 }
 .justify-center {
   justify-content: center;
+}
+.fl-wrap {
+  flex-wrap: wrap !important;
 }
 
 /*
@@ -85,4 +89,21 @@
   border-radius: 10px;
   color: var(--white);
   background-color: var(--accent2);
+}
+.column-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem;
+  margin: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  align-content: center;
+  justify-content: flex-end;
+  background-color: #3a4f50;
+  border-radius: 5px;
+}
+.column-block >*{
+  color: white;
 }

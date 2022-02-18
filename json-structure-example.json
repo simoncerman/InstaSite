@@ -1,52 +1,84 @@
 {
-    "partName": "Header",
-    "category": "Main",
     "partData": {
         "objects": [
             {
-                "tag": "header",
-                "class": "flex f-width flex-space-between background-gray",
+                "tag": "",
+                "class": "",
+                "componentName": "nn",
                 "content": [
                     {
-                        "tag": "img",
-                        "class": "logo",
-                        "img-location": "local",
-                        "src": "logo.png",
-                        "alt": "logo"
-                    },
-                    {
                         "tag": "div",
-                        "class": "headerMenu",
+                        "componentName": "Block",
+                        "class": "flex full-width center fl-wrap",
                         "content": [
                             {
-                                "tag": "a",
-                                "class": "menuLink",
-                                "href": "/home",
-                                "text": "Home"
+                                "tag": "div",
+                                "componentName": "Service",
+                                "class": "column-block",
+                                "content": [
+                                    {
+                                        "componentName": "SpecialHTML",
+                                        "special-html": "<i class=`fa-solid fa-alicorn`></i>"
+                                    },
+                                    {
+                                        "tag": "h1",
+                                        "componentName": "Heading",
+                                        "class": "",
+                                        "text": "WebDev"
+                                    },
+                                    {
+                                        "tag": "p",
+                                        "componentName": "Paragraf",
+                                        "class": "",
+                                        "text": "Best in country"
+                                    }
+                                ]
                             },
                             {
-                                "tag": "a",
-                                "class": "menuLink",
-                                "href": "/about",
-                                "text": "About"
+                                "tag": "div",
+                                "componentName": "Service",
+                                "class": "column-block",
+                                "content": [
+                                    {
+                                        "componentName": "SpecialHTML",
+                                        "special-html": "<i class=`fas fa-atom`></i>"
+                                    },
+                                    {
+                                        "tag": "h1",
+                                        "componentName": "Heading",
+                                        "class": "",
+                                        "text": "Networking"
+                                    },
+                                    {
+                                        "tag": "p",
+                                        "componentName": "Paragraf",
+                                        "class": "",
+                                        "text": "Best in world"
+                                    }
+                                ]
                             },
                             {
-                                "tag": "a",
-                                "class": "menuLink",
-                                "href": "/contact",
-                                "text": "Contact"
-                            }
-                        ]
-                    },
-                    {
-                        "tag": "div",
-                        "class": "headerEnd",
-                        "content": [
-                            {
-                                "tag": "a",
-                                "class": "headerEnd",
-                                "href": "/admin",
-                                "text": "Login"
+                                "tag": "div",
+                                "componentName": "Service",
+                                "class": "column-block",
+                                "content": [
+                                    {
+                                        "componentName": "SpecialHTML",
+                                        "special-html": "<i class=`fas fa-atom`></i>"
+                                    },
+                                    {
+                                        "tag": "h1",
+                                        "componentName": "Heading",
+                                        "class": "",
+                                        "text": "SoftwareDev"
+                                    },
+                                    {
+                                        "tag": "p",
+                                        "componentName": "Paragraf",
+                                        "class": "",
+                                        "text": "We are not gut"
+                                    }
+                                ]
                             }
                         ]
                     }

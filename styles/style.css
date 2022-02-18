@@ -265,6 +265,7 @@ shit {
   color: white;
   background-color: var(--black);
   display: flex;
+  flex-wrap: wrap;
 }
 .class-list-category {
   margin: 1rem;

@@ -32,7 +32,7 @@ class JsonAccess
         $elemnts = array(
             array(
                 "tag" => "div",
-                "componentName" => "Img+Text",
+                "componentName" => "About",
                 "class" => "flex justify-center margin-small width-seven-five margin-left-auto margin-right-auto",
                 "content" => array(
                     array(
@@ -130,7 +130,7 @@ class JsonAccess
             array(
                 "tag" => "div",
                 "componentName" => "Service",
-                "class" => "",
+                "class" => "column-block",
                 "content" => array(
                     array(
                         "componentName" => "SpecialHTML",
@@ -173,7 +173,7 @@ class JsonAccess
             ),
             array(
                 "tag" => "p",
-                "componentName" => "Paragraf",
+                "componentName" => "Paragraph",
                 "class" => "",
                 "text" => "paragraf-text"
             ),

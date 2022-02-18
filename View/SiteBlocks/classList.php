@@ -12,6 +12,7 @@
         <h4>Flex styles</h4>
         <p>.flex => display: flex</p>
         <p>.space-between</p>
+        <p>.fl-wrap</p>
     </div>
     <div class="class-list-category">
         <h4>Margin-Padding</h4>
@@ -30,6 +31,7 @@
         <p>.disable-textdecorations</p>
         <p>.disable-child-textdecorations</p>
         <p>.button</p>
+        <p>.column-block</p>
     </div>
 
 </div>

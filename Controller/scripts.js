@@ -340,7 +340,7 @@ function ModeSwitchAddComponent(path) {
     window.location.href = `${full_href}&mode=add`;
   }
   window.location.href =
-    window.location.href.split("&")[0] + "&mode=add" + "&path=" + path;
+    window.location.href.split("&")[0] +"&siteName="+GetSpecificParam("siteName") + "&mode=add" + "&path=" + path;
 }
 function ModeSwitchEditComponent(path) {
   let full_href = window.location.href;
@@ -348,7 +348,7 @@ function ModeSwitchEditComponent(path) {
     window.location.href = `${full_href}&mode=edit`;
   }
   window.location.href =
-    window.location.href.split("&")[0] + "&mode=edit" + "&path=" + path;
+    window.location.href.split("&")[0]+"&siteName="+GetSpecificParam("siteName") + "&mode=edit" + "&path=" + path;
 }
 function ModeSwitchRemoveComponent(path) {
   let type = "ComponentHandling";
