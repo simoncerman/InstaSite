@@ -295,7 +295,7 @@ class JsonAccess
             "partData": {
                 "objects": [
                     {
-                        "tag": "",
+                        "tag": "div",
                         "class": "",
                         "componentName": "' . $partName . '",
                         "content": [
