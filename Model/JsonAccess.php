@@ -284,7 +284,7 @@ class JsonAccess
 
         $usedStylesArray = [];
         $usedStyles = str_replace(" ", "", $usedStyles);
-        $splited = (explode(",", $usedStyles));
+        $splited = (explode(";", $usedStyles));
         for ($i = 0; $i < count($splited); $i++) {
             $selectorAndParam = explode(":", $splited[$i]);
             $usedStylesArray[$selectorAndParam[0]] = $selectorAndParam[1];

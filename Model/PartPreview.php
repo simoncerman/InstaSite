@@ -60,7 +60,7 @@ class PartPreview extends JsonAccess
             return;
         }
 ?>
-        <<?= (!empty($data["tag"])) ? $data["tag"] : "" ?> <?= (!empty($data["class"])) ? "class=" . '"' . "{$data['class']}" . '"' : "" ?> <?= (!empty($data["src"])) ? $this->ScrHandler($data) : "" ?> <?= (!empty($data["alt"])) ? "alt={$data['alt']}" : "" ?> <?= (!empty($data["href"])) ? "alt={$data['href']}" : "" ?>>
+        <<?= (!empty($data["tag"])) ? $data["tag"] : "" ?> <?= (!empty($data["class"])) ? "class=" . '"' . "{$data['class']}" . '"' : "" ?> <?= (!empty($data["src"])) ? $this->ScrHandler($data) : "" ?> <?= (!empty($data["alt"])) ? "alt={$data['alt']}" : "" ?> <?= (!empty($data["href"])) ? "alt={$data['href']}" : "" ?> <?= (!empty($data["inline-styles"])) ? " style=" . "'" . $data['inline-styles'] . ";'" : "" ?>>
 
             <?= (!empty($data["text"])) ? $data["text"] : "" ?>
 

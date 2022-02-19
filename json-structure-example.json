@@ -2,81 +2,45 @@
     "partData": {
         "objects": [
             {
-                "tag": "",
+                "tag": "div",
                 "class": "",
-                "componentName": "nn",
+                "componentName": "About",
                 "content": [
                     {
                         "tag": "div",
-                        "componentName": "Block",
-                        "class": "flex full-width center fl-wrap",
+                        "componentName": "About",
+                        "class": "flex justify-center margin-small width-seven-five margin-left-auto margin-right-auto",
+                        "inline-styles": "display:flex",
                         "content": [
                             {
                                 "tag": "div",
-                                "componentName": "Service",
-                                "class": "column-block",
+                                "componentName": "Block",
+                                "class": "width-half",
+                                "inline-styles": "",
                                 "content": [
                                     {
-                                        "componentName": "SpecialHTML",
-                                        "special-html": "<i class=`fa-solid fa-alicorn`></i>"
-                                    },
-                                    {
-                                        "tag": "h1",
-                                        "componentName": "Heading",
-                                        "class": "",
-                                        "text": "WebDev"
-                                    },
-                                    {
-                                        "tag": "p",
-                                        "componentName": "Paragraf",
-                                        "class": "",
-                                        "text": "Best in country"
+                                        "tag": "img",
+                                        "componentName": "Image",
+                                        "class": "float-right margin-small",
+                                        "inline-styles": "",
+                                        "img-location": "local",
+                                        "src": "random_person.jpg",
+                                        "alt": ""
                                     }
                                 ]
                             },
                             {
                                 "tag": "div",
-                                "componentName": "Service",
-                                "class": "column-block",
+                                "componentName": "Block",
+                                "class": "width-half margin-small",
+                                "inline-styles": "",
                                 "content": [
-                                    {
-                                        "componentName": "SpecialHTML",
-                                        "special-html": "<i class=`fas fa-atom`></i>"
-                                    },
-                                    {
-                                        "tag": "h1",
-                                        "componentName": "Heading",
-                                        "class": "",
-                                        "text": "Networking"
-                                    },
                                     {
                                         "tag": "p",
                                         "componentName": "Paragraf",
                                         "class": "",
-                                        "text": "Best in world"
-                                    }
-                                ]
-                            },
-                            {
-                                "tag": "div",
-                                "componentName": "Service",
-                                "class": "column-block",
-                                "content": [
-                                    {
-                                        "componentName": "SpecialHTML",
-                                        "special-html": "<i class=`fas fa-atom`></i>"
-                                    },
-                                    {
-                                        "tag": "h1",
-                                        "componentName": "Heading",
-                                        "class": "",
-                                        "text": "SoftwareDev"
-                                    },
-                                    {
-                                        "tag": "p",
-                                        "componentName": "Paragraf",
-                                        "class": "",
-                                        "text": "We are not gut"
+                                        "inline-styles": "",
+                                        "text": "Im your mother! Im your dad! Im everything in your life.<br>  Im like play of chess <br> If you want i can be your sugar daddy for shure. Just you need to want to play chess every night!"
                                     }
                                 ]
                             }
