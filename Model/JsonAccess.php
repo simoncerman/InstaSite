@@ -34,16 +34,19 @@ class JsonAccess
                 "tag" => "div",
                 "componentName" => "About",
                 "class" => "flex justify-center margin-small width-seven-five margin-left-auto margin-right-auto",
+                "inline-styles" => "",
                 "content" => array(
                     array(
                         "tag" => "div",
                         "componentName" => "Block",
                         "class" => "width-half",
+                        "inline-styles" => "",
                         "content" => array(
                             array(
                                 "tag" => "img",
                                 "componentName" => "Image",
                                 "class" => "float-right margin-small",
+                                "inline-styles" => "",
                                 "img-location" => "local",
                                 "src" => "random_person.jpg",
                                 "alt" => ""
@@ -54,11 +57,13 @@ class JsonAccess
                         "tag" => "div",
                         "componentName" => "Block",
                         "class" => "width-half margin-small",
+                        "inline-styles" => "",
                         "content" => array(
                             array(
                                 "tag" => "p",
                                 "componentName" => "Paragraf",
                                 "class" => "",
+                                "inline-styles" => "",
                                 "text" => "Im your mother! Im your dad! Im everything in your life.<br>  Im like play of chess <br> If you want i can be your sugar daddy for shure. Just you need to want to play chess every night!"
                             ),
                         )
@@ -69,21 +74,25 @@ class JsonAccess
                 "tag" => "div",
                 "componentName" => "Header",
                 "class" => "flex space-between",
+                "inline-styles" => "",
                 "content" => array(
                     array(
                         "tag" => "div",
                         "componentName" => "Block",
                         "class" => "",
+                        "inline-styles" => "",
                         "content" => array(
                             array(
                                 "tag" => "div",
                                 "componentName" => "Block",
                                 "class" => "",
+                                "inline-styles" => "",
                                 "content" => array(
                                     array(
                                         "tag" => "h1",
                                         "componentName" => "Heading",
                                         "class" => "",
+                                        "inline-styles" => "",
                                         "text" => "Logo"
                                     ),
                                 )
@@ -94,11 +103,13 @@ class JsonAccess
                         "tag" => "div",
                         "componentName" => "Block",
                         "class" => "margin-child-small disable-child-textdecorations flex",
+                        "inline-styles" => "",
                         "content" => array(
                             array(
                                 "tag" => "a",
                                 "componentName" => "Link",
                                 "class" => "",
+                                "inline-styles" => "",
                                 "text" => "Link",
                                 "href" => "Empty"
                             ),
@@ -106,6 +117,7 @@ class JsonAccess
                                 "tag" => "a",
                                 "componentName" => "Link",
                                 "class" => "",
+                                "inline-styles" => "",
                                 "text" => "Link",
                                 "href" => "Empty"
                             ),
@@ -113,6 +125,7 @@ class JsonAccess
                                 "tag" => "a",
                                 "componentName" => "Link",
                                 "class" => "",
+                                "inline-styles" => "",
                                 "text" => "Link",
                                 "href" => "Empty"
                             )
@@ -122,6 +135,7 @@ class JsonAccess
                         "tag" => "a",
                         "componentName" => "Link",
                         "class" => "button",
+                        "inline-styles" => "",
                         "text" => "Contact",
                         "href" => "Empty"
                     )
@@ -131,6 +145,7 @@ class JsonAccess
                 "tag" => "div",
                 "componentName" => "Service",
                 "class" => "column-block",
+                "inline-styles" => "",
                 "content" => array(
                     array(
                         "componentName" => "SpecialHTML",
@@ -140,12 +155,14 @@ class JsonAccess
                         "tag" => "h1",
                         "componentName" => "Heading",
                         "class" => "",
+                        "inline-styles" => "",
                         "text" => "HeadingText"
                     ),
                     array(
                         "tag" => "p",
                         "componentName" => "Paragraf",
                         "class" => "",
+                        "inline-styles" => "",
                         "text" => "paragraf-text"
                     ),
 
@@ -155,12 +172,14 @@ class JsonAccess
                 "tag" => "div",
                 "componentName" => "Block",
                 "class" => "",
+                "inline-styles" => "",
                 "content" => array()
             ),
             array(
                 "tag" => "img",
                 "componentName" => "Image",
                 "class" => "",
+                "inline-styles" => "",
                 "img-location" => "local",
                 "src" => "",
                 "alt" => ""
@@ -169,18 +188,21 @@ class JsonAccess
                 "tag" => "h1",
                 "componentName" => "Heading",
                 "class" => "",
+                "inline-styles" => "",
                 "text" => "HeadingText"
             ),
             array(
                 "tag" => "p",
                 "componentName" => "Paragraph",
                 "class" => "",
+                "inline-styles" => "",
                 "text" => "paragraf-text"
             ),
             array(
                 "tag" => "a",
                 "componentName" => "Link",
                 "class" => "",
+                "inline-styles" => "",
                 "text" => "Link",
                 "href" => "Empty"
             )
@@ -239,18 +261,72 @@ class JsonAccess
             </div>
             <?php
             foreach ($parsed as $key => $value) {
-                $this->EditLine($key, $value);
+                if ($key != "inline-styles" && $key != "content")
+                    $this->EditLine($key, $value);
             } ?>
+            <!--This is place for inline styles editing-->
+            <div class="editable-inline-styles">
+                <h2>Inline style</h2>
+                <?= $this->GetInlineStyleOptionsForPart($parsed["inline-styles"]) ?>
+            </div>
             <div class="editable-update-data">
                 <button class="btn-new" onclick='UpdateData(this,"<?= $path ?>")'>Update Data</button>
-
             </div>
         </div>
-    <?php
+        <?php
+    }
+    /**
+     * @param string $usedStyles is string in what are all just used inline styles
+     */
+    function GetInlineStyleOptionsForPart($usedStyles)
+    {
+        //Convert used styles to array of truhly used styles
+
+        $usedStylesArray = [];
+        $usedStyles = str_replace(" ", "", $usedStyles);
+        $splited = (explode(",", $usedStyles));
+        for ($i = 0; $i < count($splited); $i++) {
+            $selectorAndParam = explode(":", $splited[$i]);
+            $usedStylesArray[$selectorAndParam[0]] = $selectorAndParam[1];
+        }
+        array_values($usedStylesArray);
+
+        $possibleStyles = $this->GetPossibleInlineStyles();
+        $styleTypes = array_keys($possibleStyles);
+        for ($i = 0; $i < count($possibleStyles); $i++) {
+        ?>
+            <div class="select-style">
+                <?= $styleTypes[$i] ?>
+                <select name="<?= $styleTypes[$i] ?>">
+                    <?php
+                    for ($y = 0; $y < count($possibleStyles[$styleTypes[$i]]); $y++) {
+                        if ($y == 0) {
+                    ?>
+                            <option value="empty"></option>
+                        <?php
+                        }
+                        $selected = $possibleStyles[$styleTypes[$i]][$y] == $usedStylesArray[$styleTypes[$i]];
+                        ?>
+                        <option value="" <?= ($selected) ? "selected" : "" ?>><?= $possibleStyles[$styleTypes[$i]][$y] ?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+
+            </div>
+        <?php
+        }
+    }
+    function GetPossibleInlineStyles()
+    {
+        return array(
+            "display" => ["flex", "block", "line"],
+            "float" => ["left", "right"]
+        );
     }
     function EditLine($tag, $data)
     {
-    ?>
+        ?>
         <div class="editable">
             <p><?= $tag ?></p>
             <input type="text" name="" id="" value="<?= $data ?>">
