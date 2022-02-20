@@ -305,6 +305,9 @@ function AddComponent(button, path) {
   });
 }
 function UpdateData(button, path) {
+  /**
+   * Working for all normal data (tag,componentName.. etc.)
+   */
   let allData =
     button.parentElement.parentElement.getElementsByClassName("editable");
   let jsonData = [];
@@ -314,7 +317,24 @@ function UpdateData(button, path) {
     row = { parameter: parameter, value: value };
     jsonData.push(row);
   }
+  /**
+   * Working for inline style data
+   */
+  inline_styles = "";
+  let allInlineHolders = document.getElementsByClassName("select-style");
+  for (let i = 0; i < allInlineHolders.length; i++) {
+    const element = allInlineHolders[i];
+    let name = element.getElementsByTagName("select")[0].name;
+    let value = element.getElementsByTagName("select")[0].value;
+    if (value != "empty") {
+      inline_styles += name + ":" + value + ";";
+    }
+  }
+  inlineStylesRow = { parameter: "inline-styles", value: inline_styles };
+  jsonData.push(inlineStylesRow);
+
   let data = JSON.stringify(jsonData);
+
   let type = "ComponentHandling";
   let subtype = "Edit";
   let partName = document.getElementById("partName").innerHTML;
@@ -340,7 +360,12 @@ function ModeSwitchAddComponent(path) {
     window.location.href = `${full_href}&mode=add`;
   }
   window.location.href =
-    window.location.href.split("&")[0] +"&siteName="+GetSpecificParam("siteName") + "&mode=add" + "&path=" + path;
+    window.location.href.split("&")[0] +
+    "&siteName=" +
+    GetSpecificParam("siteName") +
+    "&mode=add" +
+    "&path=" +
+    path;
 }
 function ModeSwitchEditComponent(path) {
   let full_href = window.location.href;
@@ -348,7 +373,12 @@ function ModeSwitchEditComponent(path) {
     window.location.href = `${full_href}&mode=edit`;
   }
   window.location.href =
-    window.location.href.split("&")[0]+"&siteName="+GetSpecificParam("siteName") + "&mode=edit" + "&path=" + path;
+    window.location.href.split("&")[0] +
+    "&siteName=" +
+    GetSpecificParam("siteName") +
+    "&mode=edit" +
+    "&path=" +
+    path;
 }
 function ModeSwitchRemoveComponent(path) {
   let type = "ComponentHandling";

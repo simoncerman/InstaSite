@@ -307,7 +307,7 @@ class JsonAccess
                         }
                         $selected = $possibleStyles[$styleTypes[$i]][$y] == $usedStylesArray[$styleTypes[$i]];
                         ?>
-                        <option value="" <?= ($selected) ? "selected" : "" ?>><?= $possibleStyles[$styleTypes[$i]][$y] ?></option>
+                        <option value="<?= $possibleStyles[$styleTypes[$i]][$y] ?>" <?= ($selected) ? "selected" : "" ?>><?= $possibleStyles[$styleTypes[$i]][$y] ?></option>
                     <?php
                     }
                     ?>
