@@ -28,6 +28,8 @@
   position: relative;
   width: 100%;
   margin: 15px;
+  display: flex;
+  flex-direction: column;
 }
 .small-wrap > h2 {
   margin-top: 1em;
@@ -50,9 +52,6 @@
   height: 5em;
   background-color: #93c2bc;
   justify-content: space-between;
-}
-shit {
-  color: red;
 }
 .btn-small {
   cursor: pointer;
@@ -279,4 +278,8 @@ shit {
 }
 .editable-inline-styles > * {
   margin: 5px;
+}
+.select-style {
+  display: flex;
+  flex-direction: column;
 }

@@ -322,9 +322,11 @@ class JsonAccess
         return array(
             "display" => ["flex", "block", "line", "none"],
             "float" => ["left", "right"],
-            "color" => ["black", "red", "yellow", "blue"],
+            "background-color" => ["white", "black", "yellow", "blue", "gray"],
+            "color" => ["white", "black", "yellow", "blue", "gray"],
             "margin" => ["10px", "20px", "30px"],
-
+            "justify-content" => ["center", "flex-start", "flex-end", "space-around", "space-between", "space-evenly"],
+            "align-items" => ["center", "flex-start", "flex-end", "stretch", "baseline"]
         );
     }
     function EditLine($tag, $data)
