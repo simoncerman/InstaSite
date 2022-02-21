@@ -304,12 +304,11 @@ function AddComponent(button, path) {
     },
   });
 }
-function UpdateData(button, path) {
+function UpdateData(path) {
   /**
    * Working for all normal data (tag,componentName.. etc.)
    */
-  let allData =
-    button.parentElement.parentElement.getElementsByClassName("editable");
+  let allData = document.getElementsByClassName("editable");
   let jsonData = [];
   for (let index = 0; index < allData.length; index++) {
     parameter = allData[index].getElementsByTagName("p")[0].innerHTML;

@@ -265,12 +265,12 @@ class JsonAccess
                     $this->EditLine($key, $value);
             } ?>
             <!--This is place for inline styles editing-->
+            <h2>Inline style</h2>
             <div class="editable-inline-styles">
-                <h2>Inline style</h2>
-                <?= $this->GetInlineStyleOptionsForPart($parsed["inline-styles"]) ?>
+                <?= $this->GetInlineStyleOptionsForPart($parsed["inline-styles"], $path) ?>
             </div>
             <div class="editable-update-data">
-                <button class="btn-new" onclick='UpdateData(this,"<?= $path ?>")'>Update Data</button>
+                <button class="btn-new" onclick='UpdateData("<?= $path ?>")'>Update Data</button>
             </div>
         </div>
         <?php
@@ -278,7 +278,7 @@ class JsonAccess
     /**
      * @param string $usedStyles is string in what are all just used inline styles
      */
-    function GetInlineStyleOptionsForPart($usedStyles)
+    function GetInlineStyleOptionsForPart($usedStyles, $path)
     {
         //Convert used styles to array of truhly used styles
 
@@ -297,7 +297,7 @@ class JsonAccess
         ?>
             <div class="select-style">
                 <?= $styleTypes[$i] ?>
-                <select name="<?= $styleTypes[$i] ?>">
+                <select onchange='UpdateData("<?= $path ?>")' name="<?= $styleTypes[$i] ?>">
                     <?php
                     for ($y = 0; $y < count($possibleStyles[$styleTypes[$i]]); $y++) {
                         if ($y == 0) {
@@ -320,8 +320,11 @@ class JsonAccess
     function GetPossibleInlineStyles()
     {
         return array(
-            "display" => ["flex", "block", "line"],
-            "float" => ["left", "right"]
+            "display" => ["flex", "block", "line", "none"],
+            "float" => ["left", "right"],
+            "color" => ["black", "red", "yellow", "blue"],
+            "margin" => ["10px", "20px", "30px"],
+
         );
     }
     function EditLine($tag, $data)

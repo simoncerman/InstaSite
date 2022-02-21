@@ -270,3 +270,13 @@ shit {
 .class-list-category {
   margin: 1rem;
 }
+.editable-inline-styles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between;
+  align-items: flex-end;
+}
+.editable-inline-styles > * {
+  margin: 5px;
+}
