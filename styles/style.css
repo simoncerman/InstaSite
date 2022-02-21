@@ -197,8 +197,13 @@
   justify-content: space-between;
   border-bottom: 1px solid black;
 }
+.table-block-info-controls {
+  display: flex;
+  align-items: center;
+}
 .table-block-info-controls .fas {
   color: var(--black);
+  margin: 5px;
 }
 .components {
   width: 100%;

@@ -118,4 +118,7 @@ if ($_POST["type"] == "ComponentHandling") {
        if ($_POST["subtype"] == "Add") {
               $ComponentsHandler->AddComponent($_POST["path"], $_POST["componentName"], $_POST["partName"]);
        }
+       if ($_POST["subtype"] == "Duplicate") {
+              $ComponentsHandler->DuplicateComponent($_POST["path"], $_POST["partName"]);
+       }
 }

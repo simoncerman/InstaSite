@@ -398,6 +398,25 @@ function ModeSwitchRemoveComponent(path) {
     },
   });
 }
+function ModeSwitchDuplicateComponent(path) {
+  let type = "ComponentHandling";
+  let subtype = "Duplicate";
+  let partName = document.getElementById("partName").innerHTML;
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    data: {
+      type: type,
+      subtype: subtype,
+      path: path,
+      partName: partName,
+    },
+    success: (res) => {
+      console.log(res);
+      window.location.href = window.location.href.split("&")[0];
+    },
+  });
+}
 
 /**
  * @returns all params in url

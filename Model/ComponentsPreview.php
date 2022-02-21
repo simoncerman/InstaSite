@@ -20,6 +20,7 @@ class ComponentsPreview extends JsonAccess
                 <p><?= ">" . $object["tag"] . "<" ?></p>
                 <p><?= $object["componentName"] ?></p>
                 <div class="table-block-info-controls">
+                    <i onclick='ModeSwitchDuplicateComponent("<?= $path ?>")' class="fas fa-clone"></i>
                     <i onclick='ModeSwitchAddComponent("<?= $path ?>")' class="fas fa-plus"></i>
                     <i onclick='ModeSwitchRemoveComponent("<?= $path ?>")' class="fas fa-minus"></i>
                     <i onclick='ModeSwitchEditComponent("<?= $path ?>")' class="fas fa-cog"></i>

@@ -93,5 +93,28 @@ class ComponentsHandler extends JsonAccess
             return $array;
         }
     }
+    function DuplicateComponent($path, $partName)
+    {
+        $json    = $this->LoadJSON($partName);
+        $parsed  = json_decode($json, true);
+        $splited = explode(",", $path);
+        $new     = $this->DuplicateComponentRecursion($splited, $parsed);
+        $parsed = json_encode($new);
+        $this->UpdateJSON($parsed, $partName);
+    }
+    function DuplicateComponentRecursion($path, $array)
+    {
+        if (count($path) == 1) {
+            $retArray = $array;
+            array_push($retArray, $array[$path[0]]);
+            return $retArray;
+        }
+        if (count($path) > 1) {
+            $nexthop = $path[0];
+            array_shift($path);
+            $array[$nexthop] = $this->DuplicateComponentRecursion($path, $array[$nexthop]);
+            return $array;
+        }
+    }
 }
 $ComponentsHandler = new ComponentsHandler();
