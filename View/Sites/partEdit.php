@@ -50,7 +50,13 @@
                                 echo ($JsonAccess->EditComponentUI($_GET["path"], $_GET["partName"]));
                             }
                             if ($_GET["mode"] == "add") {
-                                echo ($JsonAccess->AddComponentUI($_GET["path"]));
+                        ?>
+                                <select onchange='ComponentTypeSelector("<?= $_GET["path"] ?>")' name="componentType" id="componentSelector">
+                                    <option value="basic <?= ($_GET["componentType"] == "basic") ? "selected" : "" ?>">Basic Components</option>
+                                    <option value="full" <?= ($_GET["componentType"] == "full") ? "selected" : "" ?>>Full Components</option>
+                                </select>
+                        <?php
+                                echo ($JsonAccess->AddComponentUI($_GET["path"], $_GET["componentType"]));
                             }
                         }
                         ?>
@@ -58,6 +64,11 @@
                 </div>
             </div>
             <?php include dirname(getcwd(), 2) . '/View/SiteBlocks/classList.php'; ?>
+            <!-- Show code => there is problem with formating -->
+            <p>code:</p>
+            <code>
+                <xmp><?= $PreviewHandler->LoadPreview($_GET["partName"]) ?></xmp>
+            </code>
         </div>
     </div>
 </body>

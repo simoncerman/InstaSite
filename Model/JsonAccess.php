@@ -5,209 +5,7 @@ class JsonAccess
     {
         require_once __DIR__ . '/DbAccess.php';;
         $this->DbAccess = new DbAccess();
-    }
-    /**
-     * Simple function with dictionary of tag to component name values
-     * TODO: Automate proces from GetAvailableComponents()
-     * @param string $tag is just tak name
-     * @return string Name of component
-     */
-    function GetComponentNameByTag($tag)
-    {
-        $tagToComponentName = array(
-            "div"   => "Block",
-            "a"     => "Link",
-            "img"   => "Image",
-            "header" => "Header",
-        );
-        return $tagToComponentName[$tag];
-    }
-    /**
-     * Return table of all avaliable components
-     * TODO: In future you will have basic components and special
-     * @return array array of components
-     */
-    function GetAvailableComponents()
-    {
-        $elemnts = array(
-            array(
-                "tag" => "div",
-                "componentName" => "About",
-                "class" => "flex justify-center margin-small width-seven-five margin-left-auto margin-right-auto",
-                "inline-styles" => "",
-                "content" => array(
-                    array(
-                        "tag" => "div",
-                        "componentName" => "Block",
-                        "class" => "width-half",
-                        "inline-styles" => "",
-                        "content" => array(
-                            array(
-                                "tag" => "img",
-                                "componentName" => "Image",
-                                "class" => "float-right margin-small",
-                                "inline-styles" => "",
-                                "img-location" => "local",
-                                "src" => "random_person.jpg",
-                                "alt" => ""
-                            ),
-                        )
-                    ),
-                    array(
-                        "tag" => "div",
-                        "componentName" => "Block",
-                        "class" => "width-half margin-small",
-                        "inline-styles" => "",
-                        "content" => array(
-                            array(
-                                "tag" => "p",
-                                "componentName" => "Paragraf",
-                                "class" => "",
-                                "inline-styles" => "",
-                                "text" => "Im your mother! Im your dad! Im everything in your life.<br>  Im like play of chess <br> If you want i can be your sugar daddy for shure. Just you need to want to play chess every night!"
-                            ),
-                        )
-                    ),
-                )
-            ),
-            array(
-                "tag" => "div",
-                "componentName" => "Header",
-                "class" => "flex space-between",
-                "inline-styles" => "",
-                "content" => array(
-                    array(
-                        "tag" => "div",
-                        "componentName" => "Block",
-                        "class" => "",
-                        "inline-styles" => "",
-                        "content" => array(
-                            array(
-                                "tag" => "div",
-                                "componentName" => "Block",
-                                "class" => "",
-                                "inline-styles" => "",
-                                "content" => array(
-                                    array(
-                                        "tag" => "h1",
-                                        "componentName" => "Heading",
-                                        "class" => "",
-                                        "inline-styles" => "",
-                                        "text" => "Logo"
-                                    ),
-                                )
-                            )
-                        )
-                    ),
-                    array(
-                        "tag" => "div",
-                        "componentName" => "Block",
-                        "class" => "margin-child-small disable-child-textdecorations flex",
-                        "inline-styles" => "",
-                        "content" => array(
-                            array(
-                                "tag" => "a",
-                                "componentName" => "Link",
-                                "class" => "",
-                                "inline-styles" => "",
-                                "text" => "Link",
-                                "href" => "Empty"
-                            ),
-                            array(
-                                "tag" => "a",
-                                "componentName" => "Link",
-                                "class" => "",
-                                "inline-styles" => "",
-                                "text" => "Link",
-                                "href" => "Empty"
-                            ),
-                            array(
-                                "tag" => "a",
-                                "componentName" => "Link",
-                                "class" => "",
-                                "inline-styles" => "",
-                                "text" => "Link",
-                                "href" => "Empty"
-                            )
-                        )
-                    ),
-                    array(
-                        "tag" => "a",
-                        "componentName" => "Link",
-                        "class" => "button",
-                        "inline-styles" => "",
-                        "text" => "Contact",
-                        "href" => "Empty"
-                    )
-                )
-            ),
-            array(
-                "tag" => "div",
-                "componentName" => "Service",
-                "class" => "column-block",
-                "inline-styles" => "",
-                "content" => array(
-                    array(
-                        "componentName" => "SpecialHTML",
-                        "special-html" => "<i class=`fas fa-atom`></i>",
-                    ),
-                    array(
-                        "tag" => "h1",
-                        "componentName" => "Heading",
-                        "class" => "",
-                        "inline-styles" => "",
-                        "text" => "HeadingText"
-                    ),
-                    array(
-                        "tag" => "p",
-                        "componentName" => "Paragraf",
-                        "class" => "",
-                        "inline-styles" => "",
-                        "text" => "paragraf-text"
-                    ),
-
-                )
-            ),
-            array(
-                "tag" => "div",
-                "componentName" => "Block",
-                "class" => "",
-                "inline-styles" => "",
-                "content" => array()
-            ),
-            array(
-                "tag" => "img",
-                "componentName" => "Image",
-                "class" => "",
-                "inline-styles" => "",
-                "img-location" => "local",
-                "src" => "",
-                "alt" => ""
-            ),
-            array(
-                "tag" => "h1",
-                "componentName" => "Heading",
-                "class" => "",
-                "inline-styles" => "",
-                "text" => "HeadingText"
-            ),
-            array(
-                "tag" => "p",
-                "componentName" => "Paragraph",
-                "class" => "",
-                "inline-styles" => "",
-                "text" => "paragraf-text"
-            ),
-            array(
-                "tag" => "a",
-                "componentName" => "Link",
-                "class" => "",
-                "inline-styles" => "",
-                "text" => "Link",
-                "href" => "Empty"
-            )
-        );
-        return $elemnts;
+        require_once __DIR__ . '/ComponentsList.php';;
     }
     /**
      * Will return full component or component blueprint
@@ -215,7 +13,8 @@ class JsonAccess
      */
     function getComponent($componentName)
     {
-        $components =  $this->GetAvailableComponents();
+        $componentList = new ComponentsList();
+        $components =  $componentList->GetAvailableComponents("all");
         for ($i = 0; $i < count($components); $i++) {
             if ($components[$i]["componentName"] == $componentName) {
                 return $components[$i];
@@ -226,10 +25,13 @@ class JsonAccess
      * Function will load adding window for adding new components when add mode is enabled
      * @param string specific path to place in JSON (for going back)
      */
-    function AddComponentUI($path)
+    function AddComponentUI($path, $componentType)
     {
-
-        $availableComponents = $this->GetAvailableComponents();
+        if (empty($componentType)) {
+            $componentType = "basic";
+        }
+        $componentList = new ComponentsList();
+        $availableComponents = $componentList->GetAvailableComponents($componentType);
 ?>
         <div class="available-components">
             <?php for ($i = 0; $i < count($availableComponents); $i++) {
@@ -257,7 +59,7 @@ class JsonAccess
     ?>
         <div class="editable-holder">
             <div class="editable-title">
-                <h2><?= $this->GetComponentNameByTag($parsed["tag"]) ?></h2>
+                <h2><?= $parsed["componentName"] ?></h2>
             </div>
             <?php
             foreach ($parsed as $key => $value) {

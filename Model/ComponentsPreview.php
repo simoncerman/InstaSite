@@ -12,7 +12,7 @@ class ComponentsPreview extends JsonAccess
     function RecursiveComponentsLoad($object, $path)
     {
         if ($object["componentName"] == "" || $object["componentName"] == null) {
-            $object["componentName"] = $this->GetComponentNameByTag($object["tag"]);
+            $object["componentName"] = $object["componentName"];
         }
 ?>
         <div class="table-block">

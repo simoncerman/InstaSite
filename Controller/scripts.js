@@ -281,6 +281,19 @@ function SavePartData() {
     },
   });
 }
+function ComponentTypeSelector(path) {
+  let selector = document.getElementById("componentSelector");
+  console.log(selector.value);
+  window.location.href =
+    window.location.href.split("&")[0] +
+    "&siteName=" +
+    GetSpecificParam("siteName") +
+    "&mode=add" +
+    "&path=" +
+    path +
+    "&componentType=" +
+    selector.value;
+}
 function AddComponent(button, path) {
   let type = "ComponentHandling";
   let subtype = "Add";

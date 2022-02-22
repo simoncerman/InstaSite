@@ -29,6 +29,28 @@ class PartPreview extends JsonAccess
         $partData = $parsed["partData"];
         $this->HTML_Convert($partData["objects"][0]);
     }
+
+    /**
+     * Recursive function which will convert data into html
+     * Will need to reconvert it to new template like version
+     */
+    function HTML_Convert($data)
+    {
+        if (!empty($data["special-html"])) {
+            echo $this->clean($data["special-html"]);
+            return;
+        }
+        echo ("
+        ");
+        echo ("<" . $this->StartTagHandler($data) . ">");
+        echo ((!empty($data["text"])) ? $data["text"] : "");
+        for ($i = 0; $i < count($data["content"]); $i++) {
+            $this->HTML_Convert($data["content"][$i]);
+        }
+        echo ("
+        ");
+        echo ("</" . $this->EndTagHandler($data) . ">");
+    }
     /**
      * Function created to handling scr (links to photos)
      */
@@ -49,29 +71,22 @@ class PartPreview extends JsonAccess
         }
         return $str;
     }
-    /**
-     * Recursive function which will convert data into html
-     * Will need to reconvert it to new template like version
-     */
-    function HTML_Convert($data)
+    function StartTagHandler($data)
     {
-        if (!empty($data["special-html"])) {
-            echo $this->clean($data["special-html"]);
-            return;
-        }
-?>
-        <<?= (!empty($data["tag"])) ? $data["tag"] : "" ?> <?= (!empty($data["class"])) ? "class=" . '"' . "{$data['class']}" . '"' : "" ?> <?= (!empty($data["src"])) ? $this->ScrHandler($data) : "" ?> <?= (!empty($data["alt"])) ? "alt={$data['alt']}" : "" ?> <?= (!empty($data["href"])) ? "alt={$data['href']}" : "" ?> <?= (!empty($data["inline-styles"])) ? " style=" . "'" . $data['inline-styles'] . ";'" : "" ?>>
-
-            <?= (!empty($data["text"])) ? $data["text"] : "" ?>
-
-            <?php
-            for ($i = 0; $i < count($data["content"]); $i++) {
-                $this->HTML_Convert($data["content"][$i]);
-            }
-            ?>
-
-        </<?= (!empty($data["tag"])) ? $data["tag"] : "" ?>>
-<?php
+        $tag = "";
+        $tag .= (!empty($data["tag"])) ? $data["tag"] : "";
+        $tag .= (!empty($data["class"])) ? " class=" . '"' . "{$data['class']}" . '"' : "";
+        $tag .= (!empty($data["src"])) ? $this->ScrHandler($data) : "";
+        $tag .= (!empty($data["alt"])) ? " alt={$data['alt']}" : "";
+        $tag .= (!empty($data["href"])) ? " href={$data['href']}" : "";
+        $tag .= (!empty($data["inline-styles"])) ? " style=" . "'" . $data['inline-styles'] . ";'" : "";
+        return $tag;
+    }
+    function EndTagHandler($data)
+    {
+        $tag = "";
+        $tag .= (!empty($data["tag"])) ? $data["tag"] : "";
+        return $tag;
     }
     function clean($string)
     {
