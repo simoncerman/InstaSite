@@ -116,5 +116,45 @@ class ComponentsHandler extends JsonAccess
             return $array;
         }
     }
+    /**
+     * @param string direction is "up"/"down" to move component inside of block or other elements 
+     */
+    function MoveComponent($path, $partName, $direction)
+    {
+        $json    = $this->LoadJSON($partName);
+        $parsed  = json_decode($json, true);
+        $splited = explode(",", $path);
+        $new     = $this->MoveComponentRecursion($splited, $parsed, $direction);
+        $parsed = json_encode($new);
+        $this->UpdateJSON($parsed, $partName);
+    }
+    function MoveComponentRecursion($path, $array, $direction)
+    {
+        if (count($path) == 1) {
+            if ($direction == "up") {
+                if ($path[0] != 0) {
+                    $moveDown = $array[$path[0] - 1];
+                    $array[$path[0] - 1] = $array[$path[0]];
+                    $array[$path[0]] = $moveDown;
+                    return $array;
+                }
+            }
+            if ($direction == "down") {
+                if ($path[0] != count($array) - 1) {
+                    $moveUp = $array[$path[0] + 1];
+                    $array[$path[0] + 1] = $array[$path[0]];
+                    $array[$path[0]] = $moveUp;
+                    return $array;
+                }
+            }
+            return $array;
+        }
+        if (count($path) > 1) {
+            $nexthop = $path[0];
+            array_shift($path);
+            $array[$nexthop] = $this->MoveComponentRecursion($path, $array[$nexthop], $direction);
+            return $array;
+        }
+    }
 }
 $ComponentsHandler = new ComponentsHandler();

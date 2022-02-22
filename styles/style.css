@@ -182,13 +182,13 @@
   margin-top: 1em;
   width: 100%;
   height: auto;
-  border: solid rgb(240, 120, 120) 2px;
   border-radius: 1em;
   padding: 0.5em;
+  border: 1px solid black;
 }
 .table-block:hover {
-  background-color: rgba(255, 30, 0, 0.26);
-  border-color: rgb(0, 0, 0);
+  background-color: rgba(255, 0, 0, 0.274);
+  border: 1px solid rgb(8, 8, 8);
 }
 .table-block-info {
   display: flex;

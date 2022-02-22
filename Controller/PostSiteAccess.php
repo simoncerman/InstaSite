@@ -121,4 +121,7 @@ if ($_POST["type"] == "ComponentHandling") {
        if ($_POST["subtype"] == "Duplicate") {
               $ComponentsHandler->DuplicateComponent($_POST["path"], $_POST["partName"]);
        }
+       if ($_POST["subtype"] == "MoveDirection") {
+              $ComponentsHandler->MoveComponent($_POST["path"], $_POST["partName"], $_POST["direction"]);
+       }
 }

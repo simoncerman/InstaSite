@@ -281,6 +281,27 @@ function SavePartData() {
     },
   });
 }
+function ModeSwitchMoveComponent(path, direction) {
+  let type = "ComponentHandling";
+  let subtype = "MoveDirection";
+  let partName = document.getElementById("partName").innerHTML;
+
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    data: {
+      type: type,
+      subtype: subtype,
+      path: path,
+      partName: partName,
+      direction: direction,
+    },
+    success: (res) => {
+      console.log(res);
+      document.location.reload();
+    },
+  });
+}
 function ComponentTypeSelector(path) {
   let selector = document.getElementById("componentSelector");
   console.log(selector.value);
