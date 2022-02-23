@@ -27,14 +27,14 @@ class PartPreview extends JsonAccess
         //parse data into Arrays and Dictionaries
         $parsed = json_decode($json, true);
         $partData = $parsed["partData"];
-        $this->HTML_Convert($partData["objects"][0]);
+        $this->HTML_Convert($partData["objects"][0], 0);
     }
 
     /**
      * Recursive function which will convert data into html
      * Will need to reconvert it to new template like version
      */
-    function HTML_Convert($data)
+    function HTML_Convert($data, $i)
     {
         if (!empty($data["special-html"])) {
             echo $this->clean($data["special-html"]);
@@ -42,14 +42,22 @@ class PartPreview extends JsonAccess
         }
         echo ("
         ");
+        $this->Spaces($i);
         echo ("<" . $this->StartTagHandler($data) . ">");
         echo ((!empty($data["text"])) ? $data["text"] : "");
-        for ($i = 0; $i < count($data["content"]); $i++) {
-            $this->HTML_Convert($data["content"][$i]);
+        for ($y = 0; $y < count($data["content"]); $y++) {
+            $this->HTML_Convert($data["content"][$y], $i + 1);
         }
         echo ("
         ");
+        $this->Spaces($i);
         echo ("</" . $this->EndTagHandler($data) . ">");
+    }
+    function Spaces($i)
+    {
+        for ($y = 0; $y < $i; $y++) {
+            echo ("       ");
+        }
     }
     /**
      * Function created to handling scr (links to photos)
