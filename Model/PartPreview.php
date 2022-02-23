@@ -107,7 +107,6 @@ class PartPreview extends JsonAccess
      */
     function RenderSite($siteName)
     {
-        echo ($siteName);
         $partsOnSite = $this->DbAccess->GetPartData($siteName);
         for ($i = 0; $i < count($partsOnSite); $i++) {
             $this->LoadPreview($partsOnSite[$i]["PartName"]);

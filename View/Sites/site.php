@@ -24,6 +24,10 @@ if ($adminLogged) {
 //Move to home site if site is not selected
 if (empty($_GET["siteName"])) {
     $homePage = $PreviewHandler->getHomepageName();
-    header("Location: " . $root . "/19ia04_cerman/View/Sites/site.php?siteName=" . $homePage);
+    if (!empty($homePage)) {
+        header("Location: " . $root . "/19ia04_cerman/View/Sites/site.php?siteName=" . $homePage);
+    } else {
+        header("Location: " . $root . "/19ia04_cerman/View/Sites/pageEdit.php");
+    }
 }
 $PreviewHandler->RenderSite($_GET["siteName"]);

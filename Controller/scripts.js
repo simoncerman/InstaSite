@@ -264,6 +264,7 @@ function MovePart(direction, button) {
     },
     success: (res) => {
       console.log(res);
+      window.location.reload();
     },
   });
 }
