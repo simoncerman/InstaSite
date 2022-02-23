@@ -100,13 +100,39 @@ if ($_POST["type"] == "NewPartInsertion") {
        }
        $partID = $DbAccess->getValueOfParam("parttable", "PartName", $partName, "id");
        $siteID = $DbAccess->getValueOfParam("sites", "SiteName", $siteName, "id");
-       $DbAccess->InsertData("partonsite", ["SiteID", "PartID", "PartEnabled"], [$siteID, $partID, 1]);
+       $lastPartPosition = $DbAccess->GetMaxOfParam("partonsite", "PartPosition", 'SiteID=' . $siteID);
+       $DbAccess->InsertData("partonsite", ["SiteID", "PartID", "PartEnabled", "PartPosition"], [$siteID, $partID, 1, $lastPartPosition + 1]);
 }
 if ($_POST["type"] == "UpdatingOnOffPart") {
        $partName     = $_POST["partName"];
        $condition    = "PartName=\"{$partName}\"";
        $setTo        = $_POST["setTo"];
        $DbAccess->updateData("parttable", "PartEnabled", $setTo, $condition);
+}
+if ($_POST["type"] == "MovePart") {
+       $partName     = $_POST["partName"];
+       $siteName     = $_POST["siteName"];
+       $direction    = $_POST["direction"];
+
+       $partID = $DbAccess->getValueOfParam("parttable", "PartName", $partName, "id");
+       $siteID = $DbAccess->getValueOfParam("sites", "SiteName", $siteName, "id");
+       $MaxPosition = $DbAccess->GetMaxOfParam("partonsite", "PartPosition", 'SiteID=' . $siteID);
+
+       $partPosition = $DbAccess->GetValueWithCondition("partonsite", "PartPosition", "SiteID = {$siteID} AND PartID = {$partID}")[0];
+       if ($direction == "up") {
+              if ($partPosition != 1) {
+                     $dpos = $partPosition - 1;
+                     $DbAccess->updateData("partonsite", "PartPosition", $partPosition, "PartPosition={$dpos}");
+                     $DbAccess->updateData("partonsite", "PartPosition", $partPosition - 1, "SiteID = {$siteID} AND PartID = {$partID}");
+              }
+       }
+       if ($direction == "down") {
+              if ($partPosition != $MaxPosition) {
+                     $upos = $partPosition + 1;
+                     $DbAccess->updateData("partonsite", "PartPosition", $partPosition, "PartPosition={$upos}");
+                     $DbAccess->updateData("partonsite", "PartPosition", $partPosition + 1, "SiteID = {$siteID} AND PartID = {$partID}");
+              }
+       }
 }
 if ($_POST["type"] == "ComponentHandling") {
        if ($_POST["subtype"] == "Remove") {

@@ -243,6 +243,31 @@ function partRemove(object) {
   });
 }
 /**
+ * This will move part up/down (Change PartPosition in PartOnSite)
+ * @param {string} direction
+ * @param {*} button
+ */
+function MovePart(direction, button) {
+  let partName =
+    button.parentElement.parentElement.getElementsByClassName("name")[0]
+      .innerHTML;
+  let siteName = document.getElementById("siteNameH2").innerHTML;
+  let type = "MovePart";
+  $.ajax({
+    type: "POST",
+    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    data: {
+      type: type,
+      partName: partName,
+      siteName: siteName,
+      direction: direction,
+    },
+    success: (res) => {
+      console.log(res);
+    },
+  });
+}
+/**
  * Specific function for disabling parts
  */
 function partOnOff(switcher) {

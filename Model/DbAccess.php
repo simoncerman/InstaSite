@@ -224,7 +224,7 @@ class DbAccess
         $sql = $this->pdoConn->prepare("SELECT * FROM partonsite
         INNER JOIN sites ON sites.id=partonsite.SiteID
         INNER JOIN parttable ON parttable.id=partonsite.PartID
-        WHERE sites.SiteName = " . '"' . "{$siteName}" . '"' . "
+        WHERE sites.SiteName = " . '"' . "{$siteName}" . '"' . " ORDER BY PartPosition ASC
         ");
         $sql->execute();
         $data = $sql->fetchAll();
@@ -245,6 +245,7 @@ class DbAccess
         }
         if ($condition != null) {
             $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
+            echo ("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
         }
         $sql->execute();
         $this->pdoConn->query($sql);
@@ -288,6 +289,32 @@ class DbAccess
     function getValueOfParam($tableName, $paramName, $paramValue, $returnParam)
     {
         $sql = $this->pdoConn->prepare("SELECT {$returnParam} FROM {$tableName} WHERE {$paramName}=" . '"' . "{$paramValue}" . '"' . ";");
+        $sql->execute();
+        $data = $sql->fetch();
+        return $data[0];
+    }
+    /**
+     * Function will return data from table by parameter, condition and tablename
+     * @param string $tableName Name of table grabing from
+     * @param string $parameter What you are grabing
+     * @param string|null $condition string -> condition|null -> not condition
+     */
+    function GetValueWithCondition($tableName, $parameter, $condition)
+    {
+        if ($condition == null)
+            $sql = $this->pdoConn->prepare("SELECT {$parameter} FROM {$tableName}");
+        else
+            $sql = $this->pdoConn->prepare("SELECT {$parameter} FROM {$tableName} WHERE {$condition}");
+        $sql->execute();
+        $data = $sql->fetch();
+        return $data;
+    }
+    /**
+     * Will find max value of parameter with condition
+     */
+    function GetMaxOfParam($tableName, $parameter, $condition)
+    {
+        $sql = $this->pdoConn->prepare("SELECT MAX({$parameter}) FROM {$tableName} WHERE {$condition}; ");
         $sql->execute();
         $data = $sql->fetch();
         return $data[0];

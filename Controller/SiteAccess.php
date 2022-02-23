@@ -128,6 +128,8 @@ class SiteAccess
                 <a href="<?= $partLink ?>"><i class="fas fa-cog"></i></a>
             </div>
             <div class="grid-right">
+                <i onclick="MovePart('up',this)" class="fas fa-angle-up"></i>
+                <i onclick="MovePart('down',this)" class="fas fa-angle-down"></i>
                 <button class="btn-new red" onclick="partRemove(this)">Remove</button>
                 <label class="switch">
                     <input onclick="partOnOff(this)" type="checkbox" <?= ($checkbox) ? "checked" : "" ?>>
