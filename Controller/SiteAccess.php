@@ -94,40 +94,25 @@ class SiteAccess
         return $data;
     }
     /**
-     * This will load active parts to table
+     * This will load parts from table
      * @param string $siteName Name of site with parts
+     * @param bool $active TRUE -> Is active | FALSE -> is disabled
      */
-    function LoadActiveParts($siteName)
+    function LoadParts($siteName, $active)
     {
         $data = $this->ExportPartsData($siteName);
         $parts = [];
         for ($i = 0; $i < count($data); $i++) {
             $partName = $data[$i]["PartName"];
-            if ($data[$i]["PartEnabled"] == 1) {
-                $lcHost = $_SERVER['HTTP_HOST'];
-                $fullLink = "http://" . $lcHost . "/19ia04_cerman/View/Sites/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
-                array_push($parts, $this->partsBlueprint($partName, true, $fullLink));
+            $lcHost = $_SERVER['HTTP_HOST'];
+            $fullLink = "http://" . $lcHost . "/19ia04_cerman/View/Sites/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
+            if ($data[$i]["PartEnabled"] == 1 && $active) {
+                $this->partsBlueprint($partName, $active, $fullLink);
+            }
+            if ($data[$i]["PartEnabled"] == 0 && !($active)) {
+                $this->partsBlueprint($partName, $active, $fullLink);
             }
         }
-        echo ($this->blockCompiler($parts));
-    }
-    /**
-     * This will load disabled parts to table
-     * @param string $siteName Name of site with parts
-     */
-    function LoadDisabledParts($siteName)
-    {
-        $data = $this->ExportPartsData($siteName);
-        $parts = [];
-        for ($i = 0; $i < count($data); $i++) {
-            $partName = $data[$i]["PartName"];
-            if ($data[$i]["PartEnabled"] == 0) {
-                $lcHost = $_SERVER['HTTP_HOST'];
-                $fullLink = "http://" . $lcHost . "/19ia04_cerman/View/Sites/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
-                array_push($parts, $this->partsBlueprint($partName, false, $fullLink));
-            }
-        }
-        echo ($this->blockCompiler($parts));
     }
     /**
      * Blueprint for showing parts on site

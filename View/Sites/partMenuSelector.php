@@ -27,11 +27,11 @@
             ?>
             <div class="grid-holder">
                 <p>enabled</p>
-                <?php echo ($siteAccess->LoadActiveParts($_GET["siteName"]));  ?>
+                <?php echo ($siteAccess->LoadParts($_GET["siteName"], true));  ?>
             </div>
             <div class="grid-holder">
                 <p>disabled</p>
-                <?php echo ($siteAccess->LoadDisabledParts($_GET["siteName"]));  ?>
+                <?php echo ($siteAccess->LoadParts($_GET["siteName"], false));  ?>
             </div>
             <div class="btn-fw-holder">
                 <button onclick="openDialogWindow('newPart')" class="btn-new">
