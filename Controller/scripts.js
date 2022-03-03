@@ -505,3 +505,32 @@ function GetSpecificParam(paramName) {
     }
   }
 }
+/**
+ * Function created to handling help/tips on page
+ */
+function helpHandler() {
+  let HelpElement = document.getElementById("help-holder");
+  HelpElement.style.bottom = "30px";
+  let progress = 0;
+  if (HelpElement != undefined) {
+    let helpProgress = document.getElementById("help-progress");
+    let frames = setInterval(() => {
+      helpProgress.style.width = progress + "%";
+      progress += 0.2;
+      if (progress > 120) {
+        clearInterval(frames);
+        helpProgress.style.visibility = "hidden";
+        actualIndex = document.getElementById("help-index").innerHTML;
+        helpLoadData(actualIndex);
+      }
+    }, 10);
+  }
+}
+/**
+ * Function for changing content of tips in time
+ * @param {int} actualIndex
+ */
+function helpLoadData(actualIndex) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST")
+}

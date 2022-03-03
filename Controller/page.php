@@ -12,15 +12,13 @@ $basicAccountCreated = $BackAccess->CheckMainAccount("accountinfo");
 $site_completed = true;
 $loadSite = true;
 
-$administratorMode = false; //! FOR TESTING ONLY!!!
+$administratorMode = false;
 
 //Check if basic data on DB are created
 if ($basicInfoCreated == false) {
     header("Location: " . $root . "/19ia04_cerman/View/Sites/basicInfoCreate.php");
 } else if ($basicAccountCreated == false) {
-    header("Location: " . $root . "/19ia04_cerman/pages/basicAccountCreate.php");
-} else if ($site_completed == false) {
-    header("Location: " . $root . "/19ia04_cerman/View/Sites/pageEdit.php");
+    header("Location: " . $root . "/19ia04_cerman/View/Sites/basicAccountCreate.php?preselected=creator");
 } else {
     header("Location: " . $root . "/19ia04_cerman/View/Sites/site.php");
 }

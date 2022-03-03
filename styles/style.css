@@ -303,3 +303,34 @@
   font-size: 1em;
   font-weight: 900;
 }
+.help-holder {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  min-width: 10rem;
+  max-width: 40rem;
+  bottom: -20rem;
+  transition: 1s;
+}
+.help {
+  display: flex;
+  position: relative;
+  background-color: var(--accent2);
+  color: white;
+  padding: 1em;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-direction: column;
+}
+.progress {
+  background-color: var(--accent);
+  position: absolute;
+  width: 0%;
+  height: 10px;
+  left: -1rem;
+  bottom: -2px;
+}
+#help-index {
+  right: 10px;
+  position: absolute;
+}
