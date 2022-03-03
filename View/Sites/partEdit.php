@@ -13,10 +13,10 @@
     <div class="full-outer">
         <?php include dirname(getcwd(), 2) . '/View/SiteBlocks/adminsSitebar.php'; ?>
         <div class="small-wrap">
-            <a href="http://vocko/19ia04_cerman/View/Sites/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
+            <a href="<?= "http://$_SERVER[HTTP_HOST]" ?>/View/Sites/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
             <div class="header">
                 <div class="back">
-                    <a href="http://vocko/19ia04_cerman/View/Sites/partMenuSelector.php?siteName=<?= $_GET["siteName"] ?>">
+                    <a href="<?= "http://$_SERVER[HTTP_HOST]" ?>/View/Sites/partMenuSelector.php?siteName=<?= $_GET["siteName"] ?>">
                         <i class="fas fa-angle-left"></i>
                     </a>
                 </div>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="editable-window">
                         <?php
-                        if ($_GET["mode"] == null || $_GET["path"] == null) {
+                        if (empty($_GET["mode"]) || empty($_GET["path"])) {
                             echo ("tap on element to edit/add");
                         } else {
                             if ($_GET["mode"] == "edit") {

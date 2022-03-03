@@ -9,9 +9,9 @@ class DbAccess
     private function CreateConn()
     {
         $servername = "localhost";
-        $username = "19ia04";
-        $password = "2424383398651425";
-        $dbname = "19ia04";
+        $username = "administrator";
+        $password = "Aa123456";
+        $dbname = "instasite";
         $pdo = new PDO('mysql:host=' . $servername . ';dbname=' . $dbname, $username, $password);
         return $pdo;
     }
@@ -115,9 +115,10 @@ class DbAccess
     {
         // assuming you have already setup $pdo
         $sh = $this->pdoConn->prepare("DESCRIBE {$tableName}");
-        if ($sh->execute()) {
+        try {
+            $sh->execute();
             return TRUE;
-        } else {
+        } catch (\Throwable $th) {
             return FALSE;
         }
     }

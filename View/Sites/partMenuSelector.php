@@ -9,10 +9,10 @@
     <div class="full-outer">
         <?php include dirname(getcwd(), 2) . '/View/SiteBlocks/adminsSitebar.php'; ?>
         <div class="small-wrap">
-            <a href="http://vocko/19ia04_cerman/View/Sites/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
+            <a href="<?= "http://$_SERVER[HTTP_HOST]" ?>/View/Sites/pageEdit.php" class="go-back-button"><i class="fas fa-arrow-circle-left"></i></a>
             <div class="header">
                 <div class="back">
-                    <a href="http://vocko/19ia04_cerman/View/Sites/pageEdit.php">
+                    <a href="<?= "http://$_SERVER[HTTP_HOST]" ?>/View/Sites/pageEdit.php">
                         <i class="fas fa-angle-left"></i>
                     </a>
                 </div>

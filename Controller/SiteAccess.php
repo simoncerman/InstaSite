@@ -26,7 +26,7 @@ class SiteAccess
                 array_push($disabled, $data[$i]);
             }
         }
-        $siteLink = "http://vocko/19ia04_cerman/View/Sites/partMenuSelector.php?siteName=";
+        $siteLink = "http://$_SERVER[HTTP_HOST]" . "/View/Sites/partMenuSelector.php?siteName=";
 ?>
 
         <div class="grid-holder">
@@ -73,7 +73,7 @@ class SiteAccess
                 </a>
             </div>
             <div class="grid-right">
-                <a href="<?= "http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/View/Sites/site.php?siteName=" . $siteName ?>" class="btn-new b-text">View</a>
+                <a href="<?= "http://$_SERVER[HTTP_HOST]" . "/View/Sites/site.php?siteName=" . $siteName ?>" class="btn-new b-text">View</a>
                 <button class="btn-new red" onclick="pageRemove(this)">Remove</button>
                 <label class="switch"><input onclick="pageOnOff(this)" type="checkbox" <?= ($checkbox) ? "checked" : "" ?>>
                     <span class="slider round"></span>
@@ -104,8 +104,7 @@ class SiteAccess
         $parts = [];
         for ($i = 0; $i < count($data); $i++) {
             $partName = $data[$i]["PartName"];
-            $lcHost = $_SERVER['HTTP_HOST'];
-            $fullLink = "http://" . $lcHost . "/19ia04_cerman/View/Sites/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
+            $fullLink = "http://$_SERVER[HTTP_HOST]" . "/View/Sites/partEdit.php?partName=" . $partName . "&siteName=" . $_GET["siteName"];
             if ($data[$i]["PartEnabled"] == 1 && $active) {
                 $this->partsBlueprint($partName, $active, $fullLink);
             }

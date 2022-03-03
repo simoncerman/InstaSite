@@ -33,36 +33,6 @@ class BackAccess
         }
     }
     /**
-     * Check if parts are loaded in db
-     * Loading from /pageParts/components into parttable
-     */
-    function CheckPartsLoaded()
-    {
-        if ($this->CheckDataInTable("parttable") == false) {
-            $this->PushPartData();
-        }
-    }
-    function PushPartData()
-    {
-        $partsUrlFolder = dirname(getcwd(), 1) . "\pageParts\components";
-        $links = scandir($partsUrlFolder);
-        $solidLinks = [];
-        for ($i = 2; $i < count($links); $i++) {
-            array_push($solidLinks, $links[$i]);
-        }
-        /**
-         * 
-         */
-        foreach ($solidLinks as $link) {
-            echo ($link);
-        }
-
-        $partName = ""; //TODO!
-        $partCategory = ""; //TODO!
-        $partData = ""; //TODO!
-        $partEnabled = ""; //TODO!
-    }
-    /**
      * Check if in table are any data
      * 
      * @param string $tableName Table name

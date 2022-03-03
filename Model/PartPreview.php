@@ -45,8 +45,10 @@ class PartPreview extends JsonAccess
         $this->Spaces($i);
         echo ("<" . $this->StartTagHandler($data) . ">");
         echo ((!empty($data["text"])) ? $data["text"] : "");
-        for ($y = 0; $y < count($data["content"]); $y++) {
-            $this->HTML_Convert($data["content"][$y], $i + 1);
+        if (!empty($data["content"])) {
+            for ($y = 0; $y < count($data["content"]); $y++) {
+                $this->HTML_Convert($data["content"][$y], $i + 1);
+            }
         }
         echo ("
         ");
@@ -68,7 +70,7 @@ class PartPreview extends JsonAccess
         if (!empty($data["src"])) {
             if (!empty($data["img-location"])) {
                 if ($data["img-location"] == "local") {
-                    $fullLink = 'http://vocko/19ia04_cerman/uploads/';
+                    $fullLink = "http://$_SERVER[HTTP_HOST]/uploads/";
                     $str .= " src=\"" . $fullLink . $data["src"] . "\"";
                 } else {
                     $str .= " src=" . '"' . "{$data["src"]}" . '"';

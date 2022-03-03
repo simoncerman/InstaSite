@@ -61,12 +61,12 @@ function basicInfoCreate() {
     let type = "NameTypeFirstInsert";
     $.ajax({
       type: "POST",
-      url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+      url: document.location.origin + "/Controller/PostSiteAccess.php",
       data: { type: type, webType: webType, webName: webName },
       success: (res) => {
         console.log(res);
         if (res != "") {
-          window.location.href = "http://vocko/19ia04_cerman/";
+          window.location.href = window.location.origin;
         }
       },
     });
@@ -95,7 +95,7 @@ function basicAccountCreate() {
     let type = "AccountInsert";
     $.ajax({
       type: "POST",
-      url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+      url: document.location.origin + "/Controller/PostSiteAccess.php",
       data: {
         type: type,
         AccountUsername: AccountUsername,
@@ -105,7 +105,7 @@ function basicAccountCreate() {
       },
       success: (res) => {
         if (res != "") {
-          window.location.href = "http://vocko/19ia04_cerman/";
+          window.location.href = window.location.origin;
         }
       },
     });
@@ -122,7 +122,7 @@ function pageOnOff(switcher) {
   let type = "UpdatingOnOffSite";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       siteName: siteName,
@@ -144,7 +144,7 @@ function pageRemove(object) {
   let type = "RemovePage";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       siteName: siteName,
@@ -183,7 +183,7 @@ function newSiteInsert() {
     let type = "NewSiteInsertion";
     $.ajax({
       type: "POST",
-      url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+      url: document.location.origin + "/Controller/PostSiteAccess.php",
       data: {
         type: type,
         pageName: pageName,
@@ -206,7 +206,7 @@ function newPart() {
     let type = "NewPartInsertion";
     $.ajax({
       type: "POST",
-      url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+      url: document.location.origin + "/Controller/PostSiteAccess.php",
       data: {
         type: type,
         partName: partName,
@@ -230,7 +230,7 @@ function partRemove(object) {
   let type = "RemovePartFromTable";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       partName: partName,
@@ -255,7 +255,7 @@ function MovePart(direction, button) {
   let type = "MovePart";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       partName: partName,
@@ -280,7 +280,7 @@ function partOnOff(switcher) {
   let type = "UpdatingOnOffPart";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       partName: partName,
@@ -297,7 +297,7 @@ function SavePartData() {
   let type = "UpdatingPartNameData";
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       partNameNew: partNameNew,
@@ -314,7 +314,7 @@ function ModeSwitchMoveComponent(path, direction) {
 
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       subtype: subtype,
@@ -350,7 +350,7 @@ function AddComponent(button, path) {
 
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       subtype: subtype,
@@ -399,7 +399,7 @@ function UpdateData(path) {
   let partName = document.getElementById("partName").innerHTML;
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       subtype: subtype,
@@ -445,7 +445,7 @@ function ModeSwitchRemoveComponent(path) {
   let partName = document.getElementById("partName").innerHTML;
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       subtype: subtype,
@@ -464,7 +464,7 @@ function ModeSwitchDuplicateComponent(path) {
   let partName = document.getElementById("partName").innerHTML;
   $.ajax({
     type: "POST",
-    url: "http://vocko/19ia04_cerman/Controller/PostSiteAccess.php",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
     data: {
       type: type,
       subtype: subtype,
@@ -504,4 +504,33 @@ function GetSpecificParam(paramName) {
       return element.param_value;
     }
   }
+}
+/**
+ * Function created to handling help/tips on page
+ */
+function helpHandler() {
+  let HelpElement = document.getElementById("help-holder");
+  HelpElement.style.bottom = "30px";
+  let progress = 0;
+  if (HelpElement != undefined) {
+    let helpProgress = document.getElementById("help-progress");
+    let frames = setInterval(() => {
+      helpProgress.style.width = progress + "%";
+      progress += 0.2;
+      if (progress > 120) {
+        clearInterval(frames);
+        helpProgress.style.visibility = "hidden";
+        actualIndex = document.getElementById("help-index").innerHTML;
+        helpLoadData(actualIndex);
+      }
+    }, 10);
+  }
+}
+/**
+ * Function for changing content of tips in time
+ * @param {int} actualIndex
+ */
+function helpLoadData(actualIndex) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST");
 }

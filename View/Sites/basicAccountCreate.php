@@ -18,12 +18,12 @@
                 <p>username*</p>
                 <input id="AccountUsername" class="typeinput" type="text">
                 <p>password*</p>
-                <input id="AccountPassword" class="typeinput" type="text">
+                <input id="AccountPassword" class="typeinput" type="password">
                 <p>email</p>
-                <input id="AccountEmail" class="typeinput" type="text">
+                <input id="AccountEmail" class="typeinput" type="email">
                 <p>select type of account</p>
                 <div class="select-one" id="AcType">
-                    <div onclick="selectOne(this)" class="selector">Creator</div>
+                    <div onclick="selectOne(this)" class="selector <?= ($_GET["preselected"] == "creator") ? "selected" : "" ?>">Creator</div>
                     <div onclick="selectOne(this)" class="selector">Administrator</div>
                     <div onclick="selectOne(this)" class="selector">User</div>
                     <div onclick="selectOne(this)" class="selector">Publisher</div>

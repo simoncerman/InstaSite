@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/style.css"); ?>">
-    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/switch.css"); ?>">
-    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/compilerStyles.css"); ?>">
-    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/createStyle.css"); ?>">
-    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/sidebarStyle.css"); ?>">
-    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/styles/adminbarStyle.css"); ?>">
+    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/styles/style.css"); ?>">
+    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/styles/switch.css"); ?>">
+    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/styles/compilerStyles.css"); ?>">
+    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/styles/createStyle.css"); ?>">
+    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/styles/sidebarStyle.css"); ?>">
+    <link rel="stylesheet" href="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/styles/adminbarStyle.css"); ?>">
 
 
 
@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-    <script src="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/19ia04_cerman/Controller/scripts.js"); ?>"></script>
+    <script src="<?php echo ("http://$_SERVER[HTTP_HOST]" . "/Controller/scripts.js"); ?>"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/13a5fbc3a3.js" crossorigin="anonymous"></script>
