@@ -151,3 +151,7 @@ if ($_POST["type"] == "ComponentHandling") {
               $ComponentsHandler->MoveComponent($_POST["path"], $_POST["partName"], $_POST["direction"]);
        }
 }
+if($_POST["type"]=="help"){
+       require_once dirname(getcwd(),1).'/Model/HelpHandler.php';
+       $helpHandler->LoadHelp($site,$index);
+}

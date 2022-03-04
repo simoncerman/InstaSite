@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="help-holder" id="help-holder">
+    <div class="help-holder" id="help-holder" data-value="basicInfoCreate">
         <div class="help">
             <h4>Tip:</h4><br>
             <div id="help-index">0</div>

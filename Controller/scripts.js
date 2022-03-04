@@ -526,11 +526,61 @@ function helpHandler() {
     }, 10);
   }
 }
+
+/**
+ * Function created to handling help/tips on page
+ */
+function helpHandler() {
+  actualIndex = document.getElementById("help-index").innerHTML;
+  let HelpElement = document.getElementById("help-holder");
+  let siteName = HelpElement.dataset.value;
+  helpLoadData(siteName, actualIndex);
+
+  HelpElement.style.bottom = "30px";
+
+  let progress = 0;
+
+  let helpProgress = document.getElementById("help-progress");
+  if (HelpElement != undefined) {
+    let frames = setInterval(() => {
+      helpProgress.style.width = progress + "%";
+      progress += 0.2;
+      if (progress > 120) {
+        actualIndex = document.getElementById("help-index").innerHTML;
+        helpLoadData(siteName, actualIndex);
+        progress = 0;
+      }
+    }, 10);
+  }
+}
 /**
  * Function for changing content of tips in time
+ * @param {string} siteName
  * @param {int} actualIndex
  */
-function helpLoadData(actualIndex) {
-  const xhttp = new XMLHttpRequest();
-  xhttp.open("POST");
+function helpLoadData(siteName, actualIndex) {
+  var http = new XMLHttpRequest();
+  var url = window.location.origin + "/Controller/PostSiteAccess.php";
+
+  //handling of params
+  var params = "type=help";
+  //check of index
+  if (siteName != undefined) {
+    params += "&siteName=" + siteName;
+  }
+  if (actualIndex != undefined) {
+    params += "&index=" + actualIndex;
+  }
+
+  http.open("POST", url, true);
+  http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  http.onreadystatechange = () => {
+    if (http.readyState == 4 && http.status == 200) {
+      document.getElementById("help-text").innerHTML = http.responseText;
+
+      document.getElementById("help-index").innerHTML =
+        parseInt(document.getElementById("help-index").innerHTML) + 1;
+    }
+  };
+  http.send(params);
 }
