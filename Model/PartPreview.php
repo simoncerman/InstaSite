@@ -111,7 +111,8 @@ class PartPreview extends JsonAccess
     {
         $partsOnSite = $this->DbAccess->GetPartData($siteName);
         for ($i = 0; $i < count($partsOnSite); $i++) {
-            $this->LoadPreview($partsOnSite[$i]["PartName"]);
+            if ($partsOnSite[$i]["PartEnabled"] == 1)
+                $this->LoadPreview($partsOnSite[$i]["PartName"]);
         }
     }
     /**

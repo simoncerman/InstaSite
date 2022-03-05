@@ -545,9 +545,6 @@ function helpHandler() {
     let frames = setInterval(() => {
       helpProgress.style.width = progress + "%";
       progress += 0.1;
-      if (progress > 110) {
-        helpProgress.style.transitionDuration = ".1s";
-      }
       if (progress > 120) {
         document.getElementById("help-index").innerHTML =
           parseInt(document.getElementById("help-index").innerHTML) + 1;

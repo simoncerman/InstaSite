@@ -8,11 +8,14 @@ class DbAccess
     }
     private function CreateConn()
     {
-        $servername = "localhost";
-        $username = "administrator";
-        $password = "Aa123456";
-        $dbname = "instasite";
-        $pdo = new PDO('mysql:host=' . $servername . ';dbname=' . $dbname, $username, $password);
+        define('__ROOT__', dirname(dirname(__FILE__)));
+        require_once __ROOT__ . "/adminSetup.php";
+        $adminSetup = new AdminSetup();
+        $this->servername = $adminSetup->servername;
+        $this->username = $adminSetup->username;
+        $this->password = $adminSetup->password;
+        $this->dbname = $adminSetup->dbname;
+        $pdo = new PDO('mysql:host=' . $this->servername . ';dbname=' . $this->dbname, $this->username, $this->password);
         return $pdo;
     }
     /**
@@ -100,9 +103,9 @@ class DbAccess
      */
     function AccountWithType($tableName, $AccountType)
     {
-        $sql = "SELECT COUNT(*) FROM {$tableName} WHERE AccountType='{$AccountType}'";
-        $stmp = $this->pdoConn->query($sql);
-        $count = $stmp->fetchColumn();
+        $sql = $this->pdoConn->prepare("SELECT COUNT(*) FROM {$tableName} WHERE AccountType='{$AccountType}'");
+        $sql->execute();
+        $count = $sql->fetchColumn();
         return $count;
     }
     /**
@@ -130,9 +133,9 @@ class DbAccess
      */
     function TableRecordsCount($tableName)
     {
-        $sql = "SELECT count(*) FROM " . $tableName;
-        $stmp = $this->pdoConn->query($sql);
-        $count = $stmp->fetchColumn();
+        $sql = $this->pdoConn->prepare("SELECT * FROM " . $tableName);
+        $sql->execute();
+        $count = $sql->fetchColumn();
         return $count;
     }
     /**

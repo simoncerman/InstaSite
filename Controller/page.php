@@ -1,6 +1,7 @@
 <?php
-require(dirname(getcwd(), 1) . "\Model\BackAccess.php");
-require(dirname(getcwd(), 1) . "\Model\JsonAccess.php");
+define('__ROOT__', dirname(dirname(__FILE__)));
+require(__ROOT__ . "/Model/BackAccess.php");
+require(__ROOT__ . "/Model/JsonAccess.php");
 $root = "http://$_SERVER[HTTP_HOST]";
 
 $BackAccess->CheckTableCreated();

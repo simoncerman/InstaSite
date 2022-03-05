@@ -17,14 +17,10 @@
                     </a>
                 </div>
                 <div class="title">
-                    <h2>Just parts to choose...</h2>
+                    <h2>You can see all parts on this page below</h2>
                     <h1 id="siteNameH2"><?php echo ($_GET["siteName"]); ?></h1>
                 </div>
             </div>
-
-            <?php
-            //This part will echo all part data to site
-            ?>
             <div class="grid-holder">
                 <p>enabled</p>
                 <?php echo ($siteAccess->LoadParts($_GET["siteName"], true));  ?>
