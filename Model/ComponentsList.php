@@ -43,7 +43,11 @@ class ComponentsList
                     "inline-styles" => "",
                     "text" => "Link",
                     "href" => "Empty"
-                )
+                ),
+                array(
+                    "componentName" => "SpecialHTML",
+                    "special-html" => "",
+                ),
             ),
             "full" => array(
                 array(

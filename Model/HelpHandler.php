@@ -20,13 +20,11 @@ class HelpHandler
                 }
             }
         }
-        if (!empty($siteName) && !empty($index)) {
+        if (!empty($siteName) && ($index != null || $index == 0)) {
             echo $localArray[$index]["HelpText"];
-        }
-        if (!empty($siteName) && empty($index)) {
+        } else if (!empty($siteName) && empty($index)) {
             echo $localArray[rand(0, count($localArray) - 1)]["HelpText"];
-        }
-        if (empty($siteName) && empty($index)) {
+        } else if (empty($siteName) && empty($index)) {
             echo $this->helplist[rand(0, count($this->helplist) - 1)]["HelpText"];
         }
     }
@@ -35,11 +33,15 @@ class HelpHandler
         $helplist = [
             [
                 "SiteName" => "BasicInfoCreate",
-                "HelpText" => "Remember to have ready database before installation",
+                "HelpText" => "Remember to have ready database before installation!",
             ],
             [
                 "SiteName" => "BasicInfoCreate",
-                "HelpText" => "Static page is page where are some data created",
+                "HelpText" => "Static page is like template!",
+            ],
+            [
+                "SiteName" => "BasicInfoCreate",
+                "HelpText" => "You cant continue without filling name of project!",
             ],
 
         ];

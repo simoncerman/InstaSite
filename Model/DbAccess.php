@@ -249,7 +249,6 @@ class DbAccess
             echo ("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
         }
         $sql->execute();
-        $this->pdoConn->query($sql);
     }
     /**
      * Will remove one row in table by specific input
@@ -263,7 +262,6 @@ class DbAccess
         $strVal = '"' . $value . '"';
         $sql = $this->pdoConn->prepare("DELETE FROM {$tableName} WHERE {$parameter}={$strVal}");
         $sql->execute();
-        $this->pdoConn->query($sql);
     }
     /**
      * Will remove one row in table by specific input, more specific then deleteRowInTable
@@ -277,7 +275,6 @@ class DbAccess
     {
         $sql = $this->pdoConn->prepare("DELETE FROM {$tableName} WHERE {$parameterFirst}=\"{$valueFirts}\" AND {$parameterSecound}=\"{$valueSecound}\"");
         $sql->execute();
-        $this->pdoConn->query($sql);
     }
     /**
      * Function which will return value of param

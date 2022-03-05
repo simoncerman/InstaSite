@@ -531,7 +531,7 @@ function helpHandler() {
  * Function created to handling help/tips on page
  */
 function helpHandler() {
-  actualIndex = document.getElementById("help-index").innerHTML;
+  let actualIndex = document.getElementById("help-index").innerHTML;
   let HelpElement = document.getElementById("help-holder");
   let siteName = HelpElement.dataset.value;
   helpLoadData(siteName, actualIndex);
@@ -544,10 +544,16 @@ function helpHandler() {
   if (HelpElement != undefined) {
     let frames = setInterval(() => {
       helpProgress.style.width = progress + "%";
-      progress += 0.2;
+      progress += 0.1;
+      if (progress > 110) {
+        helpProgress.style.transitionDuration = ".1s";
+      }
       if (progress > 120) {
-        actualIndex = document.getElementById("help-index").innerHTML;
+        document.getElementById("help-index").innerHTML =
+          parseInt(document.getElementById("help-index").innerHTML) + 1;
+        let actualIndex = document.getElementById("help-index").innerHTML;
         helpLoadData(siteName, actualIndex);
+        helpProgress.style.bottom = "-2px";
         progress = 0;
       }
     }, 10);
@@ -577,9 +583,11 @@ function helpLoadData(siteName, actualIndex) {
   http.onreadystatechange = () => {
     if (http.readyState == 4 && http.status == 200) {
       document.getElementById("help-text").innerHTML = http.responseText;
-
-      document.getElementById("help-index").innerHTML =
-        parseInt(document.getElementById("help-index").innerHTML) + 1;
+      if (http.responseText == "") {
+        let holder = document.getElementById("help-holder");
+        holder.style.bottom = "-100em";
+        holder.style.visibility = "hidden";
+      }
     }
   };
   http.send(params);
