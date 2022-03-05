@@ -1,4 +1,5 @@
 <?php
+define('__ROOT__', dirname(dirname(__FILE__)));
 class DbAccess
 {
     private $pdoConn;
@@ -8,7 +9,6 @@ class DbAccess
     }
     private function CreateConn()
     {
-        define('__ROOT__', dirname(dirname(__FILE__)));
         require_once __ROOT__ . "/adminSetup.php";
         $adminSetup = new AdminSetup();
         $this->servername = $adminSetup->servername;
@@ -117,11 +117,12 @@ class DbAccess
     function TableExistCheck($tableName)
     {
         // assuming you have already setup $pdo
-        $sh = $this->pdoConn->prepare("DESCRIBE {$tableName}");
-        try {
-            $sh->execute();
+        $sql = $this->pdoConn->prepare("SHOW TABLES LIKE '{$tableName}'");
+        $sql->execute();
+        $data = $sql->fetchAll();
+        if (count($data) == 1) {
             return TRUE;
-        } catch (\Throwable $th) {
+        } else {
             return FALSE;
         }
     }
@@ -186,7 +187,8 @@ class DbAccess
                 }
             }
             $sql = $sql . ")";
-            $this->pdoConn->query($sql);
+            echo ($sql);
+            $this->pdoConn->exec($sql);
         } else {
             echo ("Wrong parameters insertion");
         }

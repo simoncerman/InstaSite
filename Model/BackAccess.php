@@ -14,7 +14,6 @@ class BackAccess
      */
     function CheckTableCreated()
     {
-
         if ($this->Back_Dbaccess->TableExistCheck("globalinfo") == false) {
             $this->Back_Dbaccess->CreateDefaultTable();
         }
