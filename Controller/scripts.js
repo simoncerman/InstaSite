@@ -589,3 +589,23 @@ function helpLoadData(siteName, actualIndex) {
   };
   http.send(params);
 }
+function Login() {
+  let username = document.getElementById("AccountUsername").value;
+  let password = document.getElementById("AccountPassword").value;
+  let type = "login";
+  let subtype = "in";
+
+  $.ajax({
+    type: "POST",
+    url: document.location.origin + "/Controller/PostSiteAccess.php",
+    data: {
+      type: type,
+      subtype: subtype,
+      username: username,
+      password: password,
+    },
+    success: (res) => {
+      console.log(res);
+    },
+  });
+}

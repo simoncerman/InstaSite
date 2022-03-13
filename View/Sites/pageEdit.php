@@ -5,7 +5,12 @@
     ?>
 </head>
 
+
 <body>
+    <?php
+    require dirname(getcwd(), 2) . '/Controller/LoginHandler.php';
+    $loginHandler->LoginCheck();
+    ?>
     <div class="full-outer">
         <?php include dirname(getcwd(), 2) . '/View/SiteBlocks/adminsSitebar.php'; ?>
         <div class="small-wrap">

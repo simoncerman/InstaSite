@@ -42,7 +42,7 @@ class DbAccess
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             AccountName VARCHAR(50) NOT NULL,
             AccountType VARCHAR(30) NOT NULL,
-            AccountPassword VARCHAR(30) NOT NULL,
+            AccountPassword VARCHAR(255) NOT NULL,
             AccountEmail VARCHAR(40)
         )';
         $this->pdoConn->query($sql);
@@ -251,7 +251,6 @@ class DbAccess
         }
         if ($condition != null) {
             $sql = $this->pdoConn->prepare("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
-            echo ("UPDATE {$tableName} SET {$column} = {$value} WHERE {$condition};");
         }
         $sql->execute();
     }
@@ -321,6 +320,23 @@ class DbAccess
         $sql->execute();
         $data = $sql->fetch();
         return $data[0];
+    }
+    /**
+     * Will handle login
+     * @param string $AccountName 
+     */
+    function GetHashedPassword($AccountName)
+    {
+        $tableName = "accountinfo";
+        $sql = $this->pdoConn->prepare("SELECT AccountPassword FROM {$tableName} WHERE AccountName='{$AccountName}'");
+        try {
+            $sql->execute();
+            $data = $sql->fetch();
+            echo ($data);
+            return $data[0];
+        } catch (\Throwable $th) {
+            return;
+        }
     }
 }
 $DbAccess = new DbAccess();

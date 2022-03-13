@@ -2,6 +2,7 @@
 require_once dirname(getcwd(), 1) . '/Model/DbAccess.php';
 require_once dirname(getcwd(), 1) . '/Model/JsonAccess.php';
 require_once dirname(getcwd(), 1) . '/Model/ComponentsHandler.php';
+echo ($_POST["type"]);
 if ($_POST["type"] == "NameTypeFirstInsert") {
     $webType = $_POST["webType"];
     $webName = $_POST["webName"];
@@ -28,6 +29,8 @@ if ($_POST["type"] == "AccountInsert") {
     if ($DbAccess->TableRecordsCount($tableName) == 0) {
         $AccountType = "Creator";
     }
+    //password hashing
+    $AccountPassword = password_hash($AccountPassword, PASSWORD_DEFAULT);
     if ($AccountEmail == "empty") {
         $DbAccess->InsertData(
             $tableName,
@@ -153,4 +156,13 @@ if ($_POST["type"] == "ComponentHandling") {
 if ($_POST["type"] == "help") {
     require_once dirname(getcwd(), 1) . '/Model/HelpHandler.php';
     $helpHandler->LoadHelp($_POST["siteName"], $_POST["index"]);
+}
+if ($_POST["type"] == "login") {
+    if ($_POST["subtype"] == "in") {
+        require_once dirname(getcwd(), 1) . '/Controller/LoginHandler.php';
+        $ver = $loginHandler->VerifyLogin($_POST["username"], $_POST["password"]);
+        if ($ver == false) {
+            echo ("Something went wrong!");
+        }
+    }
 }
